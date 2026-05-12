@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Phân tích tin tức{% endblock %}
+{% block meta_desc %}Công cụ phân tích và đánh giá độ tin cậy tin tức tiếng Việt bằng Machine Learning.{% endblock %}
+
+{% block content %}
+<div class="analyzer-layout">
+
+  <!-- Header -->
+  <div class="analyzer-header">
+    <div class="section-tag" style="margin-bottom:12px;">🔍 Công cụ phân tích</div>
+    <h1 class="page-title">Kiểm tra độ tin cậy tin tức</h1>
+    <p class="page-subtitle">Nhập tiêu đề và nội dung bài báo, chọn mô hình và nhận kết quả ngay.</p>
+  </div>
+
+  <!-- Main Card -->
+  <div class="analyzer-card">
+
+    <!-- Model Selector -->
+    <div style="margin-bottom:20px;">
+      <div class="form-label" style="margin-bottom:12px;">🤖 Chọn mô hình phân tích</div>
+      <div class="model-selector">
+        <button class="model-btn active" data-model="lr" id="btn-lr">
+          <span class="model-abbr">LR</span>
+          Logistic Regression
+        </button>
+        <button class="model-btn" data-model="nb" id="btn-nb">
+          <span class="model-abbr">NB</span>
+          Naive Bayes
+        </button>
+        <button class="model-btn" data-model="svm" id="btn-svm">
+          <span class="model-abbr">SVM</span>
+          Linear SVM
+        </button>
+        <button class="model-btn" data-model="all" id="btn-all">
+          <span class="model-abbr">ALL</span>
+          So sánh tất cả
+        </button>
+      </div>
+    </div>
+
+      <div class="form-label" style="margin-bottom:12px;">🔗 Điền nội dung tự động từ đường dẫn (Báo thật)</div>
+      <div style="display:flex;gap:10px;margin-bottom:28px;">
+        <input type="text" id="url-input" class="form-input" style="flex:1;" placeholder="Dán link bài báo (VNExpress, Thanh Niên...) vào đây">
+        <button type="button" class="btn btn-ghost" id="btn-fetch-url" style="white-space:nowrap;">📥 Tải Báo</button>
+      </div>
+
+      <!-- Quick Fill -->
+      <div class="quick-fill">
+      <span style="font-size:13px;color:var(--text-muted);align-self:center;">Mẫu nhanh:</span>
+      <button class="quick-fill-btn" onclick="fillExample('fake')" id="btn-fill-fake">⚠️ Tin giả mẫu</button>
+      <button class="quick-fill-btn" onclick="fillExample('real')" id="btn-fill-real">✅ Tin thật mẫu</button>
+      <button class="quick-fill-btn" onclick="clearForm()" id="btn-clear">🗑️ Xoá nội dung</button>
+    </div>
+
+    <!-- Form -->
+    <form id="analyze-form" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="title">📰 Tiêu đề tin tức</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="form-input"
+          placeholder="Ví dụ: Giá xăng giảm từ ngày mai..."
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="content">📝 Nội dung tin tức</label>
+        <textarea
+          id="content"
+          name="content"
+          class="form-textarea"
+          placeholder="Dán nội dung bài báo cần kiểm tra vào đây..."
+        ></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">
+        <span>🔍</span> Phân tích tin tức
+      </button>
+    </form>
+
+    <!-- Result Container -->
+    <div id="result-container"></div>
+  </div>
+
+  <!-- Info cards below -->
+  <div class="cards-grid" style="margin-top:28px;">
+    <div class="card" style="padding:20px 22px;">
+      <div style="font-size:22px;margin-bottom:10px;">💡</div>
+      <h3 class="card-title" style="font-size:15px;margin-bottom:6px;">Mẹo sử dụng</h3>
+      <p class="card-desc" style="font-size:13px;">
+        Nhập cả tiêu đề lẫn nội dung để có kết quả chính xác hơn. 
+        Chọn "So sánh tất cả" để xem ý kiến của 3 mô hình.
+      </p>
+    </div>
+    <div class="card" style="padding:20px 22px;">
+      <div style="font-size:22px;margin-bottom:10px;">⚠️</div>
+      <h3 class="card-title" style="font-size:15px;margin-bottom:6px;">Lưu ý quan trọng</h3>
+      <p class="card-desc" style="font-size:13px;">
+        Kết quả chỉ mang tính tham khảo. Luôn kiểm chứng thông tin
+        từ các nguồn báo chí chính thống và cơ quan có thẩm quyền.
+      </p>
+    </div>
+    <div class="card" style="padding:20px 22px;">
+      <div style="font-size:22px;margin-bottom:10px;">📊</div>
+      <h3 class="card-title" style="font-size:15px;margin-bottom:6px;">Xem chỉ số mô hình</h3>
+      <p class="card-desc" style="font-size:13px;">
+        Truy cập <a href="/dashboard" style="color:var(--primary-light);">Dashboard</a> để xem
+        Accuracy, Precision, Recall, F1 của từng mô hình chi tiết.
+      </p>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analyzer.js') }}?v=1"></script>
+{% endblock %}

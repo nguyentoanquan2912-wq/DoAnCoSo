@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Lịch sử dự đoán{% endblock %}
+{% block meta_desc %}Xem lại toàn bộ lịch sử phân tích tin tức — lọc, tìm kiếm và quản lý kết quả dự đoán.{% endblock %}
+
+{% block content %}
+<div class="history-layout">
+
+  <!-- Header -->
+  <div class="analyzer-header">
+    <div class="section-tag" style="margin-bottom:12px;">📋 Lịch sử</div>
+    <h1 class="page-title">Lịch sử dự đoán</h1>
+    <p class="page-subtitle">Toàn bộ kết quả phân tích tin tức đã thực hiện — có thể lọc, tìm kiếm và xoá.</p>
+  </div>
+
+  <!-- Summary Stats -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;" class="responsive-three-col">
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;backdrop-filter:blur(20px);text-align:center;">
+      <div style="font-size:30px;font-weight:900;color:var(--text-white);" id="stat-total">—</div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">Tổng đã phân tích</div>
+    </div>
+    <div style="background:var(--panel);border:1px solid var(--success-border);border-radius:var(--radius-lg);padding:20px 24px;backdrop-filter:blur(20px);text-align:center;">
+      <div style="font-size:30px;font-weight:900;color:var(--success-light);" id="stat-real">—</div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">Tin đáng tin cậy</div>
+    </div>
+    <div style="background:var(--panel);border:1px solid var(--danger-border);border-radius:var(--radius-lg);padding:20px 24px;backdrop-filter:blur(20px);text-align:center;">
+      <div style="font-size:30px;font-weight:900;color:var(--danger-light);" id="stat-fake">—</div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">Tin không tin cậy</div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="history-controls">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        id="search-input"
+        class="search-input"
+        placeholder="Tìm kiếm theo tiêu đề..."
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="filter-btns">
+      <button class="filter-btn active-all" data-filter="all" id="filter-all">Tất cả</button>
+      <button class="filter-btn" data-filter="real" id="filter-real">✅ Tin thật</button>
+      <button class="filter-btn" data-filter="fake" id="filter-fake">⚠️ Tin giả</button>
+    </div>
+
+    <button class="btn btn-danger btn-sm" onclick="clearAllHistory()" id="btn-clear-all" title="Xoá toàn bộ lịch sử">
+      🗑️ Xoá tất cả
+    </button>
+  </div>
+
+  <!-- Result counter -->
+  <div style="font-size:13px;color:var(--text-muted);margin-bottom:10px;" id="result-counter"></div>
+
+  <!-- Empty state -->
+  <div id="empty-state" style="display:none;">
+    <div class="history-table-wrap" style="padding:60px 24px;">
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <div class="empty-title">Chưa có lịch sử nào</div>
+        <div class="empty-desc">
+          Hãy thử <a href="/analyzer" style="color:var(--primary-light);">phân tích tin tức</a>
+          để kết quả xuất hiện ở đây.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="history-table-wrap" id="history-table-wrap">
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th style="width:150px;">Thời gian</th>
+          <th>Tiêu đề</th>
+          <th style="width:160px;">Kết quả</th>
+          <th style="width:100px;">Độ tin cậy</th>
+          <th style="width:160px;">Mô hình</th>
+          <th style="width:60px;"></th>
+        </tr>
+      </thead>
+      <tbody id="history-tbody">
+        <tr>
+          <td colspan="6" style="text-align:center;padding:40px;color:var(--text-muted);">
+            <div class="loading-spinner" style="margin:0 auto 12px;"></div>
+            Đang tải...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" id="pagination"></div>
+
+</div>
+
+<style>
+@media (max-width: 600px) {
+  .responsive-three-col { grid-template-columns: 1fr !important; }
+}
+</style>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/history.js') }}?v=1"></script>
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Metrics mô hình{% endblock %}
+{% block meta_desc %}Biểu đồ so sánh hiệu suất các mô hình Machine Learning: Accuracy, Precision, Recall, F1-Score.{% endblock %}
+
+{% block content %}
+<div class="dashboard-layout">
+
+  <!-- Header -->
+  <div class="analyzer-header">
+    <div class="section-tag" style="margin-bottom:12px;">📊 Model Dashboard</div>
+    <h1 class="page-title">Hiệu suất mô hình ML</h1>
+    <p class="page-subtitle">So sánh Accuracy, Precision, Recall và F1-Score của 3 mô hình trên tập kiểm tra.</p>
+  </div>
+
+  <!-- Dashboard content (loaded by JS) -->
+  <div id="dashboard-content">
+
+    <!-- Model Metric Cards -->
+    <div id="metrics-grid" class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-bottom:28px;">
+      <!-- Filled by dashboard.js -->
+      <div class="chart-card" style="text-align:center;padding:40px;">
+        <div class="loading-spinner" style="margin:0 auto 16px;"></div>
+        <div style="color:var(--text-secondary);font-size:15px;">Đang tải dữ liệu...</div>
+      </div>
+    </div>
+
+    <!-- Bar Chart Card -->
+    <div class="chart-card" style="margin-bottom:24px;">
+      <div class="chart-title">📈 So sánh các chỉ số đánh giá</div>
+      <div class="chart-subtitle">Accuracy · Precision · Recall · F1-Score (%) — giữa 3 mô hình</div>
+      <canvas id="bar-chart" style="height:320px;"></canvas>
+    </div>
+
+    <!-- Two column: Confusion matrix + Dataset stats -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;" class="responsive-two-col">
+
+      <!-- Confusion Matrix -->
+      <div class="chart-card">
+        <div class="chart-title">🔲 Confusion Matrix</div>
+        <div class="chart-subtitle">Chọn mô hình để xem ma trận nhầm lẫn</div>
+        <div class="model-tabs">
+          <button class="model-tab active" data-model="lr" id="tab-lr">Logistic Regression</button>
+          <button class="model-tab" data-model="nb" id="tab-nb">Naive Bayes</button>
+          <button class="model-tab" data-model="svm" id="tab-svm">Linear SVM</button>
+        </div>
+        <div id="cm-container">
+          <!-- Filled by dashboard.js -->
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:var(--text-muted);line-height:1.6;">
+          <span style="display:inline-block;width:12px;height:12px;background:var(--success-bg);border:1px solid var(--success-border);border-radius:3px;margin-right:6px;vertical-align:middle;"></span>Dự đoán đúng&nbsp;&nbsp;
+          <span style="display:inline-block;width:12px;height:12px;background:var(--danger-bg);border:1px solid var(--danger-border);border-radius:3px;margin-right:6px;vertical-align:middle;"></span>Dự đoán sai
+        </div>
+      </div>
+
+      <!-- Dataset Stats -->
+      <div class="chart-card">
+        <div class="chart-title">📂 Thống kê Dataset</div>
+        <div class="chart-subtitle">Thông tin tập dữ liệu huấn luyện</div>
+        <div class="dataset-stats" id="dataset-stats">
+          <!-- Filled by dashboard.js -->
+        </div>
+
+        <!-- Donut Chart Placeholder -->
+        <div style="margin-top:24px;">
+          <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:12px;">Phân bổ nhãn</div>
+          <div id="label-bars"><!-- Filled by dashboard.js --></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- API Info Card -->
+    <div class="chart-card">
+      <div class="chart-title">🌐 REST API Endpoints</div>
+      <div class="chart-subtitle">Tích hợp hệ thống qua HTTP API</div>
+      <div style="display:grid;gap:12px;">
+        <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius-md);padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <span style="background:rgba(16,185,129,0.15);color:var(--success-light);padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;flex-shrink:0;">POST</span>
+          <code style="color:var(--primary-light);font-size:14px;">/api/predict</code>
+          <span style="color:var(--text-muted);font-size:13px;">Dự đoán độ tin cậy của tin tức</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius-md);padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <span style="background:rgba(78,124,255,0.15);color:var(--primary-light);padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;flex-shrink:0;">GET</span>
+          <code style="color:var(--primary-light);font-size:14px;">/api/models</code>
+          <span style="color:var(--text-muted);font-size:13px;">Thông tin và metrics các mô hình</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius-md);padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <span style="background:rgba(78,124,255,0.15);color:var(--primary-light);padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;flex-shrink:0;">GET</span>
+          <code style="color:var(--primary-light);font-size:14px;">/api/history</code>
+          <span style="color:var(--text-muted);font-size:13px;">Lịch sử dự đoán đã lưu</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius-md);padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <span style="background:rgba(244,63,94,0.12);color:var(--danger-light);padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;flex-shrink:0;">DELETE</span>
+          <code style="color:var(--primary-light);font-size:14px;">/api/history/&lt;id&gt;</code>
+          <span style="color:var(--text-muted);font-size:13px;">Xoá một mục lịch sử theo ID</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+@media (max-width: 768px) {
+  .responsive-two-col { grid-template-columns: 1fr !important; }
+}
+</style>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}?v=1"></script>
+<script>
+// Render label distribution bars after metrics loaded
+const _origRenderAll = window.renderAll;
+document.addEventListener('DOMContentLoaded', () => {
+  // Patch renderDatasetStats to also render bar chart
+  const origLoad = window.loadMetrics;
+});
+
+// Override to add label bars
+const _patchLabelBars = () => {
+  const container = document.getElementById('label-bars');
+  if (!container || !window.metricsData?.dataset) return;
+  const ds = window.metricsData.dataset;
+  const rPct = ds.total ? Math.round(ds.reliable / ds.total * 100) : 0;
+  const uPct = 100 - rPct;
+  container.innerHTML = `
+    <div style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+        <span style="color:var(--success-light);">✅ Tin đáng tin cậy</span>
+        <span style="color:var(--text-secondary);">${ds.reliable} mẫu (${rPct}%)</span>
+      </div>
+      <div class="progress-track" style="height:8px;">
+        <div class="progress-fill real" style="width:${rPct}%"></div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+        <span style="color:var(--danger-light);">⚠️ Tin không đáng tin cậy</span>
+        <span style="color:var(--text-secondary);">${ds.unreliable} mẫu (${uPct}%)</span>
+      </div>
+      <div class="progress-track" style="height:8px;">
+        <div class="progress-fill fake" style="width:${uPct}%"></div>
+      </div>
+    </div>`;
+};
+
+// Hook into loadMetrics completion
+const _origLoadMetrics = window.loadMetrics;
+if (_origLoadMetrics) {
+  window.loadMetrics = async function() {
+    await _origLoadMetrics();
+    _patchLabelBars();
+  };
+}
+</script>
+{% endblock %}

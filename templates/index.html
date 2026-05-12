@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+
+<!-- ═══ HERO SECTION ═══ -->
+<section class="hero">
+  <div class="hero-badge">🤖 AI-Powered • NLP • Machine Learning</div>
+
+  <h1 class="hero-title">
+    Đánh giá độ tin cậy<br>
+    <span class="gradient-text">tin tức thông minh</span>
+  </h1>
+
+  <p class="hero-desc">
+    Hệ thống phân tích và phát hiện tin giả tiếng Việt bằng Machine Learning
+    và Xử lý Ngôn ngữ Tự nhiên — nhanh, chính xác, minh bạch.
+  </p>
+
+  <div class="hero-actions">
+    <a href="/analyzer" class="btn btn-primary" id="cta-analyze">
+      🔍 Phân tích ngay
+    </a>
+    <a href="/dashboard" class="btn btn-ghost" id="cta-dashboard">
+      📊 Xem Dashboard
+    </a>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num" data-target="100">0</span>
+      <span class="stat-label">Mẫu huấn luyện</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="3">0</span>
+      <span class="stat-label">Mô hình ML</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="95">0</span>
+      <span class="stat-unit">%</span>
+      <span class="stat-label">Độ chính xác tối đa</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="2">0</span>
+      <span class="stat-label">Nhãn phân loại</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-tag">Cách hoạt động</div>
+    <h2 class="section-title">Quy trình phân tích</h2>
+    <p class="section-desc">
+      Hệ thống xử lý văn bản tiếng Việt qua 3 bước đơn giản để đưa ra nhận định chính xác.
+    </p>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3 class="step-title">Nhập tin tức</h3>
+      <p class="step-desc">
+        Dán tiêu đề và nội dung bài báo cần kiểm tra vào công cụ phân tích.
+        Hỗ trợ văn bản tiếng Việt tự nhiên.
+      </p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3 class="step-title">Phân tích AI</h3>
+      <p class="step-desc">
+        Văn bản được tiền xử lý bằng NLP (underthesea), vector hóa TF-IDF
+        và phân loại bởi mô hình Machine Learning.
+      </p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3 class="step-title">Kết quả & độ tin cậy</h3>
+      <p class="step-desc">
+        Hệ thống trả về nhận định (tin thật / tin giả) kèm xác suất tin cậy
+        trực quan, dễ hiểu.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MODELS SECTION ═══ -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <div class="section-tag">Mô hình AI</div>
+    <h2 class="section-title">3 mô hình Machine Learning</h2>
+    <p class="section-desc">
+      Sử dụng và so sánh nhiều thuật toán phân loại để đạt kết quả tối ưu.
+    </p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon blue">📈</div>
+      <h3 class="card-title">Logistic Regression</h3>
+      <p class="card-desc">
+        Mô hình tuyến tính kinh điển, huấn luyện nhanh và cho kết quả
+        ổn định, dễ diễn giải xác suất phân loại.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon cyan">📊</div>
+      <h3 class="card-title">Naive Bayes</h3>
+      <p class="card-desc">
+        Thuật toán xác suất Bayesian tối ưu cho phân loại văn bản,
+        đặc biệt hiệu quả với đặc trưng TF-IDF.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon green">⚡</div>
+      <h3 class="card-title">Linear SVM</h3>
+      <p class="card-desc">
+        Support Vector Machine tuyến tính — mạnh mẽ với không gian
+        đặc trưng thưa thớt, thường đạt độ chính xác cao nhất.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon orange">🔤</div>
+      <h3 class="card-title">TF-IDF Bigrams</h3>
+      <p class="card-desc">
+        Vector hóa văn bản bằng TF-IDF kết hợp bigrams tối đa 5000
+        đặc trưng, phù hợp với ngôn ngữ tiếng Việt.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section class="section" style="padding-top:0;padding-bottom:80px;">
+  <div class="section-header">
+    <div class="section-tag">Tính năng</div>
+    <h2 class="section-title">Đầy đủ công cụ nghiên cứu</h2>
+  </div>
+
+  <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+      <div style="font-size:28px;flex-shrink:0;">🔍</div>
+      <div>
+        <h3 class="card-title" style="font-size:16px;">Phân tích đơn & so sánh</h3>
+        <p class="card-desc" style="font-size:13px;">Chọn 1 model hoặc so sánh kết quả của cả 3 mô hình cùng lúc.</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+      <div style="font-size:28px;flex-shrink:0;">📊</div>
+      <div>
+        <h3 class="card-title" style="font-size:16px;">Dashboard metrics</h3>
+        <p class="card-desc" style="font-size:13px;">Biểu đồ so sánh Accuracy, Precision, Recall, F1 của từng model.</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+      <div style="font-size:28px;flex-shrink:0;">📋</div>
+      <div>
+        <h3 class="card-title" style="font-size:16px;">Lịch sử dự đoán</h3>
+        <p class="card-desc" style="font-size:13px;">Lưu và tra cứu toàn bộ lịch sử kiểm tra tin tức của bạn.</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+      <div style="font-size:28px;flex-shrink:0;">🌐</div>
+      <div>
+        <h3 class="card-title" style="font-size:16px;">REST API</h3>
+        <p class="card-desc" style="font-size:13px;">Backend Flask cung cấp API endpoint cho tích hợp dễ dàng.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Banner -->
+  <div style="margin-top:48px;padding:40px;background:linear-gradient(135deg,rgba(78,124,255,0.12),rgba(0,212,255,0.08));border:1px solid rgba(78,124,255,0.25);border-radius:var(--radius-xl);text-align:center;backdrop-filter:blur(20px);">
+    <h3 style="font-size:26px;font-weight:800;color:var(--text-white);margin-bottom:12px;">
+      Sẵn sàng kiểm tra tin tức?
+    </h3>
+    <p style="color:var(--text-secondary);margin-bottom:24px;font-size:15px;">
+      Nhập bài báo bất kỳ và nhận kết quả phân tích ngay lập tức.
+    </p>
+    <a href="/analyzer" class="btn btn-primary" style="display:inline-flex;">
+      🚀 Bắt đầu phân tích
+    </a>
+  </div>
+</section>
+
+{% endblock %}
