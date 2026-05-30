@@ -9,7 +9,7 @@
   <div class="analyzer-header">
     <div class="section-tag" style="margin-bottom:12px;">📊 Model Dashboard</div>
     <h1 class="page-title">Hiệu suất mô hình ML</h1>
-    <p class="page-subtitle">So sánh Accuracy, Precision, Recall và F1-Score của 3 mô hình trên tập kiểm tra.</p>
+    <p class="page-subtitle">So sánh hiệu suất các mô hình Machine Learning (trọng tâm là Linear SVM) trên tập dữ liệu kiểm tra.</p>
   </div>
 
   <!-- Dashboard content (loaded by JS) -->
@@ -27,8 +27,26 @@
     <!-- Bar Chart Card -->
     <div class="chart-card" style="margin-bottom:24px;">
       <div class="chart-title">📈 So sánh các chỉ số đánh giá</div>
-      <div class="chart-subtitle">Accuracy · Precision · Recall · F1-Score (%) — giữa 3 mô hình</div>
+      <div class="chart-subtitle">Accuracy · Precision · Recall · F1-Score (%) — giữa các mô hình</div>
       <canvas id="bar-chart" style="height:320px;"></canvas>
+    </div>
+
+    <!-- Radar and Polar Area Charts -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;" class="responsive-two-col">
+      <div class="chart-card">
+        <div class="chart-title">🕸️ Radar Performance Chart</div>
+        <div class="chart-subtitle">So sánh đa chiều hiệu suất giữa các mô hình huấn luyện</div>
+        <div style="position:relative; height:320px; width:100%;">
+          <canvas id="radar-chart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">🌀 Phân bổ kích thước Dataset</div>
+        <div class="chart-subtitle">Số lượng mẫu tin đáng tin cậy & tin giả trong dữ liệu</div>
+        <div style="position:relative; height:320px; width:100%; display:flex; justify-content:center;">
+          <canvas id="polar-chart"></canvas>
+        </div>
+      </div>
     </div>
 
     <!-- Two column: Confusion matrix + Dataset stats -->
@@ -36,13 +54,8 @@
 
       <!-- Confusion Matrix -->
       <div class="chart-card">
-        <div class="chart-title">🔲 Confusion Matrix</div>
-        <div class="chart-subtitle">Chọn mô hình để xem ma trận nhầm lẫn</div>
-        <div class="model-tabs">
-          <button class="model-tab active" data-model="lr" id="tab-lr">Logistic Regression</button>
-          <button class="model-tab" data-model="nb" id="tab-nb">Naive Bayes</button>
-          <button class="model-tab" data-model="svm" id="tab-svm">Linear SVM</button>
-        </div>
+        <div class="chart-title">🔲 Confusion Matrix (Linear SVM)</div>
+        <div class="chart-subtitle">Ma trận nhầm lẫn đánh giá sai số dự đoán của mô hình</div>
         <div id="cm-container">
           <!-- Filled by dashboard.js -->
         </div>

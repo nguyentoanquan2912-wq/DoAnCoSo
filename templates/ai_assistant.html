@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %}Trợ lý AI Kiểm Chứng{% endblock %}
+{% block meta_desc %}Trò chuyện trực tiếp với Trợ lý AI TrustCheck để phân tích ngữ nghĩa, kiểm chứng tin đồn và nhận định thông tin đa chiều.{% endblock %}
+
+{% block head %}
+<style>
+  /* Ẩn widget chat nổi khi đang ở trang trợ lý AI chuyên sâu */
+  .chat-widget {
+    display: none !important;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="ai-assistant-layout">
+  <!-- Left Side: Full Chat Window -->
+  <div class="assistant-chat-panel glass-panel-vip">
+    <div class="assistant-chat-header">
+      <div class="assistant-header-info">
+        <span class="assistant-avatar" style="background: linear-gradient(135deg, #4e7cff, #00d4ff); border-color: rgba(0, 212, 255, 0.35); box-shadow: 0 0 15px rgba(78, 124, 255, 0.4);">🤖</span>
+        <div>
+          <h2>Trợ lý AI Kiểm Chứng Chuyên Sâu</h2>
+          <p>Hệ thống AI xử lý ngôn ngữ tự nhiên tối tân để thẩm định tin đồn & bài viết</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button id="page-btn-clear" class="btn btn-ghost btn-sm" style="border-radius: var(--radius-sm); font-size:12px; padding:6px 12px;" title="Xoá lịch sử hội thoại">
+          🗑️ Xoá chat
+        </button>
+        <!-- Engine nội bộ -->
+      </div>
+    </div>
+
+    <!-- VIP Status Bar -->
+    <div class="vip-status-bar">
+      <span>🛡️ Trạng thái:</span>
+      <span style="color:var(--accent); font-weight:800; text-shadow:0 0 10px rgba(0,212,255,0.3); display:inline-flex; align-items:center; gap:4px;">🤖 AI Engine Nội Bộ Active</span>
+      <span style="margin-left:auto; color:var(--text-muted); font-size:11px;">Phân tích cục bộ • Không cần API Key</span>
+    </div>
+
+    <!-- Engine AI nội bộ -->
+    <div class="model-selector-container">
+      <div class="model-selector-title">🤖 Engine phân tích:</div>
+      <div class="chat-model-selector">
+        <button type="button" class="model-select-btn active" data-model="local-core" id="btn-model-core">
+          <span class="model-icon">🛡️</span>
+          <span class="model-name">TrustCheck AI Engine</span>
+          <span class="model-tag-vip">NLP + RAG</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Engine nội bộ - không cần cấu hình -->
+
+    <!-- Chat Messages -->
+    <div class="assistant-messages" id="page-chat-messages">
+      <div class="assistant-msg bot">
+        <div class="msg-avatar" style="background: linear-gradient(135deg, rgba(78, 124, 255, 0.25), rgba(0, 212, 255, 0.2)); border: 1px solid rgba(0, 212, 255, 0.3);">🤖</div>
+        <div class="msg-content">
+          <p>Xin chào! Tôi là **Trợ lý AI Kiểm Chứng** của TrustCheck.</p>
+          <p>Tôi có thể hỗ trợ bạn những nghiệp vụ phân tích chuyên sâu sau:</p>
+          <ul>
+            <li>🔍 **Thẩm định & Kiểm chứng tin đồn** về y tế, tài chính, đời sống, xã hội dựa trên tri thức lớn.</li>
+            <li>🧠 **Phân tích văn phong & Lập luận** phát hiện ngôn từ giật gân, phi logic, cường điệu hóa hoặc thao túng tâm lý.</li>
+            <li>🔗 **Thẩm định chéo nguồn dữ liệu** từ cơ sở dữ liệu lịch sử TrustCheck SQLite của chúng ta.</li>
+            <li>📊 **Báo cáo chuẩn chỉnh** theo phong cách kiểm chứng báo chí chuyên nghiệp.</li>
+          </ul>
+          <p>Hãy dán văn bản bài viết hoặc đưa ra câu hỏi của bạn dưới đây, hoặc sử dụng các *Gợi ý kiểm chứng nhanh* bên cạnh nhé!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="assistant-input-area">
+      <textarea id="page-chat-textarea" placeholder="Nhập tin nhắn của bạn ở đây... (Nhấn Enter để gửi, Shift+Enter để xuống dòng)" rows="1"></textarea>
+      <button id="page-chat-send-btn" class="send-btn" disabled>
+        <span>Gửi</span> ➤
+      </button>
+    </div>
+  </div>
+
+  <!-- Right Side: Sidebar with Templates & Tips -->
+  <div class="assistant-sidebar">
+    <div class="sidebar-card glass-panel-vip">
+      <h3>💡 Gợi ý kiểm chứng nhanh</h3>
+      <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">Click chọn một chủ đề bên dưới để gửi yêu cầu nhanh đến Trợ lý AI:</p>
+      
+      <div class="template-list">
+        <button class="template-btn" onclick="sendTemplateQuery('fact_check')">
+          <span class="template-icon">📰</span>
+          <div class="template-text">
+            <strong>Kiểm chứng bài viết này</strong>
+            <span>Phân tích độ tin cậy từ nội dung dán sẵn</span>
+          </div>
+        </button>
+
+        <button class="template-btn" onclick="sendTemplateQuery('health_rumor')">
+          <span class="template-icon">🩺</span>
+          <div class="template-text">
+            <strong>Tin đồn y khoa phổ biến</strong>
+            <span>Kiểm chứng tin đồn lá đu đủ, tỏi sống chữa bệnh</span>
+          </div>
+        </button>
+
+        <button class="template-btn" onclick="sendTemplateQuery('scam_detection')">
+          <span class="template-icon">🚨</span>
+          <div class="template-text">
+            <strong>Nhận diện tin giả tài chính</strong>
+            <span>Cách phát hiện tin đồn đổi tiền, lừa đảo trúng thưởng</span>
+          </div>
+        </button>
+
+        <button class="template-btn" onclick="sendTemplateQuery('nlp_logic')">
+          <span class="template-icon">🧠</span>
+          <div class="template-text">
+            <strong>Phân tích văn phong bài viết</strong>
+            <span>Nhận dạng văn phong giật gân, dẫn dụ người đọc</span>
+          </div>
+        </button>
+
+        <button class="template-btn" onclick="sendTemplateQuery('url_check')">
+          <span class="template-icon">🔗</span>
+          <div class="template-text">
+            <strong>Kiểm chứng URL bài báo</strong>
+            <span>Phân tích nguồn gốc, uy tín của đường dẫn bài báo</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar-card glass-panel-vip" style="margin-top: 20px;">
+      <h3>📊 Cách hệ thống phân tích</h3>
+      <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0;">
+        TrustCheck sử dụng mô hình <strong>Linear SVM</strong> để phân loại tin tức,
+        kết hợp <strong>hệ thống đồng thuận có trọng số</strong> để ra kết luận. Kết quả kèm theo 
+        <strong>giải thích lý do chi tiết</strong>: từ khóa ảnh hưởng, dấu hiệu phát hiện, và bằng chứng cụ thể.
+      </p>
+    </div>
+
+    <div class="sidebar-card glass-panel-vip" style="margin-top: 20px;">
+      <h3>🔒 Bảo mật & Quyền riêng tư</h3>
+      <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0;">
+        TrustCheck AI Engine hoạt động hoàn toàn trên máy chủ nội bộ. Dữ liệu phân tích được xử lý cục bộ bằng NLP và Machine Learning, không gửi đến bất kỳ API bên ngoài nào. Lịch sử phân tích được lưu trong cơ sở dữ liệu SQLite nội bộ.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/ai_assistant.js') }}?v=2"></script>
+{% endblock %}

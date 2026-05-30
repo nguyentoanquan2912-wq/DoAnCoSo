@@ -4,6 +4,7 @@ numpy
 scikit-learn
 joblib
 underthesea
-google-genai
+easyocr
+Pillow
 beautifulsoup4
 requests

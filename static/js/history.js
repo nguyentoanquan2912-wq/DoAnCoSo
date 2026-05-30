@@ -9,7 +9,7 @@ const PAGE_SIZE = 10;
 let activeFilter = 'all';
 let searchQuery = '';
 
-const MODEL_NAMES = { lr: 'Logistic Regression', nb: 'Naive Bayes', svm: 'Linear SVM', all: 'Tất cả' };
+const MODEL_NAMES = { lr: 'Logistic Regression', nb: 'Naive Bayes', svm: 'Linear SVM', ensemble: 'Mô hình Đồng thuận', all: 'Tất cả' };
 
 /* ─── Load history ─────────────── */
 async function loadHistory() {

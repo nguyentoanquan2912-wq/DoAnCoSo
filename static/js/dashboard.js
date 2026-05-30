@@ -3,14 +3,26 @@
 ═══════════════════════════════════ */
 
 let metricsData = null;
-let activeModel = 'lr';
+let activeModel = 'svm';
 let barChart = null;
+let radarChart = null;
+let polarChart = null;
 
-const MODEL_LABELS = { lr: 'Logistic Regression', nb: 'Naive Bayes', svm: 'Linear SVM' };
+const MODEL_LABELS = {
+  lr: 'Logistic Regression',
+  nb: 'Naive Bayes',
+  svm: 'Linear SVM',
+  rf: 'Random Forest',
+  mlp: 'Neural Net (MLP)',
+  ensemble: 'Mô hình Đồng thuận'
+};
 const MODEL_COLORS = {
   lr: { fill: 'rgba(78,124,255,0.8)', stroke: '#4e7cff' },
   nb: { fill: 'rgba(0,212,255,0.8)', stroke: '#00d4ff' },
-  svm: { fill: 'rgba(16,185,129,0.8)', stroke: '#10b981' }
+  svm: { fill: 'rgba(16,185,129,0.8)', stroke: '#10b981' },
+  rf: { fill: 'rgba(245,158,11,0.8)', stroke: '#f59e0b' },
+  mlp: { fill: 'rgba(236,72,153,0.8)', stroke: '#ec4899' },
+  ensemble: { fill: 'rgba(168,85,247,0.8)', stroke: '#a855f7' }
 };
 
 /* ─── Load metrics ─────────────── */
@@ -45,11 +57,13 @@ function renderAll() {
   renderBarChart();
   renderConfusionMatrix(activeModel);
   renderDatasetStats();
+  renderRadarChart();
+  renderPolarChart();
 }
 
 /* ─── Summary metric cards ─────── */
 function renderSummaryCards() {
-  const keys = ['lr', 'nb', 'svm'];
+  const keys = ['svm'];
   const metricNames = ['accuracy', 'precision', 'recall', 'f1'];
   const metricLabels = ['Accuracy', 'Precision', 'Recall', 'F1-Score'];
   const metricIcons = ['🎯', '🔍', '📡', '⚖️'];
@@ -63,6 +77,9 @@ function renderSummaryCards() {
   const grid = document.getElementById('metrics-grid');
   if (!grid) return;
 
+  grid.style.maxWidth = '500px';
+  grid.style.margin = '0 auto 28px';
+
   grid.innerHTML = keys.map(key => {
     const d = metricsData[key] || {};
     const color = MODEL_COLORS[key];
@@ -71,8 +88,8 @@ function renderSummaryCards() {
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
           <div style="width:42px;height:42px;background:${color.fill.replace('0.8','0.15')};border:1px solid ${color.stroke}50;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">🤖</div>
           <div>
-            <div style="font-size:16px;font-weight:700;color:var(--text-white);">${d.model_name || MODEL_LABELS[key]}</div>
-            <div style="font-size:12px;color:var(--text-muted);">Mô hình phân loại</div>
+            <div style="font-size:15px;font-weight:700;color:var(--text-white);">${d.model_name || MODEL_LABELS[key]}</div>
+            <div style="font-size:11px;color:var(--text-muted);">Mô hình phân loại</div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
@@ -95,7 +112,7 @@ function renderBarChart() {
 
   if (barChart) { barChart = null; }
 
-  const keys = ['lr', 'nb', 'svm'];
+  const keys = ['svm'];
   const metrics = ['accuracy', 'precision', 'recall', 'f1'];
   const metricLabels = ['Accuracy', 'Precision', 'Recall', 'F1'];
 
@@ -138,8 +155,8 @@ function renderBarChart() {
 
   // Grouped bars
   const groupW = chartW / metrics.length;
-  const barW = groupW * 0.2;
-  const gap = groupW * 0.05;
+  const barW = keys.length === 1 ? groupW * 0.35 : groupW * 0.12;
+  const gap = groupW * 0.02;
 
   metrics.forEach((_, mi) => {
     const gx = padLeft + mi * groupW + groupW / 2 - (keys.length * (barW + gap)) / 2;
@@ -182,16 +199,16 @@ function renderBarChart() {
 
   // Legend
   const legY = H - 16;
-  const totalLegW = keys.length * 120;
+  const totalLegW = keys.length * 105;
   const legStartX = (W - totalLegW) / 2;
   keys.forEach((key, i) => {
-    const lx = legStartX + i * 120;
+    const lx = legStartX + i * 105;
     ctx.fillStyle = colors[i];
-    ctx.fillRect(lx, legY - 8, 14, 10);
+    ctx.fillRect(lx, legY - 8, 12, 8);
     ctx.fillStyle = 'rgba(148,163,184,0.9)';
-    ctx.font = '11px Inter, sans-serif';
+    ctx.font = '10px Inter, sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText(MODEL_LABELS[key], lx + 18, legY);
+    ctx.fillText(MODEL_LABELS[key], lx + 16, legY);
   });
 }
 
@@ -285,8 +302,139 @@ document.querySelectorAll('.model-tab').forEach(tab => {
 let resizeTimeout;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(renderBarChart, 300);
+  resizeTimeout = setTimeout(() => {
+    renderBarChart();
+    renderRadarChart();
+    renderPolarChart();
+  }, 300);
 });
+
+/* ─── Radar Chart (Chart.js) ───── */
+function renderRadarChart() {
+  const canvas = document.getElementById('radar-chart');
+  if (!canvas) return;
+
+  if (radarChart) {
+    radarChart.destroy();
+  }
+
+  const keys = ['svm'];
+  const datasets = keys.map(key => {
+    const d = metricsData[key] || {};
+    const color = MODEL_COLORS[key];
+    return {
+      label: MODEL_LABELS[key],
+      data: [d.accuracy || 0, d.precision || 0, d.recall || 0, d.f1 || 0, d.cv_f1_mean || 0],
+      backgroundColor: color.fill.replace('0.8', '0.1'),
+      borderColor: color.stroke,
+      borderWidth: 2,
+      pointBackgroundColor: color.stroke,
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: color.stroke
+    };
+  });
+
+  const ctx = canvas.getContext('2d');
+  radarChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ['Accuracy', 'Precision', 'Recall', 'F1-Score', 'CV F1 Mean'],
+      datasets: datasets
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#94a3b8',
+            font: { family: 'Inter, sans-serif', size: 10 }
+          }
+        }
+      },
+      scales: {
+        r: {
+          angleLines: { color: 'rgba(255, 255, 255, 0.08)' },
+          grid: { color: 'rgba(255, 255, 255, 0.08)' },
+          pointLabels: {
+            color: '#94a3b8',
+            font: { family: 'Inter, sans-serif', size: 11, weight: 'bold' }
+          },
+          ticks: {
+            color: '#64748b',
+            backdropColor: 'transparent',
+            font: { size: 9 }
+          },
+          min: 80,
+          max: 100
+        }
+      }
+    }
+  });
+}
+
+/* ─── Polar Area Chart (Chart.js) ── */
+function renderPolarChart() {
+  const canvas = document.getElementById('polar-chart');
+  if (!canvas) return;
+
+  if (polarChart) {
+    polarChart.destroy();
+  }
+
+  const ds = metricsData?.dataset;
+  if (!ds) return;
+
+  const ctx = canvas.getContext('2d');
+  polarChart = new Chart(ctx, {
+    type: 'polarArea',
+    data: {
+      labels: ['Tin đáng tin cậy', 'Tin nghi vấn / giả', 'Tập huấn luyện (Train)', 'Tập kiểm định (Test)'],
+      datasets: [{
+        data: [ds.reliable, ds.unreliable, ds.train_size, ds.test_size],
+        backgroundColor: [
+          'rgba(16, 185, 129, 0.65)',
+          'rgba(244, 63, 94, 0.65)',
+          'rgba(78, 124, 255, 0.65)',
+          'rgba(245, 158, 11, 0.65)'
+        ],
+        borderColor: [
+          '#10b981',
+          '#f43f5e',
+          '#4e7cff',
+          '#f59e0b'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#94a3b8',
+            font: { family: 'Inter, sans-serif', size: 10 }
+          }
+        }
+      },
+      scales: {
+        r: {
+          grid: { color: 'rgba(255, 255, 255, 0.08)' },
+          angleLines: { color: 'rgba(255, 255, 255, 0.08)' },
+          ticks: {
+            color: '#64748b',
+            backdropColor: 'transparent',
+            font: { size: 9 }
+          }
+        }
+      }
+    }
+  });
+}
 
 /* ─── Init ─────────────────────── */
 loadMetrics();

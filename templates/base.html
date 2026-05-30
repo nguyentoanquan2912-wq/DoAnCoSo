@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Fake News Detector{% endblock %} — TrustCheck AI</title>
   <meta name="description" content="{% block meta_desc %}Website hỗ trợ đánh giá độ tin cậy tin tức tiếng Việt sử dụng Machine Learning và xử lý ngôn ngữ tự nhiên.{% endblock %}">
+  <meta name="keywords" content="tin giả, fake news, kiểm chứng tin tức, machine learning, NLP, AI, TrustCheck, phát hiện tin giả, tiếng Việt">
+  <meta name="author" content="TrustCheck AI Team">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TrustCheck AI — Phát hiện Tin Giả bằng AI">
+  <meta property="og:description" content="Hệ thống đánh giá độ tin cậy tin tức tiếng Việt sử dụng mô hình Linear SVM và NLP nội bộ.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}?v=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=6">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}?v=6">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
   {% block head %}{% endblock %}
 </head>
 <body>
@@ -17,9 +25,104 @@
   <!-- Animated Background -->
   <div class="bg-scene" aria-hidden="true">
     <div class="bg-grid"></div>
+    <div class="cyber-grid-3d"></div>
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
     <div class="bg-orb bg-orb-3"></div>
+    <canvas id="bg-circuit"></canvas>
+  </div>
+
+  <!-- Decorative Overlays -->
+  <div class="hex-pattern" aria-hidden="true"></div>
+  <div class="deco-dots" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+  <div class="particles-container" id="particles-container" aria-hidden="true"></div>
+  <div class="stars-container" id="stars-container" aria-hidden="true"></div>
+  
+  <!-- Diamond Accents -->
+  <div class="diamond-deco" style="top:15%;left:5%;" aria-hidden="true"></div>
+  <div class="diamond-deco" style="top:25%;right:8%;animation-delay:-2s;" aria-hidden="true"></div>
+  <div class="diamond-deco" style="top:45%;left:3%;animation-delay:-4s;" aria-hidden="true"></div>
+  <div class="diamond-deco" style="top:65%;right:4%;animation-delay:-6s;" aria-hidden="true"></div>
+  <div class="diamond-deco" style="top:75%;left:7%;animation-delay:-3s;" aria-hidden="true"></div>
+  <div class="diamond-deco" style="top:85%;right:6%;animation-delay:-5s;" aria-hidden="true"></div>
+  <div class="diamond-deco" style="top:35%;right:3%;animation-delay:-1s;" aria-hidden="true"></div>
+  <div class="diamond-deco" style="top:55%;left:6%;animation-delay:-7s;" aria-hidden="true"></div>
+
+  <!-- Matrix Digital Rain -->
+  <div class="matrix-rain" aria-hidden="true"></div>
+
+  <!-- Binary Code Watermark -->
+  <div class="binary-watermark" aria-hidden="true">
+    <div class="binary-col" style="left:3%;animation-delay:0s;">01001010110100101</div>
+    <div class="binary-col" style="left:12%;animation-delay:-3s;">10110010011010110</div>
+    <div class="binary-col" style="left:22%;animation-delay:-7s;">00101101001101001</div>
+    <div class="binary-col" style="left:35%;animation-delay:-2s;">11010010110100110</div>
+    <div class="binary-col" style="left:48%;animation-delay:-5s;">01101001011010010</div>
+    <div class="binary-col" style="left:62%;animation-delay:-8s;">10010110100101101</div>
+    <div class="binary-col" style="left:75%;animation-delay:-4s;">01010011010010110</div>
+    <div class="binary-col" style="left:88%;animation-delay:-6s;">11001010110010100</div>
+    <div class="binary-col" style="left:95%;animation-delay:-1s;">00110100101101001</div>
+  </div>
+
+  <!-- Glitch Scan Lines Overlay -->
+  <div class="glitch-scanlines" aria-hidden="true"></div>
+
+  <!-- Floating Code Brackets -->
+  <div class="code-brackets" aria-hidden="true">
+    <span class="code-sym" style="top:10%;left:8%;animation-delay:0s;">{ }</span>
+    <span class="code-sym" style="top:20%;right:5%;animation-delay:-2s;">< /&gt;</span>
+    <span class="code-sym" style="top:35%;left:4%;animation-delay:-4s;">[ ]</span>
+    <span class="code-sym" style="top:50%;right:7%;animation-delay:-1s;">( )</span>
+    <span class="code-sym" style="top:60%;left:6%;animation-delay:-6s;">{ }</span>
+    <span class="code-sym" style="top:75%;right:4%;animation-delay:-3s;">&lt; &gt;</span>
+    <span class="code-sym" style="top:85%;left:9%;animation-delay:-5s;">[ ]</span>
+    <span class="code-sym" style="top:30%;right:10%;animation-delay:-7s;">/**</span>
+    <span class="code-sym" style="top:45%;left:2%;animation-delay:-8s;">#_</span>
+    <span class="code-sym" style="top:90%;right:3%;animation-delay:-2.5s;">==</span>
+    <span class="code-sym" style="top:15%;left:92%;animation-delay:-4.5s;">=></span>
+    <span class="code-sym" style="top:70%;right:9%;animation-delay:-6.5s;">fn</span>
+  </div>
+
+  <!-- Neural Network Dots -->
+  <div class="neural-dots" id="neural-dots" aria-hidden="true"></div>
+
+  <!-- Data Flow Lines (Edge Streams) -->
+  <div class="data-flow-left" aria-hidden="true">
+    <div class="data-stream"></div>
+    <div class="data-stream" style="animation-delay:-2s;"></div>
+    <div class="data-stream" style="animation-delay:-4s;"></div>
+  </div>
+  <div class="data-flow-right" aria-hidden="true">
+    <div class="data-stream"></div>
+    <div class="data-stream" style="animation-delay:-3s;"></div>
+    <div class="data-stream" style="animation-delay:-5s;"></div>
+  </div>
+
+  <!-- Circuit Trace Decoration -->
+  <div class="circuit-traces" aria-hidden="true">
+    <svg class="circuit-svg" viewBox="0 0 200 800" preserveAspectRatio="none">
+      <path d="M20 0 L20 120 L80 180 L80 320 L40 360 L40 500 L100 560 L100 800" stroke="rgba(0,212,255,0.08)" fill="none" stroke-width="1"/>
+      <path d="M60 0 L60 80 L120 140 L120 280 L60 340 L60 450 L140 520 L140 800" stroke="rgba(0,212,255,0.06)" fill="none" stroke-width="1"/>
+      <circle cx="20" cy="120" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="80" cy="180" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="80" cy="320" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="40" cy="360" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="40" cy="500" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="100" cy="560" r="3" fill="rgba(0,212,255,0.15)"/>
+    </svg>
+  </div>
+  <div class="circuit-traces circuit-traces-right" aria-hidden="true">
+    <svg class="circuit-svg" viewBox="0 0 200 800" preserveAspectRatio="none">
+      <path d="M180 0 L180 100 L120 170 L120 300 L160 350 L160 480 L100 540 L100 800" stroke="rgba(0,212,255,0.08)" fill="none" stroke-width="1"/>
+      <path d="M140 0 L140 60 L80 130 L80 260 L140 330 L140 430 L60 500 L60 800" stroke="rgba(0,212,255,0.06)" fill="none" stroke-width="1"/>
+      <circle cx="180" cy="100" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="120" cy="170" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="120" cy="300" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="160" cy="350" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="160" cy="480" r="3" fill="rgba(0,212,255,0.15)"/>
+      <circle cx="100" cy="540" r="3" fill="rgba(0,212,255,0.15)"/>
+    </svg>
   </div>
 
   <!-- Navbar -->
@@ -33,6 +136,7 @@
       <a href="/analyzer" class="nav-link">Phân tích</a>
       <a href="/dashboard" class="nav-link">Dashboard</a>
       <a href="/history" class="nav-link">Lịch sử</a>
+      <a href="/ai-assistant" class="nav-link">Trợ lý AI</a>
       <a href="/analyzer" class="nav-link nav-cta">Phân tích ngay →</a>
     </div>
   </nav>
@@ -45,8 +149,11 @@
   <!-- Footer -->
   <footer class="footer">
     <p class="footer-text">
-      © 2024 <span>TrustCheck AI</span> — Nghiên cứu & Xây dựng Website Đánh Giá Độ Tin Cậy Tin Tức
-      bằng <span>Machine Learning</span> và <span>NLP</span>
+      © 2024 – 2026 <span>TrustCheck AI</span> — Nghiên cứu & Xây dựng Website Đánh Giá Độ Tin Cậy Tin Tức
+      bằng <span>Machine Learning</span>, <span>NLP</span> & <span>AI Engine Nội Bộ</span>
+    </p>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:8px; opacity:0.7;">
+      Mô hình phân tích: Linear SVM · Engine NLP cục bộ · Không cần API Key bên ngoài
     </p>
   </footer>
 
@@ -54,7 +161,7 @@
   <div class="chat-widget" id="chat-widget">
     <!-- Nút bong bóng bật/tắt (nhỏ) -->
     <div class="chat-bubble-btn" id="chat-toggle-btn">
-      <span class="icon-open">✨ Trợ lý AI</span>
+      <span class="icon-open">🤖 Trợ lý AI</span>
       <span class="icon-close">✖</span>
     </div>
 
@@ -63,25 +170,33 @@
       <div class="chat-header">
         <div>
           <strong>TrustCheck AI Bot</strong>
-          <div style="font-size:11px;opacity:0.8;">Sử dụng Google Gemini</div>
+          <div style="font-size:11px;opacity:0.8;">Engine AI nội bộ • Kiểm Chứng Tin Tức</div>
         </div>
-        <button id="chat-btn-settings" class="chat-settings-btn" title="Cài đặt API Key">⚙</button>
+        <div style="display:flex;gap:4px;align-items:center;">
+          <button id="chat-clear-btn" class="chat-clear-btn" title="Xoá lịch sử hội thoại">🗑️</button>
+          <!-- Engine nội bộ - không cần cấu hình -->
+        </div>
       </div>
       
-      <!-- Panel Cài Đặt (Yêu cầu API Key) -->
-      <div class="chat-key-panel" id="chat-key-panel" style="display:none;">
-        <p style="font-size:13px;margin-bottom:10px;text-align:center;">Vui lòng nhập API Key từ Google AI Studio để sử dụng trợ lý (Dữ liệu lưu cục bộ):</p>
-        <input type="password" id="gemini-api-key" placeholder="Nhập API Key ở đây..." class="gemini-key-input">
-        <div style="text-align:center;margin-top:10px;">
-          <button id="save-key-btn" class="chat-action-btn">Lưu Key</button>
-          <a href="https://aistudio.google.com/app/apikey" target="_blank" style="font-size:12px;color:var(--primary-light);display:block;margin-top:6px;">Lấy API Key ở đâu?</a>
-        </div>
-      </div>
+      <!-- Chat AI nội bộ - không cần API Key -->
+
 
       <div class="chat-messages" id="chat-messages">
-        <!-- Message list goes here -->
-        <div class="chat-msg bot-msg">
-          Nhập URL hay Copy tin tức vào Phân Tích (Hoặc dán thẳng vào đây) để tôi đưa ra tư vấn đa góc nhìn nhé!
+        <!-- Message mặc định với avatar -->
+        <div class="chat-msg-row bot">
+          <div class="chat-msg-avatar">🤖</div>
+          <div>
+            <div class="chat-msg bot-msg">
+              <p>Xin chào! Tôi là <strong>Trợ lý AI TrustCheck</strong> 👋</p>
+              <p>Tôi có thể giúp bạn:</p>
+              <ul>
+                <li>🔍 <strong>Kiểm chứng tin tức</strong> — dán bài viết hoặc URL</li>
+                <li>🧠 <strong>Phân tích ngôn từ</strong> — phát hiện giật gân, lừa đảo</li>
+                <li>📊 <strong>Giải thích kết quả</strong> — hiểu rõ tại sao tin thật/giả</li>
+              </ul>
+              <p>Hãy nhập câu hỏi hoặc dán nội dung tin tức bên dưới!</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -92,8 +207,9 @@
     </div>
   </div>
 
-  <script src="{{ url_for('static', filename='js/main.js') }}?v=1"></script>
-  <script src="{{ url_for('static', filename='js/chat.js') }}?v=1"></script>
+  <script src="{{ url_for('static', filename='js/bg-circuit.js') }}?v=6"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}?v=6"></script>
+  <script src="{{ url_for('static', filename='js/chat.js') }}?v=6"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

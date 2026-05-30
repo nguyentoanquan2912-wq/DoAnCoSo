@@ -1,94 +1,265 @@
 title,text,label
-"Chính phủ công bố chính sách học phí mới","Bộ Giáo dục và Đào tạo chính thức công bố chính sách hỗ trợ học phí cho sinh viên từ năm học mới, áp dụng từ tháng 9 năm nay",reliable
-"Giá xăng giảm từ ngày mai","Bộ Công Thương thông báo giá xăng sẽ được điều chỉnh giảm trong kỳ điều hành tới theo quyết định của liên bộ",reliable
-"Cảnh báo mưa lớn diện rộng tại miền Trung","Trung tâm Dự báo Khí tượng Thủy văn Quốc gia cảnh báo mưa lớn kéo dài ở miền Trung trong 3 ngày tới",reliable
-"Ngân hàng Nhà nước điều chỉnh lãi suất điều hành","Ngân hàng Nhà nước vừa công bố mức điều chỉnh lãi suất điều hành theo thông báo chính thức nhằm hỗ trợ nền kinh tế",reliable
-"Thành phố Hà Nội triển khai tuyến xe buýt điện mới","Sở Giao thông Vận tải Hà Nội thông báo đưa vào hoạt động tuyến xe buýt điện mới từ đầu tháng tới phục vụ người dân",reliable
-"Bộ Y tế khuyến cáo phòng chống dịch sốt xuất huyết","Thông báo chính thức từ Bộ Y tế nhấn mạnh việc diệt lăng quăng và vệ sinh môi trường để phòng chống sốt xuất huyết",reliable
+"Chính phủ công bố chính sách học phí mới","Bộ Giáo dục và Đào tạo chính thức công bố chính sách hỗ trợ học phí cho sinh viên từ năm học mới, áp dụng từ tháng 9 năm nay theo nghị quyết của Quốc hội",reliable
+"Giá xăng giảm từ ngày mai","Bộ Công Thương thông báo giá xăng sẽ được điều chỉnh giảm trong kỳ điều hành tới theo quyết định của liên bộ Công Thương và Tài chính",reliable
+"Cảnh báo mưa lớn diện rộng tại miền Trung","Trung tâm Dự báo Khí tượng Thủy văn Quốc gia cảnh báo mưa lớn kéo dài ở miền Trung trong 3 ngày tới, khuyến cáo người dân cần cẩn thận",reliable
+"Ngân hàng Nhà nước điều chỉnh lãi suất điều hành","Ngân hàng Nhà nước vừa công bố mức điều chỉnh lãi suất điều hành theo thông báo chính thức nhằm hỗ trợ nền kinh tế phục hồi sau đại dịch",reliable
+"Thành phố Hà Nội triển khai tuyến xe buýt điện mới","Sở Giao thông Vận tải Hà Nội thông báo đưa vào hoạt động tuyến xe buýt điện mới từ đầu tháng tới phục vụ người dân đi lại thuận tiện",reliable
+"Bộ Y tế khuyến cáo phòng chống dịch sốt xuất huyết","Thông báo chính thức từ Bộ Y tế nhấn mạnh việc diệt lăng quăng và vệ sinh môi trường để phòng chống sốt xuất huyết mùa mưa",reliable
 "Giá vàng trong nước tăng nhẹ theo thị trường quốc tế","Theo các doanh nghiệp kinh doanh vàng trong nước giá vàng sáng nay tăng nhẹ so với hôm qua theo diễn biến thị trường quốc tế",reliable
-"Trường đại học công bố lịch tuyển sinh 2024","Các trường đại học phát hành thông báo tuyển sinh chính thức trên website và cổng thông tin điện tử của bộ giáo dục",reliable
-"Việt Nam đạt thặng dư thương mại 8 tỷ USD","Tổng cục Thống kê công bố Việt Nam đạt thặng dư thương mại khoảng 8 tỷ USD trong 6 tháng đầu năm",reliable
-"Bộ Nông nghiệp hỗ trợ nông dân vùng lũ","Bộ Nông nghiệp và Phát triển Nông thôn triển khai gói hỗ trợ cho nông dân bị ảnh hưởng bởi lũ lụt tại các tỉnh miền Trung",reliable
-"Hà Nội khánh thành cầu vượt mới giảm ùn tắc","Thành phố Hà Nội chính thức khánh thành cầu vượt thép tại nút giao Trường Chinh nhằm giảm thiểu tình trạng ùn tắc giao thông",reliable
-"Chính phủ phê duyệt dự án cao tốc Bắc Nam giai đoạn 2","Thủ tướng Chính phủ ký quyết định phê duyệt dự án đường bộ cao tốc Bắc Nam phía Đông giai đoạn 2 với tổng vốn đầu tư lớn",reliable
-"Tỷ lệ thất nghiệp quý 3 giảm xuống mức thấp","Theo Tổng cục Thống kê tỷ lệ thất nghiệp trong độ tuổi lao động quý 3 giảm xuống còn khoảng 2 phần trăm",reliable
-"Bộ Khoa học công nhận giống lúa mới năng suất cao","Bộ Khoa học và Công nghệ chính thức công nhận 5 giống lúa mới có năng suất cao cho vùng đồng bằng sông Cửu Long",reliable
-"TP HCM triển khai thẻ đi xe buýt tháng không giới hạn","Trung tâm Quản lý Giao thông Công cộng TP HCM thông báo phát hành vé tháng xe buýt không giới hạn chuyến với giá ưu đãi",reliable
-"WHO khuyến cáo tiêm vắc xin cúm trước mùa đông","Tổ chức Y tế Thế giới khuyến cáo người dân nên tiêm vắc xin cúm trước mùa đông để phòng tránh dịch bệnh",reliable
-"Giải vô địch bóng đá quốc gia V-League khai mạc","Liên đoàn Bóng đá Việt Nam thông báo lịch khai mạc mùa giải V-League 2024 với sự tham gia của 14 đội bóng",reliable
-"Bộ Tài nguyên ban hành quy định bảo vệ rừng mới","Bộ Tài nguyên và Môi trường ban hành thông tư mới về quản lý và bảo vệ rừng tự nhiên nhằm ngăn chặn phá rừng",reliable
-"Ngân hàng Thế giới nâng dự báo tăng trưởng Việt Nam","Ngân hàng Thế giới nâng dự báo tăng trưởng GDP của Việt Nam lên 6,5 phần trăm cho năm 2024",reliable
-"Bộ Giáo dục triển khai chương trình sách giáo khoa mới","Bộ Giáo dục và Đào tạo chính thức triển khai bộ sách giáo khoa mới theo Chương trình Giáo dục Phổ thông 2018",reliable
-"Vùng áp thấp nhiệt đới mạnh lên thành bão số 3","Trung tâm Dự báo Khí tượng Thủy văn Quốc gia thông báo vùng áp thấp nhiệt đới trên biển Đông mạnh lên thành bão",reliable
-"Hải quan phát hiện đường dây buôn lậu hàng điện tử","Cục Hải quan TP HCM đã phát hiện và bắt giữ một đường dây buôn lậu hàng điện tử nhập lậu qua đường bưu điện",reliable
-"Đại học Quốc gia Hà Nội tuyển sinh thạc sĩ đợt 2","Đại học Quốc gia Hà Nội thông báo mở đăng ký tuyển sinh đào tạo thạc sĩ đợt 2 năm 2024 theo hình thức trực tuyến",reliable
-"Doanh thu du lịch nội địa đạt kỷ lục trong dịp lễ 30/4","Tổng cục Du lịch thông báo doanh thu du lịch nội địa đạt kỷ lục trong dịp lễ 30/4 với hàng triệu lượt khách",reliable
-"Bộ Công an ra mắt ứng dụng định danh điện tử VneID","Bộ Công an chính thức ra mắt ứng dụng định danh điện tử VneID cho phép công dân sử dụng thay CMND khi giao dịch",reliable
-"Viện Hàn lâm Khoa học Việt Nam công bố nghiên cứu về vật liệu mới","Các nhà khoa học Việt Nam công bố nghiên cứu về vật liệu polymer mới có ứng dụng trong y tế và công nghiệp",reliable
-"TP HCM xây dựng thêm 10 bệnh viện dã chiến dự phòng","Ủy ban Nhân dân TP HCM phê duyệt kế hoạch xây dựng thêm các bệnh viện dã chiến để đảm bảo năng lực y tế dự phòng",reliable
-"Cục Hàng không mở thêm đường bay quốc tế mới","Cục Hàng không Việt Nam thông báo mở thêm các đường bay quốc tế thẳng đến các thành phố lớn ở châu Âu",reliable
-"Giá điện sinh hoạt sẽ được điều chỉnh theo lộ trình","Tập đoàn Điện lực Việt Nam thông báo giá điện sinh hoạt sẽ được điều chỉnh theo lộ trình được Chính phủ phê duyệt",reliable
-"Bộ Y tế cấp phép thêm 5 loại vắc xin phòng bệnh mới","Bộ Y tế cấp phép lưu hành thêm 5 loại vắc xin phòng bệnh mới đã được kiểm định chất lượng an toàn",reliable
-"Quốc hội thông qua Luật Đất đai sửa đổi","Quốc hội chính thức thông qua Luật Đất đai sửa đổi với đa số phiếu thuận tại kỳ họp thứ 6",reliable
+"Trường đại học công bố lịch tuyển sinh 2024","Các trường đại học phát hành thông báo tuyển sinh chính thức trên website và cổng thông tin điện tử của bộ giáo dục đào tạo",reliable
+"Việt Nam đạt thặng dư thương mại 8 tỷ USD","Tổng cục Thống kê công bố Việt Nam đạt thặng dư thương mại khoảng 8 tỷ USD trong 6 tháng đầu năm theo báo cáo chính thức",reliable
+"Bộ Nông nghiệp hỗ trợ nông dân vùng lũ","Bộ Nông nghiệp và Phát triển Nông thôn triển khai gói hỗ trợ cho nông dân bị ảnh hưởng bởi lũ lụt tại các tỉnh miền Trung và Tây Nguyên",reliable
+"Hà Nội khánh thành cầu vượt mới giảm ùn tắc","Thành phố Hà Nội chính thức khánh thành cầu vượt thép tại nút giao Trường Chinh nhằm giảm thiểu tình trạng ùn tắc giao thông nghiêm trọng",reliable
+"Chính phủ phê duyệt dự án cao tốc Bắc Nam giai đoạn 2","Thủ tướng Chính phủ ký quyết định phê duyệt dự án đường bộ cao tốc Bắc Nam phía Đông giai đoạn 2 với tổng vốn đầu tư lớn từ ngân sách nhà nước",reliable
+"Tỷ lệ thất nghiệp quý 3 giảm xuống mức thấp","Theo Tổng cục Thống kê tỷ lệ thất nghiệp trong độ tuổi lao động quý 3 giảm xuống còn khoảng 2 phần trăm nhờ phục hồi kinh tế",reliable
+"Bộ Khoa học công nhận giống lúa mới năng suất cao","Bộ Khoa học và Công nghệ chính thức công nhận 5 giống lúa mới có năng suất cao cho vùng đồng bằng sông Cửu Long qua kiểm định khoa học",reliable
+"TP HCM triển khai thẻ đi xe buýt tháng không giới hạn","Trung tâm Quản lý Giao thông Công cộng TP HCM thông báo phát hành vé tháng xe buýt không giới hạn chuyến với giá ưu đãi cho người dân",reliable
+"WHO khuyến cáo tiêm vắc xin cúm trước mùa đông","Tổ chức Y tế Thế giới khuyến cáo người dân nên tiêm vắc xin cúm trước mùa đông để phòng tránh dịch bệnh theo hướng dẫn y tế chuẩn",reliable
+"Giải vô địch bóng đá quốc gia V-League khai mạc","Liên đoàn Bóng đá Việt Nam thông báo lịch khai mạc mùa giải V-League 2024 với sự tham gia của 14 đội bóng trên toàn quốc",reliable
+"Bộ Tài nguyên ban hành quy định bảo vệ rừng mới","Bộ Tài nguyên và Môi trường ban hành thông tư mới về quản lý và bảo vệ rừng tự nhiên nhằm ngăn chặn phá rừng trái phép",reliable
+"Ngân hàng Thế giới nâng dự báo tăng trưởng Việt Nam","Ngân hàng Thế giới nâng dự báo tăng trưởng GDP của Việt Nam lên 6,5 phần trăm cho năm 2024 dựa trên số liệu kinh tế vĩ mô",reliable
+"Bộ Giáo dục triển khai chương trình sách giáo khoa mới","Bộ Giáo dục và Đào tạo chính thức triển khai bộ sách giáo khoa mới theo Chương trình Giáo dục Phổ thông 2018 toàn quốc",reliable
+"Vùng áp thấp nhiệt đới mạnh lên thành bão số 3","Trung tâm Dự báo Khí tượng Thủy văn Quốc gia thông báo vùng áp thấp nhiệt đới trên biển Đông mạnh lên thành bão số 3",reliable
+"Hải quan phát hiện đường dây buôn lậu hàng điện tử","Cục Hải quan TP HCM đã phát hiện và bắt giữ một đường dây buôn lậu hàng điện tử nhập lậu qua đường bưu điện trị giá hàng tỷ đồng",reliable
+"Đại học Quốc gia Hà Nội tuyển sinh thạc sĩ đợt 2","Đại học Quốc gia Hà Nội thông báo mở đăng ký tuyển sinh đào tạo thạc sĩ đợt 2 năm 2024 theo hình thức trực tuyến và trực tiếp",reliable
+"Doanh thu du lịch nội địa đạt kỷ lục trong dịp lễ","Tổng cục Du lịch thông báo doanh thu du lịch nội địa đạt kỷ lục trong dịp lễ với hàng triệu lượt khách theo số liệu thống kê chính thức",reliable
+"Bộ Công an ra mắt ứng dụng định danh điện tử VneID","Bộ Công an chính thức ra mắt ứng dụng định danh điện tử VneID cho phép công dân sử dụng thay CMND khi giao dịch hành chính",reliable
+"Viện Hàn lâm Khoa học Việt Nam công bố nghiên cứu vật liệu mới","Các nhà khoa học Việt Nam công bố nghiên cứu về vật liệu polymer mới có ứng dụng trong y tế và công nghiệp trên tạp chí quốc tế",reliable
+"TP HCM xây dựng thêm bệnh viện dã chiến dự phòng","Ủy ban Nhân dân TP HCM phê duyệt kế hoạch xây dựng thêm các bệnh viện dã chiến để đảm bảo năng lực y tế dự phòng quốc gia",reliable
+"Cục Hàng không mở thêm đường bay quốc tế mới","Cục Hàng không Việt Nam thông báo mở thêm các đường bay quốc tế thẳng đến các thành phố lớn ở châu Âu và Đông Bắc Á",reliable
+"Giá điện sinh hoạt sẽ được điều chỉnh theo lộ trình","Tập đoàn Điện lực Việt Nam thông báo giá điện sinh hoạt sẽ được điều chỉnh theo lộ trình được Chính phủ phê duyệt và công khai",reliable
+"Bộ Y tế cấp phép thêm 5 loại vắc xin phòng bệnh mới","Bộ Y tế cấp phép lưu hành thêm 5 loại vắc xin phòng bệnh mới đã được kiểm định chất lượng an toàn theo tiêu chuẩn WHO",reliable
+"Quốc hội thông qua Luật Đất đai sửa đổi","Quốc hội chính thức thông qua Luật Đất đai sửa đổi với đa số phiếu thuận tại kỳ họp thứ 6 sau nhiều tháng thảo luận",reliable
 "Sở Y tế cảnh báo dịch tay chân miệng tăng cao","Sở Y tế TP HCM phát cảnh báo dịch tay chân miệng có xu hướng tăng và khuyến cáo phụ huynh cần chú ý vệ sinh cho trẻ",reliable
-"Bộ Công Thương xử phạt doanh nghiệp vi phạm nhãn hàng","Cục Quản lý thị trường đã xử phạt hành chính nhiều doanh nghiệp vi phạm quy định về nhãn hiệu hàng hóa",reliable
-"Nghiên cứu mới về tác dụng của trà xanh với sức khỏe","Nghiên cứu khoa học được công bố trên tạp chí quốc tế cho thấy trà xanh có thể hỗ trợ giảm nguy cơ tim mạch",reliable
-"Dự báo thời tiết các tỉnh miền Bắc trong tuần tới","Trung tâm Dự báo Khí tượng Thủy văn Quốc gia dự báo các tỉnh miền Bắc sẽ có mưa rải rác trong tuần tới",reliable
-"Chỉ số VN-Index tăng mạnh phiên cuối tuần","Thị trường chứng khoán ghi nhận phiên giao dịch tích cực khi chỉ số VN-Index tăng điểm cuối tuần nhờ nhóm cổ phiếu ngân hàng",reliable
+"Bộ Công Thương xử phạt doanh nghiệp vi phạm nhãn hàng","Cục Quản lý thị trường đã xử phạt hành chính nhiều doanh nghiệp vi phạm quy định về nhãn hiệu hàng hóa theo quy định pháp luật",reliable
+"Nghiên cứu mới về tác dụng của trà xanh với sức khỏe","Nghiên cứu khoa học được công bố trên tạp chí quốc tế cho thấy trà xanh có thể hỗ trợ giảm nguy cơ tim mạch theo đánh giá của các chuyên gia",reliable
+"Chỉ số VN-Index tăng mạnh phiên cuối tuần","Thị trường chứng khoán ghi nhận phiên giao dịch tích cực khi chỉ số VN-Index tăng điểm cuối tuần nhờ nhóm cổ phiếu ngân hàng dẫn dắt",reliable
 "Đội tuyển Việt Nam giành vé vào vòng loại cuối","Liên đoàn Bóng đá Việt Nam thông báo đội tuyển quốc gia đã giành quyền tham dự vòng loại cuối World Cup khu vực châu Á",reliable
 "Bộ Giao thông siết chặt kiểm tra xe khách dịp Tết","Bộ Giao thông Vận tải tăng cường kiểm tra tải trọng và an toàn phương tiện vận tải hành khách trong dịp Tết Nguyên Đán",reliable
-"Chính sách thuế TNCN mới có lợi cho người lao động","Bộ Tài chính đề xuất sửa đổi mức giảm trừ gia cảnh trong thuế thu nhập cá nhân để phù hợp với mức sống hiện tại",reliable
-"Đại học Bách Khoa lọt top 100 châu Á theo bảng xếp hạng QS","Trường Đại học Bách Khoa Hà Nội được tạp chí QS xếp vào danh sách 100 trường đại học hàng đầu châu Á",reliable
-"Sản lượng xuất khẩu nông sản tăng trưởng 20 phần trăm","Bộ Nông nghiệp và Phát triển Nông thôn cho biết sản lượng xuất khẩu nông sản 9 tháng đầu năm tăng gần 20 phần trăm",reliable
-"Tổng cục Thuế giải thích quy định hoàn thuế mới","Tổng cục Thuế ban hành văn bản hướng dẫn chi tiết về quy trình hoàn thuế giá trị gia tăng cho doanh nghiệp xuất khẩu",reliable
-"Bộ Lao động công bố mức lương tối thiểu vùng 2024","Bộ Lao động Thương binh và Xã hội công bố mức lương tối thiểu vùng tăng bình quân từ đầu năm 2024",reliable
-"Hà Nội thí điểm mô hình trường học thông minh","Sở Giáo dục Đào tạo Hà Nội thí điểm triển khai mô hình trường học thông minh tại 20 trường tiểu học và THCS",reliable
-"Bộ Tư pháp công bố kết quả pháp điển hóa luật","Bộ Tư pháp hoàn thành việc pháp điển hóa hệ thống văn bản quy phạm pháp luật theo chỉ đạo của Chính phủ",reliable
-"Ngân hàng ACB báo cáo lợi nhuận quý tăng 15 phần trăm","Ngân hàng ACB công bố kết quả kinh doanh quý với lợi nhuận trước thuế tăng 15 phần trăm so với cùng kỳ năm trước",reliable
-"TP HCM tổ chức lễ hội đường hoa Nguyễn Huệ dịp Tết","Ban Tổ chức thông báo lễ hội đường hoa Nguyễn Huệ sẽ diễn ra từ 28 tháng chạp đến mùng 5 Tết Nguyên Đán",reliable
-"Bộ Khoa học công bố kết quả Giải thưởng Sáng tạo","Bộ Khoa học và Công nghệ trao Giải thưởng Sáng tạo Khoa học Công nghệ Việt Nam cho các công trình xuất sắc",reliable
-"Chương trình vaccine sởi miễn phí cho trẻ em","Bộ Y tế triển khai chiến dịch tiêm vaccine sởi miễn phí cho trẻ em từ 9 tháng đến dưới 5 tuổi trong toàn quốc",reliable
-"Quỹ bảo hiểm y tế thanh toán 95 phần trăm chi phí điều trị ung thư","Bảo hiểm xã hội Việt Nam thông báo quỹ bảo hiểm y tế sẽ thanh toán tới 95 phần trăm chi phí điều trị một số bệnh ung thư",reliable
-"Thuốc bí truyền chữa ung thư 100 phần trăm trong 3 ngày","Một bài đăng trên mạng xã hội quảng cáo loại thuốc bí truyền có thể chữa ung thư hoàn toàn trong ba ngày mà không cần xạ trị hay hóa trị",unreliable
-"Uống nước chanh mỗi sáng chữa khỏi mọi bệnh","Thông tin lan truyền trên mạng cho rằng chỉ cần uống nước chanh pha mật ong mỗi sáng là có thể chữa khỏi tất cả các loại bệnh mãn tính",unreliable
-"Người ngoài hành tinh xuất hiện tại trung tâm Hà Nội","Tin đồn lan truyền trên mạng xã hội cho rằng có vật thể bay không xác định hạ cánh giữa trung tâm thủ đô Hà Nội",unreliable
+"Chính sách thuế TNCN mới có lợi cho người lao động","Bộ Tài chính đề xuất sửa đổi mức giảm trừ gia cảnh trong thuế thu nhập cá nhân để phù hợp với mức sống hiện tại của người dân",reliable
+"Đại học Bách Khoa lọt top 100 châu Á theo bảng xếp hạng QS","Trường Đại học Bách Khoa Hà Nội được tạp chí QS xếp vào danh sách 100 trường đại học hàng đầu châu Á dựa trên các tiêu chí nghiên cứu",reliable
+"Sản lượng xuất khẩu nông sản tăng trưởng 20 phần trăm","Bộ Nông nghiệp và Phát triển Nông thôn cho biết sản lượng xuất khẩu nông sản 9 tháng đầu năm tăng gần 20 phần trăm so với cùng kỳ",reliable
+"Bộ Lao động công bố mức lương tối thiểu vùng 2024","Bộ Lao động Thương binh và Xã hội công bố mức lương tối thiểu vùng tăng bình quân từ đầu năm 2024 theo Nghị định của Chính phủ",reliable
+"Hà Nội thí điểm mô hình trường học thông minh","Sở Giáo dục Đào tạo Hà Nội thí điểm triển khai mô hình trường học thông minh tại 20 trường tiểu học và THCS trên địa bàn",reliable
+"Chính phủ họp phiên thường kỳ đánh giá kinh tế xã hội","Thủ tướng chủ trì phiên họp Chính phủ thường kỳ đánh giá tình hình kinh tế xã hội tháng qua và triển khai nhiệm vụ trọng tâm",reliable
+"Bộ Giáo dục điều chỉnh quy chế thi tốt nghiệp THPT","Bộ Giáo dục và Đào tạo ban hành thông tư sửa đổi bổ sung quy chế thi tốt nghiệp trung học phổ thông năm nay nhằm đảm bảo công bằng",reliable
+"Hà Nội lắp đặt thêm trạm sạc xe điện công cộng","Ủy ban Nhân dân thành phố Hà Nội cấp phép cho các đơn vị lắp đặt thêm hàng trăm trạm sạc xe điện tại các quận trung tâm",reliable
+"Tập đoàn VinFast xuất khẩu lô xe điện sang thị trường Mỹ","Lô xe điện thông minh của hãng xe Việt Nam đã chính thức cập cảng bang California để bàn giao cho khách hàng Mỹ theo hợp đồng",reliable
+"Ngành du lịch đón khách quốc tế tăng trưởng mạnh","Tổng cục Thống kê cho biết lượng khách du lịch quốc tế đến Việt Nam tăng gần gấp đôi so với cùng kỳ năm ngoái đạt mốc ấn tượng",reliable
+"Bộ Khoa học công bố bản đồ công nghệ ngành năng lượng","Bộ Khoa học và Công nghệ phối hợp xây dựng bản đồ công nghệ phục vụ lộ trình phát triển năng lượng bền vững quốc gia đến 2030",reliable
+"Hội thảo quốc tế về bảo tồn đa dạng sinh học tại Đà Nẵng","Các nhà khoa học trong và ngoài nước thảo luận về giải pháp bảo tồn hệ sinh thái rừng nhiệt đới tại bán đảo Sơn Trà Đà Nẵng",reliable
+"Thủ tướng phê duyệt chiến lược chuyển đổi số quốc gia","Thủ tướng Chính phủ ký quyết định ban hành Chiến lược chuyển đổi số quốc gia đến năm 2030 định hướng phát triển xã hội số",reliable
+"Bình Dương thu hút thêm dòng vốn FDI lớn từ châu Âu","Tỉnh Bình Dương trao giấy chứng nhận đăng ký đầu tư cho 5 dự án của các doanh nghiệp châu Âu với tổng số vốn đăng ký lớn",reliable
+"Nâng cấp tuyến đường sắt Bắc Nam qua đèo Hải Vân","Tổng công ty Đường sắt Việt Nam khởi công dự án gia cố hầm và cải tạo đường ray đoạn qua đèo Hải Vân nâng cao an toàn chạy tàu",reliable
+"Quỹ bảo hiểm y tế thanh toán 95 phần trăm chi phí điều trị ung thư","Bảo hiểm xã hội Việt Nam thông báo quỹ bảo hiểm y tế sẽ thanh toán tới 95 phần trăm chi phí điều trị một số bệnh ung thư theo chính sách",reliable
+"Chương trình vaccine sởi miễn phí cho trẻ em","Bộ Y tế triển khai chiến dịch tiêm vaccine sởi miễn phí cho trẻ em từ 9 tháng đến dưới 5 tuổi trong toàn quốc theo kế hoạch tiêm chủng mở rộng",reliable
+"Kinh tế Việt Nam tăng trưởng 7 phần trăm trong quý 2","Tổng cục Thống kê công bố GDP quý 2 tăng trưởng 7 phần trăm so với cùng kỳ năm trước nhờ xuất khẩu và tiêu dùng nội địa phục hồi",reliable
+"Bộ Công an triệt phá đường dây lừa đảo qua mạng","Cục An ninh mạng Bộ Công an triệt phá thành công đường dây lừa đảo trực tuyến quy mô lớn, bắt giữ nhiều đối tượng liên quan",reliable
+"Hà Nội mở rộng vùng cấm đốt rơm rạ sau thu hoạch","Sở Tài nguyên Môi trường Hà Nội mở rộng vùng cấm đốt rơm rạ đến toàn bộ các huyện ngoại thành nhằm giảm ô nhiễm không khí",reliable
+"Ngân hàng Vietcombank công bố lợi nhuận kỷ lục","Ngân hàng TMCP Ngoại Thương Việt Nam công bố kết quả kinh doanh với lợi nhuận trước thuế đạt mức kỷ lục trong năm tài chính",reliable
+"Bộ Y tế phê duyệt phác đồ điều trị COVID-19 mới","Bộ Y tế ban hành phác đồ điều trị COVID-19 cập nhật theo khuyến cáo của Tổ chức Y tế Thế giới và các nghiên cứu lâm sàng mới nhất",reliable
+"TP HCM hoàn thành tuyến metro số 1 Bến Thành Suối Tiên","Ban Quản lý Đường sắt Đô thị TP HCM thông báo tuyến metro số 1 Bến Thành Suối Tiên đã hoàn thành các thử nghiệm kỹ thuật",reliable
+"Chính phủ ban hành nghị định về thương mại điện tử mới","Chính phủ ban hành nghị định quy định về hoạt động thương mại điện tử nhằm tăng cường bảo vệ quyền lợi người tiêu dùng trực tuyến",reliable
+"Bộ Quốc phòng tổ chức diễn tập quân sự thường niên","Bộ Quốc phòng Việt Nam tổ chức cuộc diễn tập quân sự thường niên nhằm nâng cao khả năng sẵn sàng chiến đấu của các đơn vị",reliable
+"Xuất khẩu thủy sản đạt 9 tỷ USD vượt kế hoạch năm","Hiệp hội Chế biến và Xuất khẩu Thủy sản Việt Nam cho biết kim ngạch xuất khẩu thủy sản cả năm đạt 9 tỷ USD vượt mục tiêu đề ra",reliable
+"Bộ Tài chính công bố dự toán ngân sách nhà nước 2025","Bộ Tài chính trình Quốc hội dự toán thu chi ngân sách nhà nước năm 2025 với mục tiêu bội chi dưới 4 phần trăm GDP",reliable
+"Điện Biên Phủ tổ chức kỷ niệm 70 năm chiến thắng lịch sử","Ban tổ chức các hoạt động kỷ niệm 70 năm chiến thắng Điện Biên Phủ thông báo chương trình sự kiện hoành tráng thu hút đông đảo người tham gia",reliable
+"UBND TP Đà Nẵng phê duyệt quy hoạch đô thị đến 2030","Ủy ban Nhân dân thành phố Đà Nẵng phê duyệt đồ án quy hoạch phân khu đô thị đến năm 2030 tầm nhìn 2045 theo định hướng phát triển bền vững",reliable
+"Bộ Thông tin triển khai đề án phổ cập kỹ năng số","Bộ Thông tin và Truyền thông triển khai đề án phổ cập kỹ năng số quốc gia nhằm nâng cao năng lực số cho người dân đến năm 2025",reliable
+"Ngân hàng Nhà nước cấp phép ngân hàng số đầu tiên tại Việt Nam","Ngân hàng Nhà nước Việt Nam cấp phép hoạt động cho ngân hàng số đầu tiên theo khung pháp lý mới về fintech và ngân hàng số",reliable
+"Giải thưởng khoa học công nghệ VinFuture công bố giải thưởng","Hội đồng giải thưởng VinFuture công bố danh sách các nhà khoa học xuất sắc nhận giải thưởng về công nghệ có tác động toàn cầu",reliable
+"Bộ Xây dựng siết chặt quản lý dự án bất động sản","Bộ Xây dựng ban hành thông tư tăng cường quản lý các dự án bất động sản nhà ở thương mại nhằm bảo vệ quyền lợi người mua nhà",reliable
+"Hà Nội công bố danh sách trường học đạt chuẩn quốc gia","Sở Giáo dục và Đào tạo Hà Nội công bố danh sách các trường học đạt chuẩn quốc gia mức độ 1 và mức độ 2 năm học này",reliable
+"Bộ Nội vụ sắp xếp lại đơn vị hành chính cấp huyện xã","Bộ Nội vụ trình Chính phủ đề án sắp xếp đơn vị hành chính cấp huyện cấp xã giai đoạn 2023 đến 2030 theo tiêu chí mới",reliable
+"Việt Nam tổ chức thành công Hội nghị ASEAN 2024","Bộ Ngoại giao Việt Nam thông báo Hội nghị ASEAN 2024 diễn ra thành công tốt đẹp với sự tham dự của lãnh đạo cấp cao các nước thành viên",reliable
+"Sở Giao thông TP HCM thí điểm đường dành riêng xe đạp","Sở Giao thông Vận tải TP HCM thí điểm xây dựng làn đường dành riêng cho xe đạp trên một số tuyến đường trung tâm thành phố",reliable
+"Bộ Y tế ra mắt hệ thống bệnh viện điện tử toàn quốc","Bộ Y tế chính thức vận hành hệ thống bệnh viện điện tử kết nối dữ liệu sức khỏe người dân toàn quốc phục vụ khám chữa bệnh từ xa",reliable
+"Kim ngạch nhập khẩu máy móc thiết bị tăng 15 phần trăm","Tổng cục Thống kê cho biết kim ngạch nhập khẩu máy móc thiết bị tăng 15 phần trăm trong 6 tháng đầu năm phục vụ sản xuất công nghiệp",reliable
+"Hội đồng Nhân dân tỉnh Quảng Nam thông qua ngân sách tỉnh","Hội đồng Nhân dân tỉnh Quảng Nam thông qua nghị quyết về dự toán thu chi ngân sách địa phương năm tới tại kỳ họp thường niên",reliable
+"Cục Sở hữu trí tuệ cấp bằng sáng chế cho 500 sản phẩm","Cục Sở hữu trí tuệ Việt Nam cấp bằng sáng chế và văn bằng bảo hộ cho hàng trăm sản phẩm phát minh trong nước và quốc tế",reliable
+"Bộ Lao động hỗ trợ đào tạo lại cho lao động bị mất việc","Bộ Lao động Thương binh và Xã hội triển khai chương trình hỗ trợ đào tạo nghề lại cho người lao động bị ảnh hưởng bởi tự động hóa",reliable
+"Tổng công ty Đường sắt đưa vào khai thác tàu cao tốc mới","Tổng công ty Đường sắt Việt Nam đưa vào khai thác thêm đoàn tàu cao tốc thế hệ mới trên tuyến Hà Nội TP Hồ Chí Minh",reliable
+"Bộ Văn hóa phê duyệt quy hoạch khu di sản thế giới Huế","Bộ Văn hóa Thể thao và Du lịch phê duyệt quy hoạch bảo tồn và phát huy giá trị quần thể di tích Cố đô Huế đến năm 2030",reliable
+"Doanh nghiệp Việt Nam xuất khẩu phần mềm đạt 7 tỷ USD","Hiệp hội Phần mềm Dịch vụ Công nghệ Thông tin Việt Nam thông báo kim ngạch xuất khẩu phần mềm và dịch vụ số đạt 7 tỷ USD",reliable
+"Cục Quản lý Dược thu hồi thuốc không đạt chất lượng","Cục Quản lý Dược Bộ Y tế ban hành quyết định thu hồi một số lô thuốc không đạt tiêu chuẩn chất lượng theo kết quả kiểm nghiệm",reliable
+"Thành phố Cần Thơ xây dựng khu công nghiệp sinh thái","Ủy ban Nhân dân thành phố Cần Thơ phê duyệt chủ trương đầu tư xây dựng khu công nghiệp sinh thái kết hợp khu đô thị xanh",reliable
+"Bộ Khoa học hỗ trợ khởi nghiệp công nghệ đổi mới sáng tạo","Bộ Khoa học và Công nghệ công bố chương trình hỗ trợ 200 doanh nghiệp khởi nghiệp sáng tạo trong lĩnh vực công nghệ cao",reliable
+"Giá gạo xuất khẩu của Việt Nam cao nhất thế giới","Theo Hiệp hội Lương thực Việt Nam giá gạo xuất khẩu của Việt Nam hiện đang ở mức cao nhất thế giới vượt qua Thái Lan và Ấn Độ",reliable
+"Bộ Y tế phê duyệt chính sách khám chữa bệnh không tiền mặt","Bộ Y tế ban hành thông tư hướng dẫn thanh toán không dùng tiền mặt trong hệ thống khám chữa bệnh và bảo hiểm y tế trên toàn quốc",reliable
+"Việt Nam đăng ký thành công nhãn hiệu nước mắm Phú Quốc","Cục Sở hữu trí tuệ xác nhận nhãn hiệu địa lý nước mắm Phú Quốc đã được bảo hộ tại nhiều thị trường quốc tế quan trọng",reliable
+"Hà Nội triển khai hệ thống camera AI giám sát giao thông","Sở Giao thông Vận tải Hà Nội triển khai hệ thống camera trí tuệ nhân tạo tại 100 nút giao thông để phát hiện và xử lý vi phạm",reliable
+"Chương trình phủ xanh đồi trọc trồng mới 1 triệu cây","Bộ Nông nghiệp và Phát triển Nông thôn triển khai chương trình trồng mới 1 triệu cây xanh trên các đồi trọc vùng Tây Bắc",reliable
+"Bộ Tài chính giảm thuế nhập khẩu linh kiện điện tử","Bộ Tài chính ban hành quyết định giảm thuế nhập khẩu linh kiện điện tử phục vụ sản xuất trong nước theo cam kết hội nhập",reliable
+"Cảnh sát biển bắt giữ tàu vận chuyển hàng lậu trên biển","Cảnh sát Biển Việt Nam phối hợp với Hải quan phát hiện và bắt giữ tàu vận chuyển hàng hóa nhập lậu trên vùng biển phía Nam",reliable
+"Sở Giáo dục Hà Nội tuyển dụng thêm 2000 giáo viên","Sở Giáo dục và Đào tạo Hà Nội thông báo tuyển dụng thêm 2000 giáo viên cho các cấp học mầm non tiểu học và trung học cơ sở",reliable
+"Bộ Công Thương hỗ trợ doanh nghiệp tiếp cận thị trường EU","Bộ Công Thương tổ chức chương trình xúc tiến thương mại hỗ trợ doanh nghiệp Việt Nam tiếp cận thị trường châu Âu sau EVFTA",reliable
+"Ngân hàng Nhà nước tăng cường thanh tra ngân hàng thương mại","Ngân hàng Nhà nước Việt Nam thực hiện thanh tra toàn diện hoạt động của các ngân hàng thương mại nhằm đảm bảo an toàn hệ thống",reliable
+"Đề án phát triển kinh tế biển đến năm 2030 được phê duyệt","Thủ tướng Chính phủ phê duyệt Đề án phát triển kinh tế biển Việt Nam đến năm 2030 tầm nhìn 2045 theo tinh thần Nghị quyết 36",reliable
+"TP HCM khai thác đường vành đai 3 đoạn đầu tiên","Đường vành đai 3 TP HCM đoạn đầu tiên dài gần 18km chính thức thông xe kỹ thuật phục vụ giao thông nội đô sau nhiều năm thi công",reliable
+"Bộ Giáo dục công bố kết quả thi tốt nghiệp THPT năm nay","Bộ Giáo dục và Đào tạo công bố kết quả thi tốt nghiệp trung học phổ thông toàn quốc với tỷ lệ đỗ đạt trên 97 phần trăm",reliable
+"Tập đoàn FPT mở rộng hoạt động tại thị trường Nhật Bản","Tập đoàn FPT ký kết thêm nhiều hợp đồng gia công phần mềm và chuyển đổi số với các doanh nghiệp lớn tại thị trường Nhật Bản",reliable
+"Bộ Nông nghiệp cấp chứng nhận VietGAP cho 5000 trang trại","Bộ Nông nghiệp và Phát triển Nông thôn cấp chứng nhận VietGAP cho hơn 5000 trang trại trồng trọt và chăn nuôi đáp ứng tiêu chuẩn",reliable
+"Hội Liên hiệp Phụ nữ Việt Nam tổ chức đại hội toàn quốc","Hội Liên hiệp Phụ nữ Việt Nam tổ chức Đại hội đại biểu toàn quốc lần thứ 13 thảo luận về phương hướng nhiệm vụ nhiệm kỳ mới",reliable
+"Chính phủ phê duyệt quy hoạch điện lực quốc gia VIII","Thủ tướng Chính phủ ký Quyết định phê duyệt Quy hoạch Phát triển Điện lực Quốc gia thời kỳ 2021 đến 2030 tầm nhìn 2050",reliable
+"Việt Nam lọt top 10 nước xuất khẩu điện thoại lớn nhất thế giới","Theo số liệu của Tổ chức Thương mại Thế giới Việt Nam lọt vào danh sách 10 nước xuất khẩu điện thoại di động lớn nhất toàn cầu",reliable
+"Bộ Công Thương cấp phép thêm 3 nhà máy điện gió ngoài khơi","Bộ Công Thương cấp phép đầu tư cho thêm 3 dự án nhà máy điện gió ngoài khơi với tổng công suất lắp đặt hàng nghìn megawatt",reliable
+"Cục Thuế TP HCM đẩy mạnh hóa đơn điện tử toàn thành phố","Cục Thuế TP HCM hoàn thành việc chuyển đổi toàn bộ doanh nghiệp sang sử dụng hóa đơn điện tử theo quy định của Bộ Tài chính",reliable
+"Bộ Y tế triển khai chương trình dinh dưỡng cho bà mẹ trẻ em","Bộ Y tế triển khai chương trình quốc gia về dinh dưỡng cải thiện tình trạng thiếu vi chất và suy dinh dưỡng ở bà mẹ và trẻ em",reliable
+"Hà Nội công bố đề án phát triển 5 huyện thành quận","Thành phố Hà Nội công bố lộ trình phát triển 5 huyện ngoại thành lên thành quận theo Nghị quyết của Thành ủy Hà Nội",reliable
+"Bộ Giao thông đẩy nhanh tiến độ cao tốc Đà Nẵng Quảng Ngãi","Bộ Giao thông Vận tải thúc đẩy tiến độ thi công các dự án cao tốc trên địa bàn miền Trung nhằm hoàn thành đúng kế hoạch",reliable
+"Xuất khẩu dệt may đạt 44 tỷ USD vượt mục tiêu năm","Hiệp hội Dệt May Việt Nam thông báo kim ngạch xuất khẩu dệt may toàn ngành đạt 44 tỷ USD vượt mục tiêu 43 tỷ USD đề ra",reliable
+"Bộ Giáo dục mở rộng chương trình học bổng du học nước ngoài","Bộ Giáo dục và Đào tạo mở rộng chương trình học bổng đào tạo sau đại học ở nước ngoài cho học viên xuất sắc thuộc nhiều ngành",reliable
+"Tỉnh Bắc Ninh dẫn đầu thu hút FDI cả nước trong quý đầu","Theo số liệu của Bộ Kế hoạch và Đầu tư tỉnh Bắc Ninh tiếp tục dẫn đầu cả nước về thu hút vốn đầu tư nước ngoài trong quý đầu năm",reliable
+"Bộ Văn hóa cấp phép tổ chức liên hoan phim quốc tế tại Hà Nội","Bộ Văn hóa Thể thao và Du lịch cấp phép tổ chức Liên hoan Phim Quốc tế Hà Nội lần thứ 7 thu hút nhiều đoàn phim quốc tế",reliable
+"Cục Hàng không phê duyệt sân bay mới tại Long Thành","Cục Hàng không Việt Nam phê duyệt các hạng mục quan trọng của dự án Cảng hàng không Quốc tế Long Thành giai đoạn 1",reliable
+"Bộ Công an tăng cường an ninh mạng bảo vệ dữ liệu quốc gia","Bộ Công an triển khai các biện pháp tăng cường an ninh mạng bảo vệ hệ thống thông tin cơ sở dữ liệu quốc gia quan trọng",reliable
+"Chính phủ phê duyệt gói hỗ trợ 120 nghìn tỷ đồng cho doanh nghiệp","Chính phủ thông qua chương trình hỗ trợ phục hồi và phát triển kinh tế xã hội với gói tài khóa hỗ trợ doanh nghiệp và người lao động",reliable
+"Bộ Y tế cấp phép thiết bị y tế AI chẩn đoán ung thư sớm","Bộ Y tế cấp phép lưu hành thiết bị y tế ứng dụng trí tuệ nhân tạo hỗ trợ chẩn đoán sớm ung thư vú và phổi với độ chính xác cao",reliable
+"Ngân hàng Phát triển châu Á cho Việt Nam vay 500 triệu USD","Ngân hàng Phát triển châu Á ADB ký kết hợp đồng cho Việt Nam vay 500 triệu USD phục vụ phát triển hạ tầng giao thông và năng lượng",reliable
+"Bộ Công Thương cấp phép nhà máy sản xuất chip bán dẫn đầu tiên","Bộ Công Thương cấp Giấy phép đầu tư cho dự án nhà máy sản xuất chip bán dẫn đầu tiên tại Việt Nam với vốn đầu tư lớn",reliable
+"Thủ tướng ký kết hiệp định hợp tác khoa học với Hàn Quốc","Thủ tướng Chính phủ ký kết hiệp định hợp tác khoa học công nghệ và đổi mới sáng tạo với Hàn Quốc trong chuyến thăm chính thức",reliable
+"Bộ Nội vụ công bố chương trình cải cách thủ tục hành chính","Bộ Nội vụ công bố chương trình cải cách thủ tục hành chính nhằm giảm thời gian và chi phí cho người dân và doanh nghiệp",reliable
+"Tổng cục Thống kê công bố chỉ số giá tiêu dùng tháng 5","Tổng cục Thống kê thông báo chỉ số giá tiêu dùng CPI tháng 5 tăng nhẹ 0,2 phần trăm so với tháng trước chủ yếu do giá thực phẩm",reliable
+"Bộ Giáo dục tăng học bổng cho sinh viên khó khăn","Bộ Giáo dục và Đào tạo tăng mức học bổng khuyến khích và chính sách xã hội cho sinh viên có hoàn cảnh khó khăn trong năm học mới",reliable
+"Việt Nam ký kết FTA với Các Tiểu vương quốc Ả Rập","Chính phủ Việt Nam và Các Tiểu vương quốc Ả Rập Thống nhất ký kết Hiệp định Đối tác Kinh tế Toàn diện mở ra nhiều cơ hội mới",reliable
+"Bộ Xây dựng ban hành tiêu chuẩn nhà ở xã hội mới","Bộ Xây dựng ban hành tiêu chuẩn kỹ thuật mới cho nhà ở xã hội nhằm nâng cao chất lượng và giảm chi phí xây dựng nhà giá thấp",reliable
+"Cục Bảo vệ Thực vật cấm sử dụng 200 loại thuốc trừ sâu độc hại","Cục Bảo vệ Thực vật Bộ Nông nghiệp công bố danh mục 200 loại thuốc bảo vệ thực vật bị cấm sử dụng vì ảnh hưởng sức khỏe và môi trường",reliable
+"Bộ Thông tin cấp phép 5G cho 3 nhà mạng lớn","Bộ Thông tin và Truyền thông cấp phép thử nghiệm và triển khai mạng 5G thương mại cho 3 nhà mạng viễn thông lớn tại Việt Nam",reliable
+"Thành phố Hải Phòng khởi công khu kinh tế ven biển mới","Ủy ban Nhân dân thành phố Hải Phòng tổ chức lễ khởi công xây dựng khu kinh tế ven biển mới thu hút đầu tư công nghiệp cao",reliable
+"Bộ Y tế ra mắt ứng dụng theo dõi sức khỏe người cao tuổi","Bộ Y tế phối hợp với đơn vị công nghệ ra mắt ứng dụng di động hỗ trợ theo dõi sức khỏe và nhắc uống thuốc cho người cao tuổi",reliable
+"Bộ Công an bắt giữ trùm buôn lậu ma túy quốc tế","Cơ quan Cảnh sát Điều tra Bộ Công an phối hợp với Interpol bắt giữ đối tượng cầm đầu đường dây buôn bán ma túy xuyên quốc gia",reliable
+"Tổng Liên đoàn Lao động đề xuất tăng lương tối thiểu 2025","Tổng Liên đoàn Lao động Việt Nam đề xuất tăng mức lương tối thiểu vùng thêm 6 phần trăm từ đầu năm 2025 theo kiến nghị chính thức",reliable
+"Bộ Tài nguyên và Môi trường cấp phép khai thác khoáng sản mới","Bộ Tài nguyên và Môi trường cấp phép khai thác thăm dò khoáng sản cho các doanh nghiệp đáp ứng đủ điều kiện theo quy định pháp luật",reliable
+"Quảng Nam công bố di tích Mỹ Sơn vào danh sách bảo tồn đặc biệt","Tỉnh Quảng Nam thông báo UNESCO chính thức đưa khu di tích Mỹ Sơn vào chương trình bảo tồn di sản thế giới giai đoạn mới",reliable
+"Bộ Kế hoạch và Đầu tư công bố khu kinh tế tự do thí điểm","Bộ Kế hoạch và Đầu tư trình Chính phủ đề xuất thành lập khu kinh tế tự do thí điểm tại một số địa phương có lợi thế chiến lược",reliable
+"Thuốc bí truyền chữa ung thư 100 phần trăm trong 3 ngày","Một bài đăng trên mạng xã hội quảng cáo loại thuốc bí truyền có thể chữa ung thư hoàn toàn trong ba ngày mà không cần xạ trị hay hóa trị hay bất kỳ phương pháp y tế nào",unreliable
+"Uống nước chanh mỗi sáng chữa khỏi mọi bệnh","Thông tin lan truyền trên mạng cho rằng chỉ cần uống nước chanh pha mật ong mỗi sáng là có thể chữa khỏi tất cả các loại bệnh mãn tính nguy hiểm",unreliable
+"Người ngoài hành tinh xuất hiện tại trung tâm Hà Nội","Tin đồn lan truyền trên mạng xã hội cho rằng có vật thể bay không xác định hạ cánh giữa trung tâm thủ đô Hà Nội gây hoang mang",unreliable
 "Bấm huyệt đặc biệt giúp cao thêm 10cm chỉ sau 1 tuần","Nhiều bài đăng không rõ nguồn gốc lan truyền phương pháp bấm huyệt bí truyền giúp tăng chiều cao thần tốc 10cm trong 1 tuần",unreliable
-"Ứng dụng bí mật giúp trúng số 100 phần trăm","Một trang web quảng cáo ứng dụng dự đoán kết quả xổ số chính xác tuyệt đối với tỷ lệ trúng thưởng 100 phần trăm",unreliable
-"Ăn tỏi sống chữa khỏi mọi loại virus kể cả HIV","Bài đăng lan truyền rộng rãi cho rằng chỉ cần ăn tỏi sống mỗi ngày sẽ chống được tất cả virus kể cả HIV và ung thư",unreliable
+"Ứng dụng bí mật giúp trúng số 100 phần trăm","Một trang web quảng cáo ứng dụng dự đoán kết quả xổ số chính xác tuyệt đối với tỷ lệ trúng thưởng 100 phần trăm không cần kỹ năng",unreliable
+"Ăn tỏi sống chữa khỏi mọi loại virus kể cả HIV","Bài đăng lan truyền rộng rãi cho rằng chỉ cần ăn tỏi sống mỗi ngày sẽ chống được tất cả virus kể cả HIV và ung thư không cần thuốc",unreliable
 "Thiết bị nhỏ tạo điện vô hạn không cần nhiên liệu","Quảng cáo trên mạng hứa hẹn thiết bị nhỏ bé có thể tạo ra điện không giới hạn mà không cần bất kỳ nhiên liệu hay năng lượng mặt trời",unreliable
 "Loại lá cây bí ẩn chữa khỏi tiểu đường chỉ sau 2 ngày","Tin đồn trên mạng khẳng định chỉ cần uống nước từ loại lá cây bí ẩn này sẽ khỏi bệnh tiểu đường type 2 hoàn toàn chỉ sau 2 ngày",unreliable
-"Tắm nước muối 10 ngày trị khỏi bệnh gan","Bài viết không rõ nguồn gốc khuyên người bị bệnh gan uống nước muối pha loãng mỗi sáng sẽ chữa khỏi hoàn toàn bệnh xơ gan",unreliable
-"Tinh thần nhà phong thủy bảo đảm giàu sang trong 30 ngày","Một trang mạng quảng cáo khóa học phong thủy bảo đảm người học sẽ giàu sang phú quý chỉ trong 30 ngày áp dụng",unreliable
+"Tắm nước muối 10 ngày trị khỏi bệnh gan","Bài viết không rõ nguồn gốc khuyên người bị bệnh gan uống nước muối pha loãng mỗi sáng sẽ chữa khỏi hoàn toàn bệnh xơ gan nặng",unreliable
 "Chính phủ bí mật thêm hóa chất vào nước máy để kiểm soát tư tưởng","Thông tin sai lệch lan truyền cho rằng chính phủ đang bí mật cho thêm hóa chất vào nguồn nước sinh hoạt để kiểm soát suy nghĩ người dân",unreliable
-"Nam diễn viên nổi tiếng qua đời vì tai nạn thực ra vẫn còn sống","Tin đồn bịa đặt cho rằng một nghệ sĩ nổi tiếng đã qua đời trong vụ tai nạn bí ẩn nhưng thực ra đang sống ẩn dật",unreliable
-"Cá ngừ đại dương hấp thụ phóng xạ từ Fukushima gây ung thư","Tin giả lan truyền rằng cá ngừ đại dương tại biển Việt Nam đã bị nhiễm phóng xạ Fukushima và ăn vào sẽ gây ung thư",unreliable
+"Nam diễn viên nổi tiếng qua đời vì tai nạn thực ra vẫn còn sống","Tin đồn bịa đặt cho rằng một nghệ sĩ nổi tiếng đã qua đời trong vụ tai nạn bí ẩn nhưng thực ra đang sống ẩn dật bí mật",unreliable
+"Cá ngừ đại dương hấp thụ phóng xạ từ Fukushima gây ung thư","Tin giả lan truyền rằng cá ngừ đại dương tại biển Việt Nam đã bị nhiễm phóng xạ Fukushima và ăn vào sẽ gây ung thư chắc chắn",unreliable
 "Robot AI đã tự ý lập trình để tiêu diệt con người","Thông tin giả mạo lan truyền rằng các robot trí tuệ nhân tạo tại một công ty lớn đã tự lập trình để chống lại và tiêu diệt con người",unreliable
 "Sóng 5G gây ung thư não và suy giảm hệ miễn dịch","Thông tin sai lệch xuất hiện trên mạng xã hội cho rằng công nghệ sóng 5G phát ra bức xạ gây ung thư não và phá huỷ hệ miễn dịch con người",unreliable
-"Uống nước ép lá ổi chữa khỏi kẹt mật trong gan","Thông tin không có cơ sở khoa học lan truyền rằng uống nước ép lá ổi xanh hàng ngày sẽ chữa khỏi hoàn toàn bệnh kẹt mật và xơ gan",unreliable
-"Chính phủ sắp đổi tiền mới loại bỏ tiền cũ trong 30 ngày","Tin đồn giả mạo xuất hiện trên mạng xã hội với nội dung sắp tới chính phủ sẽ đổi sang đồng tiền mới và thu hồi toàn bộ tiền cũ trong vòng 30 ngày",unreliable
+"Chính phủ sắp đổi tiền mới loại bỏ tiền cũ trong 30 ngày","Tin đồn giả mạo xuất hiện trên mạng xã hội với nội dung sắp tới chính phủ sẽ đổi sang đồng tiền mới và thu hồi toàn bộ tiền cũ",unreliable
 "Hoa quả nhập khẩu chứa hóa chất gây ngộ độc thần kinh","Bài viết lan truyền rộng rãi cho rằng hầu hết hoa quả nhập khẩu từ Trung Quốc chứa hóa chất độc hại gây ngộ độc thần kinh khi ăn",unreliable
-"Tắm cát bào biển Nha Trang mỗi ngày chữa khớp và cột sống","Bài quảng cáo trên mạng khẳng định phương pháp tắm cát biển theo kiểu đặc biệt giúp trị dứt điểm bệnh xương khớp và thoát vị đĩa đệm",unreliable
-"Một gia đình trúng 50 tỷ đồng nhờ mua vé số theo mộng báo","Câu chuyện bịa đặt lan truyền rằng một gia đình nghèo đã trúng 50 tỷ đồng tiền xổ số nhờ làm theo giấc mộng báo số",unreliable
-"Nước tiểu bò chữa khỏi bệnh tiểu đường và huyết áp cao","Thông tin sai lệch từ nguồn không xác định cho rằng uống nước tiểu bò tươi mỗi sáng sẽ chữa khỏi hoàn toàn bệnh tiểu đường và cao huyết áp",unreliable
-"Cở sở bán đất nền lừa đảo nhiều khách hàng bỏ trốn","Tin đồn chưa được kiểm chứng lan truyền rằng một chủ đầu tư bất động sản đã lừa đảo hàng trăm khách hàng và bỏ trốn ra nước ngoài cùng hàng trăm tỷ đồng",unreliable
+"Trẻ em không nên tiêm vắc xin vì gây bại liệt","Thông tin phản khoa học lan truyền mạnh mẽ rằng vắc xin gây ra bại liệt và tự kỷ ở trẻ em và các tổ chức y tế đang che giấu sự thật",unreliable
 "Thuốc giảm cân đặc biệt giúp giảm 15kg chỉ trong 2 tuần","Quảng cáo lan truyền trên mạng về loại thuốc giảm cân thần kỳ được bào chế từ thảo dược tự nhiên giúp giảm 15kg trong 2 tuần không cần ăn kiêng",unreliable
-"Bản đồ bí mật lộ hang ổ vàng và kho báu quân đội","Tin bịa đặt về bản đồ bí mật được phát hiện dẫn đến kho báu khổng lồ cùng hàng tấn vàng được cất giấu từ thời chiến tranh tại một tỉnh miền Trung",unreliable
-"Trẻ em không nên tiêm vắc xin vì gây bại liệt","Thông tin phản khoa học lan truyền mạnh mẽ rằng vắc xin gây ra bại liệt và tự kỷ ở trẻ em và các tổ chức y tế đang che giấu sự thật này",unreliable
-"Hít thở không khí biển chữa khỏi bệnh phổi mạn tính","Bài viết không có cơ sở khuyến cáo người bệnh phổi mạn tính nên ra biển hít thở không khí muối để chữa bệnh thay vì dùng thuốc",unreliable
-"Thực phẩm hữu cơ 100 phần trăm loại bỏ tế bào ung thư","Quảng cáo lan truyền rằng bộ thực phẩm hữu cơ đặc biệt từ nước ngoài có khả năng tiêu diệt hoàn toàn tế bào ung thư trong cơ thể",unreliable
-"Đại gia bí ẩn tặng tiền cho người chia sẻ bài viết","Tin giả lan truyền về một đại gia giấu tên sẽ tặng tiền cho bất kỳ ai chia sẻ bài viết của họ lên mạng xã hội",unreliable
+"Sóng điện thoại làm chín trứng gà chỉ sau 5 phút gọi","Một video lan truyền mạng xã hội tuyên bố đặt quả trứng giữa hai chiếc điện thoại đang gọi liên tục sẽ làm chín quả trứng do bức xạ",unreliable
+"Kem đánh răng trộn muối trị dứt điểm cận thị không cần mổ","Tin đồn trên Tiktok hướng dẫn cách trộn kem đánh răng với muối hạt rồi đắp lên mắt mỗi tối để chữa cận thị giảm độ về không",unreliable
+"Chia sẻ bài viết này nhận ngay thẻ cào 500k từ nhà mạng","Bài đăng lừa đảo kêu gọi người dùng nhấn vào đường link lạ chia sẻ lên hội nhóm để nhận mã nạp tiền điện thoại miễn phí từ nhà mạng",unreliable
+"Lá đu đủ tươi đun nước uống tiêu diệt hoàn toàn khối u ung thư","Bài viết khẳng định chỉ cần uống nước lá đu đủ đực phơi khô sắc uống hằng ngày sẽ triệt tiêu mọi tế bào ung thư không cần đi bệnh viện",unreliable
+"Muối Himalaya hồng chữa dứt điểm tiểu đường và tim mạch","Quảng cáo thổi phồng và sai lệch cho rằng muối Himalaya màu hồng chứa 84 khoáng chất đặc biệt có thể chữa dứt điểm bệnh tiểu đường",unreliable
+"Ngâm chân nước muối ấm giảm 3kg trong 1 tuần","Bài viết vô căn cứ lan truyền cho rằng phương pháp ngâm chân nước muối ấm mỗi ngày sẽ giúp giảm 3kg chỉ trong vòng 1 tuần",unreliable
 "Wifi nhà hàng xóm phát ra sóng gây bệnh cho trẻ em","Thông tin sai lệch cho rằng sóng wifi của nhà hàng xóm có thể xuyên qua tường gây bệnh ung thư và rối loạn tâm thần cho trẻ em",unreliable
 "Ăn sầu riêng và uống bia cùng lúc gây chết người tức thì","Tin đồn bịa đặt và vô căn cứ cho rằng ăn sầu riêng và uống bia cùng lúc có thể gây phản ứng hóa học nguy hiểm dẫn đến tử vong",unreliable
-"Nhà máy thủy điện bí mật làm trái đất xoay chậm hơn","Thông tin giả mạo xuất hiện tuyên bố các nhà máy thủy điện lớn đang làm chậm vòng quay của trái đất gây ra biến đổi khí hậu cực đoan",unreliable
-"Ngủ dưới đèn xanh mỗi tối tăng cường miễn dịch tự nhiên","Quảng cáo vô căn cứ lan truyền cho rằng ngủ dưới ánh đèn LED màu xanh lá cây mỗi tối sẽ kích hoạt hệ miễn dịch và ngăn ngừa mọi bệnh tật",unreliable
+"Cơ quan chức năng bí mật đưa vi mạch vào vắc xin để theo dõi","Thuyết âm mưu vô căn cứ lan truyền rằng các cơ quan bí mật đã đưa vi mạch điện tử vào vắc xin COVID-19 để theo dõi tọa độ người dân",unreliable
+"Chỉ cần thiền định 20 phút chữa khỏi trầm cảm không cần thuốc","Bài viết phản khoa học cho rằng người bị trầm cảm nặng chỉ cần thiền định 20 phút mỗi ngày sẽ khỏi hoàn toàn không cần bất kỳ thuốc nào",unreliable
+"Uống nước tiểu bò chữa khỏi tiểu đường và huyết áp cao","Thông tin sai lệch từ nguồn không xác định cho rằng uống nước tiểu bò tươi mỗi sáng sẽ chữa khỏi hoàn toàn bệnh tiểu đường và cao huyết áp",unreliable
+"Đọc lời cầu nguyện 7 lần sẽ thoát khỏi đen đủi trong tháng","Bài đăng mê tín dị đoan lan truyền cho rằng đọc một lời cầu nguyện đặc biệt 7 lần trong ngày sẽ giúp thoát khỏi vận đen trong tháng",unreliable
+"Đắp lá chuối lên vết thương hở thay thế thuốc sát trùng","Thông tin nguy hiểm và sai lệch khuyến cáo dùng lá chuối tươi đắp trực tiếp lên vết thương hở thay vì sử dụng thuốc sát trùng và băng vô trùng",unreliable
+"Ăn ớt hiểm ngâm giấm ngăn ngừa đột quỵ tức thì","Nhiều trang tin mạng không chính thống chia sẻ mẹo ăn ba quả ớt hiểm ngâm giấm mỗi ngày để phòng tránh và ngăn ngừa tai biến mạch máu não",unreliable
+"Chính phủ ra lệnh cấm hoàn toàn xe máy từ tháng sau","Tin đồn lan truyền nhanh chóng trên Facebook cho rằng bộ giao thông vận tải sẽ thực hiện cấm toàn bộ xe máy lưu thông tại thành phố lớn",unreliable
+"Bột sắn dây pha mật ong tạo ra chất kịch độc gây tử vong","Các bài chia sẻ truyền tay nhau cảnh báo người dân tuyệt đối không uống bột sắn dây chung với mật ong vì sẽ sinh ra độc tố gây chết người",unreliable
 "Uống dầu diesel pha loãng chữa sâu răng và viêm lợi","Thông tin nguy hiểm và sai lệch lan truyền rằng uống dầu diesel pha loãng với nước mỗi ngày sẽ tiêu diệt vi khuẩn trong miệng và chữa sâu răng",unreliable
 "Ăn đất sét 30 ngày giải độc cơ thể hoàn toàn","Bài đăng lan truyền mạnh cho rằng ăn đất sét nguyên chất mỗi ngày trong 30 ngày sẽ hấp thụ và loại bỏ hoàn toàn độc tố trong cơ thể",unreliable
 "Viên đá năng lượng hấp thụ bức xạ điện thoại bảo vệ não","Sản phẩm được quảng cáo là viên đá hấp thụ toàn bộ bức xạ từ điện thoại thông minh bảo vệ não và ngăn chặn ung thư não hoàn toàn",unreliable
 "Người phụ nữ 90 tuổi hồi trẻ lại nhờ uống tinh chất nhau thai","Quảng cáo bịa đặt về người phụ nữ 90 tuổi trông như 40 tuổi nhờ sử dụng tinh chất nhau thai của một thương hiệu không rõ nguồn gốc",unreliable
-"Cơ quan chức năng bí mật đưa vi mạch vào vắc xin để theo dõi","Thuyết âm mưu vô căn cứ lan truyền rằng các cơ quan bí mật đã đưa vi mạch điện tử vào vắc xin COVID-19 để theo dõi tọa độ của người dân",unreliable
-"Chỉ cần thiền định 20 phút chữa khỏi trầm cảm mà không cần thuốc","Bài viết phản khoa học cho rằng người bị trầm cảm nặng chỉ cần thiền định 20 phút mỗi ngày sẽ khỏi hoàn toàn và không cần dùng bất kỳ loại thuốc nào",unreliable
 "Rắn hổ mang cắn người mà vẫn sống nhờ uống bia","Tin đồn bịa đặt lan truyền rằng một người đàn ông bị rắn hổ mang cắn đã uống 30 lon bia và sống sót mà không cần điều trị y tế",unreliable
-"Muối Himalaya hồng chứa 84 khoáng chất chữa dứt điểm tiểu đường","Quảng cáo thổi phồng và sai lệch cho rằng muối Himalaya màu hồng chứa 84 khoáng chất đặc biệt có thể chữa dứt điểm bệnh tiểu đường",unreliable
-"Ngâm chân nước muối ấm 1 giờ giảm 3kg trong 1 tuần","Bài viết vô căn cứ lan truyền cho rằng phương pháp ngâm chân nước muối ấm 1 giờ mỗi ngày sẽ giúp giảm 3kg chỉ trong vòng 1 tuần",unreliable
-"Đọc lời cầu nguyện 7 lần sẽ thoát khỏi đen đủi trong tháng","Bài đăng mê tín dị đoan lan truyền cho rằng đọc một lời cầu nguyện đặc biệt 7 lần trong ngày sẽ giúp thoát khỏi vận đen trong tháng",unreliable
-"Đắp lá chuối lên vết thương hở thay thế thuốc sát trùng","Thông tin nguy hiểm và sai lệch khuyến cáo dùng lá chuối tươi đắp trực tiếp lên vết thương hở thay vì sử dụng thuốc sát trùng và băng vô trùng",unreliable
+"Đổi tiền giấy sang tiền polymer mới màu vàng lục trong tuần này","Tin nhắn giả mạo gửi qua các hội nhóm zalo kêu gọi mọi người đi rút tiền ngân hàng vì chính phủ sắp phát hành đợt tiền giấy mới",unreliable
+"Uống nước tiểu trẻ em chữa khỏi hoàn toàn bệnh xơ gan cổ trướng","Phương pháp truyền miệng phản khoa học khuyên người bệnh xơ gan nên uống nước tiểu của trẻ em khỏe mạnh để đào thải độc tố gan",unreliable
+"Sóng wifi làm vô sinh ở nam giới và suy giảm trí nhớ vĩnh viễn","Bài viết cảnh báo các bậc phụ huynh tắt wifi vì bức xạ sóng điện từ wifi gây tổn thương não bộ trẻ em và gây vô sinh nam giới vĩnh viễn",unreliable
+"Thiết bị tiết kiệm xăng giảm 80 phần trăm lượng tiêu thụ","Quảng cáo rao bán cục nam châm thông minh gắn vào bình xăng giúp phân tách phân tử xăng tiết kiệm đến 80 phần trăm nhiên liệu tiêu thụ",unreliable
+"Ngủ dưới đèn xanh mỗi tối tăng cường miễn dịch tự nhiên","Quảng cáo vô căn cứ lan truyền cho rằng ngủ dưới ánh đèn LED màu xanh lá cây mỗi tối sẽ kích hoạt hệ miễn dịch và ngăn ngừa mọi bệnh tật",unreliable
+"Nhà máy thủy điện bí mật làm trái đất xoay chậm hơn","Thông tin giả mạo xuất hiện tuyên bố các nhà máy thủy điện lớn đang làm chậm vòng quay của trái đất gây ra biến đổi khí hậu cực đoan",unreliable
+"Thực phẩm hữu cơ 100 phần trăm loại bỏ tế bào ung thư","Quảng cáo lan truyền rằng bộ thực phẩm hữu cơ đặc biệt từ nước ngoài có khả năng tiêu diệt hoàn toàn tế bào ung thư trong cơ thể",unreliable
+"Đại gia bí ẩn tặng tiền cho người chia sẻ bài viết","Tin giả lan truyền về một đại gia giấu tên sẽ tặng tiền cho bất kỳ ai chia sẻ bài viết của họ lên mạng xã hội không cần điều kiện",unreliable
+"Tắm cát bào biển Nha Trang mỗi ngày chữa khớp và cột sống","Bài quảng cáo trên mạng khẳng định phương pháp tắm cát biển theo kiểu đặc biệt giúp trị dứt điểm bệnh xương khớp và thoát vị đĩa đệm",unreliable
+"Nhật Bản phát minh kính nhìn xuyên thấu quần áo bán tràn lan trên mạng","Một loạt trang quảng cáo trên facebook rao bán loại kính đeo mắt công nghệ cao của Nhật Bản có khả năng nhìn xuyên qua các lớp vải dày",unreliable
+"Uống giấm nuôi mỗi ngày giảm 10kg chỉ trong 5 ngày cực an toàn","Phương pháp giảm cân thần tốc lan truyền khuyên chị em uống giấm ăn nguyên chất lúc đói để đốt cháy mỡ thừa giảm cân nhanh chóng",unreliable
+"Ngửi mùi hành tây cắt lát phòng tránh lây nhiễm mọi dịch cúm mùa","Tin đồn cho rằng đặt nửa củ hành tây trong phòng ngủ sẽ giúp hút sạch vi khuẩn virus cúm lơ lửng trong không khí ngăn ngừa nhiễm bệnh",unreliable
+"Vi sinh vật ngoài hành tinh rơi xuống hồ Gươm làm nước chuyển màu đỏ","Một bài đăng giật gân tuyên bố các nhà khoa học phát hiện tế bào lạ từ thiên thạch rơi xuống hồ Gươm gây ra hiện tượng nước hồ hóa đỏ",unreliable
+"Ăn rau muống sống chữa dứt điểm bệnh tiểu đường","Bài viết không có cơ sở khoa học lan truyền cho rằng ăn rau muống sống mỗi buổi sáng có thể chữa khỏi hoàn toàn bệnh tiểu đường type 2",unreliable
+"Đặt điện thoại dưới gối lúc ngủ tăng thông minh não bộ","Tin đồn lan truyền cho rằng đặt điện thoại phát sóng wifi dưới gối khi ngủ sẽ kích thích não bộ giúp tăng chỉ số IQ và ghi nhớ tốt hơn",unreliable
+"Nước giếng làng chứa chất kỳ diệu giúp sống thọ 200 năm","Bài viết bịa đặt về một ngôi làng tại Việt Nam nơi người dân uống nước giếng cổ có thể sống tới 200 tuổi nhờ chất khoáng đặc biệt",unreliable
+"Chính phủ sẽ phát tiền mặt 10 triệu cho mỗi hộ gia đình","Tin đồn lan truyền cho rằng Chính phủ Việt Nam sẽ phát tiền mặt hỗ trợ 10 triệu đồng cho mỗi hộ gia đình theo chương trình bí mật",unreliable
+"Massage đặc biệt chữa bệnh sỏi thận không cần phẫu thuật","Bài quảng cáo trực tuyến cho rằng phương pháp massage đặc biệt từ bác sĩ dân gian giúp tan sỏi thận và đào thải hoàn toàn mà không cần mổ",unreliable
+"Uống dầu dừa nguyên chất mỗi ngày chữa Alzheimer giai đoạn cuối","Thông tin vô căn cứ lan truyền cho rằng uống 3 thìa dầu dừa nguyên chất mỗi ngày có thể điều trị dứt điểm bệnh Alzheimer giai đoạn nặng",unreliable
+"Điện thoại thông minh có thể đọc suy nghĩ người dùng","Tin đồn âm mưu lan truyền cho rằng các công ty công nghệ lớn đã cài phần mềm vào điện thoại có thể nghe và đọc suy nghĩ người dùng",unreliable
+"Tắm nước đá lạnh mỗi sáng chữa khỏi tất cả bệnh mãn tính","Bài viết mạo xưng nghiên cứu khoa học cho rằng tắm nước đá lạnh 5 phút mỗi sáng có thể chữa khỏi mọi bệnh mãn tính kể cả ung thư",unreliable
+"Người phụ nữ sống sót 30 ngày chỉ nhờ uống ánh nắng mặt trời","Câu chuyện bịa đặt về người phụ nữ không ăn không uống trong 30 ngày mà chỉ hấp thụ năng lượng từ ánh nắng mặt trời và sống khỏe mạnh",unreliable
+"Nhổ răng khôn sẽ làm mất trí nhớ và tổn hại thần kinh vĩnh viễn","Tin đồn phản khoa học lan truyền cho rằng phẫu thuật nhổ răng khôn có thể gây tổn thương dây thần kinh vĩnh viễn và làm mất trí nhớ lâu dài",unreliable
+"Sữa tươi hâm nóng đến 45 độ biến thành chất gây ung thư","Bài viết sai lệch cho rằng sữa tươi khi hâm nóng đến 45 độ C sẽ biến đổi phân tử protein thành chất carcinogen cực độc gây ung thư dạ dày",unreliable
+"Hít thở bằng miệng hơn 30 ngày có thể gây điên loạn","Thông tin vô căn cứ khẳng định thở qua miệng thay vì mũi liên tục trong 30 ngày có thể dẫn đến rối loạn tâm thần và điên loạn",unreliable
+"Đặt tỏi sống dưới giường sẽ tiêu diệt mọi vi khuẩn trong nhà","Mẹo dân gian phản khoa học lan truyền cho rằng đặt nhiều tép tỏi sống dưới giường ngủ sẽ tạo ra không khí khử khuẩn tiêu diệt mọi vi khuẩn",unreliable
+"Ngân hàng Nhà nước sắp phá giá tiền đồng 50 phần trăm","Tin đồn giả mạo lan truyền cho rằng Ngân hàng Nhà nước Việt Nam sẽ phá giá đồng tiền xuống 50 phần trăm vào cuối năm gây hoảng loạn",unreliable
+"Bác sĩ bí mật tiêm thuốc độc cho bệnh nhân ung thư để thu tiền","Thuyết âm mưu vô căn cứ cáo buộc các bác sĩ bệnh viện bí mật tiêm thuốc làm bệnh nặng hơn để kéo dài điều trị thu thêm viện phí",unreliable
+"Trứng gà thả rơi nghe tiếng kêu bên trong là trứng giả","Hướng dẫn sai lệch cho rằng cách phân biệt trứng gà thật và trứng gà nhựa là thả trứng xuống bàn nếu nghe tiếng kêu lạo xạo là trứng giả",unreliable
+"Ăn rau sống rửa bằng nước lã sẽ nhiễm giun não từ từ","Thông tin gây hoảng loạn khẳng định rằng ăn rau sống không rửa kỹ hoặc rửa bằng nước lã sẽ nhiễm ký sinh trùng giun não nguy hiểm",unreliable
+"Nhảy dây 1000 cái mỗi ngày tăng chiều cao thêm 5cm sau 1 tháng","Bài viết không có căn cứ khoa học lan truyền rằng nhảy dây 1000 cái mỗi ngày sẽ kéo dài xương giúp tăng chiều cao 5cm sau 1 tháng",unreliable
+"Sóng điện từ của máy tính làm hỏng trứng nang buồng trứng","Thông tin sai lệch cảnh báo phụ nữ không dùng laptop trên đùi vì sóng điện từ sẽ làm hỏng toàn bộ trứng nang trong buồng trứng vĩnh viễn",unreliable
+"Uống nước vôi trong mỗi sáng chữa đau khớp cực hiệu quả","Bài viết nguy hiểm lan truyền rằng uống nước vôi pha loãng trong mỗi sáng sẽ bổ sung canxi tự nhiên chữa dứt điểm đau khớp và loãng xương",unreliable
+"Nghệ sĩ nổi tiếng X bị bắt vì tội phạm tình dục ở nước ngoài","Tin giả mạo lan truyền nhắm vào nghệ sĩ nổi tiếng với nội dung bịa đặt về vụ bắt giữ tại nước ngoài vì tội danh nghiêm trọng chưa được xác minh",unreliable
+"Chính phủ bí mật ký hiệp ước bán lãnh thổ cho nước ngoài","Thuyết âm mưu vô căn cứ tuyên bố Chính phủ đã bí mật ký hiệp ước bán một phần lãnh thổ quốc gia cho nước ngoài với giá hàng nghìn tỷ đô",unreliable
+"Tàu ngầm bí mật của người ngoài hành tinh phát hiện dưới đáy biển Đông","Bài đăng giả mạo tuyên bố các nhà khoa học đã phát hiện tàu ngầm công nghệ cao của người ngoài hành tinh dưới đáy biển Đông Việt Nam",unreliable
+"Ăn cháo hành lá khi sốt cao làm ngộ độc cơ thể nặng nề","Thông tin sai lệch cảnh báo không nên ăn cháo hành lá khi bị sốt vì hành lá kết hợp với thuốc hạ sốt sẽ tạo ra độc tố nguy hiểm cho gan",unreliable
+"Tiêm vắc xin COVID sẽ biến người thành zombie sau 5 năm","Thuyết âm mưu hoang đường tuyên bố rằng vắc xin COVID-19 chứa chất biến đổi gen sẽ biến người tiêm thành zombie sau 5 năm tiêm chủng",unreliable
+"Đỗ đen rang ngâm rượu trắng chữa dứt điểm bệnh thận mãn tính","Bài thuốc dân gian không có cơ sở khoa học lan truyền rằng uống rượu đỗ đen ngâm mỗi ngày sẽ phục hồi hoàn toàn chức năng thận mãn tính",unreliable
+"Tiếng động lớn từ công trình xây dựng gây điếc cho thai nhi","Tin đồn phản khoa học lan truyền rằng phụ nữ mang thai sống gần công trình xây dựng sẽ khiến thai nhi bị điếc hoàn toàn vĩnh viễn",unreliable
+"Bột than tre hấp thụ toàn bộ độc tố trong cơ thể sau 7 ngày","Sản phẩm được quảng cáo là bột than tre hoạt tính khi uống mỗi ngày sẽ hấp thụ và loại bỏ hoàn toàn mọi độc tố và kim loại nặng trong 7 ngày",unreliable
+"Chính phủ thực hiện tiêm vi chip vào não công dân dưới danh nghĩa y tế","Thuyết âm mưu vô căn cứ cho rằng các bệnh viện nhà nước đang bí mật cấy vi chip vào não bệnh nhân dưới danh nghĩa các phẫu thuật y tế",unreliable
+"Súng điện Taser gây tử vong ngay lập tức với mọi người","Thông tin sai lệch tuyên bố súng điện Taser được cảnh sát sử dụng sẽ gây tử vong ngay lập tức với bất kỳ người nào bị bắn vào người",unreliable
+"Trẻ sơ sinh dưới 1 tuổi không được uống sữa công thức","Thông tin sai lệch nguy hiểm khuyến cáo phụ huynh không cho trẻ sơ sinh dưới 1 tuổi uống bất kỳ loại sữa công thức nào vì chứa chất độc",unreliable
+"Ô nhiễm không khí từ Trung Quốc gây ung thư phổi hàng loạt tại Hà Nội","Tin giả mạo khẳng định ô nhiễm bụi mịn từ các nhà máy Trung Quốc thổi sang Hà Nội đã gây ra làn sóng ung thư phổi hàng loạt",unreliable
+"Đổi đất đai ruộng vườn để nhận tiền thưởng từ chương trình chính phủ","Tin lừa đảo lan truyền thông báo chính phủ có chương trình đền bù đất đai cho người dân tình nguyện giao đất với giá gấp 10 lần thị trường",unreliable
+"Uống máu rắn hổ mang tươi tăng cường sinh lực nam giới triệt để","Bài viết lan truyền cho rằng uống máu rắn hổ mang sống pha rượu trắng là phương thuốc bí truyền tăng cường sinh lực nam giới cực hiệu quả",unreliable
+"Bổ sung collagen từ da lợn giúp trẻ hóa da sau 24 giờ","Quảng cáo sai lệch cho rằng ăn da lợn luộc mỗi ngày sẽ bổ sung collagen trực tiếp làm đẹp da và trẻ hóa ngoạn mục chỉ sau 24 giờ",unreliable
+"Nước ion kiềm chữa ung thư và kéo dài tuổi thọ thêm 50 năm","Quảng cáo máy lọc nước ion kiềm tuyên bố nước ion kiềm có thể tiêu diệt tế bào ung thư kéo dài tuổi thọ thêm 50 năm và chữa mọi bệnh",unreliable
+"Xem mặt người có thể đoán chính xác số phận và tương lai","Thông tin mê tín dị đoan lan truyền rằng các thầy tướng số có thể đọc khuôn mặt để đoán chính xác tương lai số phận bệnh tật của người khác",unreliable
+"Sóng bluetooth của tai nghe không dây gây điếc vĩnh viễn","Bài cảnh báo sai lệch cho rằng sử dụng tai nghe bluetooth trong hơn 30 phút mỗi ngày sẽ gây tổn thương không hồi phục lên ốc tai gây điếc",unreliable
+"Uống nước gạo rang trị dứt điểm viêm gan B mãn tính","Phương thuốc dân gian không có căn cứ khoa học lan truyền rằng uống nước gạo rang mỗi sáng sẽ chữa khỏi hoàn toàn viêm gan B mãn tính",unreliable
+"Hóa chất trong dầu gội đầu gây ung thư vú ở phụ nữ","Bài viết vô căn cứ tuyên bố hầu hết các loại dầu gội đầu thông dụng chứa hóa chất paraben gây ung thư vú ở phụ nữ sau vài năm sử dụng",unreliable
+"Chính phủ Mỹ bí mật kiểm soát thời tiết thế giới bằng HAARP","Thuyết âm mưu tuyên bố chương trình nghiên cứu HAARP của Mỹ thực chất là vũ khí điều khiển thời tiết và gây ra bão lũ hạn hán trên toàn thế giới",unreliable
+"Sóng 4G LTE gây vô sinh hoàn toàn sau 10 năm sử dụng","Bài viết sai lệch cho rằng bức xạ từ sóng 4G LTE tích lũy trong cơ thể sau 10 năm sẽ gây vô sinh hoàn toàn ở cả nam và nữ giới",unreliable
+"Ăn nhiều trứng gà sẽ làm tắc nghẽn mạch máu não tức thì","Thông tin sai lệch cường điệu hóa cho rằng ăn hơn 1 quả trứng mỗi ngày sẽ gây tắc nghẽn mạch máu não và đột quỵ gần như tức thì",unreliable
+"Bưởi ăn cùng thuốc tim mạch sẽ gây ngộ độc chết người ngay lập tức","Thông tin cường điệu hóa cảnh báo không ăn bưởi khi uống bất kỳ loại thuốc nào vì sẽ gây ngộ độc chết người ngay lập tức không cứu được",unreliable
+"Vắc xin cúm làm cho người tiêm dễ bị cúm nặng hơn","Tin giả phản khoa học tuyên bố vắc xin cúm thực ra làm giảm miễn dịch khiến người tiêm dễ bị nhiễm cúm nặng hơn người không tiêm",unreliable
+"Thực phẩm biến đổi gen GMO gây đột biến gen người sau 1 thế hệ","Thông tin sai lệch tuyên bố thực phẩm biến đổi gen GMO khi ăn vào sẽ làm thay đổi DNA và gây đột biến gen ở thế hệ con cái sau này",unreliable
+"Đất Việt Nam chứa kim cương và vàng khổng lồ chưa được khai thác","Tin bịa đặt cho rằng dưới lòng đất Việt Nam có trữ lượng kim cương và vàng khổng lồ đang bị chính phủ bí mật giấu không cho khai thác",unreliable
+"Thở hít đất sẽ giúp hấp thụ khoáng chất thiết yếu cho cơ thể","Bài viết phản khoa học khuyên người dân ngửi đất ruộng mỗi sáng để hấp thụ vi sinh vật và khoáng chất tự nhiên tăng cường sức đề kháng",unreliable
+"Pin điện thoại có thể phát nổ khi sạc qua đêm gây cháy nhà","Tin đồn cường điệu hóa tuyên bố sạc điện thoại qua đêm sẽ làm pin phình ra và phát nổ gây cháy nhà như một quả bom nhiệt khi đang ngủ",unreliable
+"Ăn dứa khi bụng đói gây loét dạ dày cực nặng trong 1 ngày","Thông tin sai lệch cảnh báo tuyệt đối không ăn dứa dứa lúc đói vì enzyme bromelain trong dứa sẽ ăn mòn niêm mạc dạ dày gây loét nặng ngay",unreliable
+"Bạch tuộc có thể đọc suy nghĩ và giao tiếp với người qua ánh mắt","Tin đồn vô căn cứ tuyên bố bạch tuộc có khả năng đọc được suy nghĩ của con người và giao tiếp với người qua ánh mắt đặc biệt của chúng",unreliable
+"Phòng ngủ không có cửa sổ làm tăng nguy cơ ung thư phổi 300 phần trăm","Bài cảnh báo sai lệch cho rằng ngủ trong phòng không có cửa sổ làm tăng nguy cơ ung thư phổi lên 300 phần trăm do thiếu oxy và tích tụ CO2",unreliable
+"Con nhện nhà Việt Nam chứa nọc độc nguy hiểm hơn rắn hổ mang","Tin đồn vô căn cứ tuyên bố các loài nhện nhà thông thường tại Việt Nam chứa nọc độc có thể gây tử vong trong vài giờ nguy hiểm hơn rắn",unreliable
+"Tập thể dục lúc 6 giờ sáng làm tim đập bất thường dẫn đến đột quỵ","Bài viết vô căn cứ tuyên bố tập thể dục vào lúc 6 giờ sáng khi tim chưa hoạt động hoàn toàn sẽ gây rối loạn nhịp tim dẫn đến đột quỵ",unreliable
+"Hít khói nến hương thơm mỗi ngày gây tổn thương phổi vĩnh viễn","Cảnh báo thổi phồng tuyên bố đốt nến hương thơm trong phòng kín mỗi ngày sẽ gây tổn thương phổi nặng không hồi phục tương đương hút thuốc",unreliable
+"Bệnh viện tư nhân cố tình kéo dài điều trị để thu thêm tiền","Thuyết âm mưu vô căn cứ tuyên bố tất cả bệnh viện tư nhân đều có chính sách cố tình kéo dài thời gian điều trị để thu thêm chi phí bệnh nhân",unreliable
+"Lấy máu hiến có thể gây nhiễm HIV từ người khác qua kim tiêm","Tin giả vô căn cứ gây hoảng loạn tuyên bố quá trình hiến máu tại bệnh viện không an toàn và có thể gây nhiễm HIV từ người bệnh khác",unreliable
+"Chất phụ gia trong mì gói gây hỏng thận hoàn toàn sau 10 năm","Bài viết không có cơ sở khoa học tuyên bố ăn mì gói mỗi ngày trong 10 năm sẽ làm hỏng hoàn toàn chức năng thận không hồi phục được",unreliable
+"Điện mặt trời gây ung thư da cho người sống gần tấm pin năng lượng","Thông tin sai lệch tuyên bố tấm pin năng lượng mặt trời phát ra bức xạ có hại gây ung thư da và suy giảm sức khỏe cho người sống gần đó",unreliable
+"Cây phong thủy trong nhà hút hết khí tốt gây vận đen liên miên","Mê tín dị đoan lan truyền cho rằng một số loại cây cảnh đặt trong nhà sẽ hút khí tốt và mang vận đen đến cho gia đình sống trong nhà",unreliable
+"Ứng dụng điện thoại chụp ảnh dự đoán tuổi thọ chính xác 100 phần trăm","Quảng cáo ứng dụng bịa đặt tuyên bố có thể phân tích khuôn mặt trong ảnh để dự đoán chính xác tuổi thọ và ngày tháng năm mất của người dùng",unreliable
+"Tiêm insulin sẽ gây nghiện và phụ thuộc suốt đời không bỏ được","Tin đồn phản khoa học làm hại bệnh nhân tuyên bố tiêm insulin sẽ gây nghiện thuốc và người bệnh sẽ phụ thuộc insulin suốt đời không bỏ được",unreliable
+"Người bị HIV không được phép kết hôn theo luật Việt Nam","Thông tin sai lệch về pháp luật tuyên bố người bị nhiễm HIV không được phép kết hôn theo quy định của Luật Hôn nhân Gia đình Việt Nam",unreliable
+"Ăn mướp đắng lúc đói buổi sáng chữa dứt điểm bệnh thận","Bài thuốc dân gian không có cơ sở khoa học khẳng định ăn mướp đắng lúc đói mỗi sáng sẽ chữa khỏi hoàn toàn bệnh suy thận mãn tính",unreliable
+"Bác sĩ giỏi nhất Việt Nam bị phát hiện bán nội tạng bệnh nhân","Tin giả bịa đặt tuyên bố bác sĩ nổi tiếng tại một bệnh viện lớn bị phát hiện bán nội tạng bệnh nhân ra nước ngoài với giá hàng triệu đô",unreliable
+"Uống cà phê trước khi tập gym sẽ làm tim ngừng đập đột ngột","Thông tin sai lệch tuyên bố uống cà phê trước khi tập thể dục cường độ cao sẽ làm tim đập quá nhanh dẫn đến ngừng tim đột ngột nguy hiểm",unreliable
+"Hạt giống nảy mầm trong dạ dày sau khi ăn dưa hấu nhiều hạt","Tin đồn vô căn cứ tuyên bố nuốt nhiều hạt dưa hấu cùng lúc có thể khiến hạt nảy mầm trong dạ dày gây đau bụng và nguy hiểm tính mạng",unreliable
+"Tự chữa gãy xương bằng nẹp tre và đắp lá nếu không có tiền đi viện","Lời khuyên nguy hiểm và sai lệch hướng dẫn người dân tự nẹp xương gãy bằng thanh tre và đắp lá thuốc dân gian thay vì đến bệnh viện",unreliable
+"Giọng ca nổi tiếng tạo ra nhạc bằng AI và bán hàng triệu bản","Tin giả bịa đặt tuyên bố ca sĩ nổi tiếng thực ra không hát thật mà dùng AI tạo ra giọng hát và bán hàng triệu album giả mạo cho fan hâm mộ",unreliable
+"Massage chân 10 phút mỗi tối chữa khỏi bệnh tiểu đường hoàn toàn","Bài viết vô căn cứ tuyên bố massage lòng bàn chân đúng huyệt mỗi tối 10 phút sẽ chữa khỏi hoàn toàn bệnh tiểu đường type 2 không cần thuốc",unreliable
+"Sữa ong chúa tươi chữa vô sinh cho phụ nữ sau 3 tháng sử dụng","Quảng cáo sữa ong chúa tươi tuyên bố sản phẩm có thể chữa vô sinh cho phụ nữ và giúp thụ thai thành công sau 3 tháng sử dụng đều đặn",unreliable
+"Người đàn ông sống sót sau khi nhịn ăn 1 năm chỉ uống nước lọc","Câu chuyện bịa đặt lan truyền về người đàn ông nhịn ăn hoàn toàn trong 1 năm chỉ uống nước lọc mà vẫn sống khỏe mạnh và tăng cân",unreliable
+"Đèn LED màu đỏ chiếu vào khớp 20 phút chữa viêm khớp dứt điểm","Bài quảng cáo vô căn cứ tuyên bố thiết bị đèn LED đỏ có thể xuyên sâu vào khớp xương và tiêu diệt viêm khớp hoàn toàn chỉ trong 20 phút",unreliable
+"Nước tiểu của chính mình uống vào giải độc tốt nhất cho gan thận","Bài viết nguy hiểm và phản khoa học tuyên bố uống nước tiểu của chính mình mỗi sáng là phương pháp giải độc tự nhiên tốt nhất cho gan thận",unreliable
+"Người bị cao huyết áp tuyệt đối không được uống cà phê và trà xanh","Cảnh báo thổi phồng và sai lệch tuyên bố người bị tăng huyết áp hoàn toàn không được uống bất kỳ lượng cà phê hay trà xanh nào vì sẽ gây tai biến",unreliable
+"Đặt chai nước đầy trước cửa nhà xua đuổi muỗi và côn trùng","Mẹo dân gian không có cơ sở khoa học lan truyền rằng đặt chai nhựa đựng đầy nước trước cửa nhà sẽ xua đuổi và giết chết muỗi hiệu quả",unreliable
+"Chụp X-quang 1 lần tương đương hút 1000 điếu thuốc lá","Thông tin cường điệu hóa tuyên bố một lần chụp X-quang phát ra lượng bức xạ tương đương hút 1000 điếu thuốc lá gây ung thư phổi ngay",unreliable
+"Xà phòng kháng khuẩn giết chết hệ vi sinh vật tốt gây ung thư da","Bài viết thổi phồng tuyên bố sử dụng xà phòng kháng khuẩn hằng ngày sẽ tiêu diệt hệ vi sinh vật có lợi trên da gây ung thư da sau nhiều năm",unreliable
+"Ăn thịt chó giúp tăng cường hệ miễn dịch chống ung thư","Bài viết vô căn cứ tuyên bố thịt chó chứa các dưỡng chất đặc biệt có thể tăng cường hệ miễn dịch và ngăn ngừa sự phát triển của tế bào ung thư",unreliable

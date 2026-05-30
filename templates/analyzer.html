@@ -7,42 +7,27 @@
 
   <!-- Header -->
   <div class="analyzer-header">
-    <div class="section-tag" style="margin-bottom:12px;">🔍 Công cụ phân tích</div>
-    <h1 class="page-title">Kiểm tra độ tin cậy tin tức</h1>
-    <p class="page-subtitle">Nhập tiêu đề và nội dung bài báo, chọn mô hình và nhận kết quả ngay.</p>
+    <div class="section-tag" style="margin-bottom:12px;">⚡ AI Verification Active</div>
+    <h1 class="page-title">Kiểm chứng Tin tức</h1>
+    <p class="page-subtitle">Thẩm định chéo chuyên sâu bằng mô hình Linear SVM kết hợp Trợ lý AI và SQLite Knowledge RAG.</p>
   </div>
 
   <!-- Main Card -->
-  <div class="analyzer-card">
+  <div class="analyzer-card glass-panel-vip">
 
-    <!-- Model Selector -->
+    <!-- Model Info -->
     <div style="margin-bottom:20px;">
-      <div class="form-label" style="margin-bottom:12px;">🤖 Chọn mô hình phân tích</div>
-      <div class="model-selector">
-        <button class="model-btn active" data-model="lr" id="btn-lr">
-          <span class="model-abbr">LR</span>
-          Logistic Regression
-        </button>
-        <button class="model-btn" data-model="nb" id="btn-nb">
-          <span class="model-abbr">NB</span>
-          Naive Bayes
-        </button>
-        <button class="model-btn" data-model="svm" id="btn-svm">
-          <span class="model-abbr">SVM</span>
-          Linear SVM
-        </button>
-        <button class="model-btn" data-model="all" id="btn-all">
-          <span class="model-abbr">ALL</span>
-          So sánh tất cả
-        </button>
+      <div class="form-label" style="margin-bottom:12px;">🤖 Mô hình phân tích</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;background:rgba(78,124,255,0.06);border:1px solid rgba(78,124,255,0.2);border-radius:var(--radius-md);">
+        <span style="font-size:22px;">🧠</span>
+        <div>
+          <div style="font-weight:700;color:var(--text-white);font-size:15px;">Linear SVM</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Mô hình Support Vector Machine tuyến tính — hiệu quả cao cho phân loại văn bản tiếng Việt</div>
+        </div>
       </div>
     </div>
 
-      <div class="form-label" style="margin-bottom:12px;">🔗 Điền nội dung tự động từ đường dẫn (Báo thật)</div>
-      <div style="display:flex;gap:10px;margin-bottom:28px;">
-        <input type="text" id="url-input" class="form-input" style="flex:1;" placeholder="Dán link bài báo (VNExpress, Thanh Niên...) vào đây">
-        <button type="button" class="btn btn-ghost" id="btn-fetch-url" style="white-space:nowrap;">📥 Tải Báo</button>
-      </div>
+
 
       <!-- Quick Fill -->
       <div class="quick-fill">
@@ -52,8 +37,54 @@
       <button class="quick-fill-btn" onclick="clearForm()" id="btn-clear">🗑️ Xoá nội dung</button>
     </div>
 
+    <!-- ═══ IMAGE PASTE ZONE ═══ -->
+    <div class="img-paste-section" id="img-paste-section">
+      <div class="img-paste-label">
+        <span>🖼️</span> Xác thực thông tin từ Ảnh chụp màn hình
+        <span class="img-paste-badge">AI Vision</span>
+      </div>
+
+      <div class="img-paste-zone" id="img-paste-zone" tabindex="0">
+        <div class="img-paste-icon">📋</div>
+        <div class="img-paste-title">Dán ảnh vào đây (Ctrl+V)</div>
+        <div class="img-paste-sub">Hoặc kéo thả ảnh / click để chọn file</div>
+        <input type="file" id="img-file-input" accept="image/*" style="display:none;">
+      </div>
+
+      <!-- Preview -->
+      <div class="img-preview-wrap" id="img-preview-wrap" style="display:none;">
+        <img id="img-preview" src="" alt="Ảnh xác thực" class="img-preview-thumb">
+        <button type="button" class="img-remove-btn" id="img-remove-btn" title="Xóa ảnh">✖</button>
+      </div>
+
+      <!-- Extract Button -->
+      <div id="img-extract-actions" style="display:none; margin-top:14px;">
+        <button type="button" class="btn btn-primary" id="btn-extract-image" style="width:100%;">
+          <span id="extract-btn-icon">🔍</span> Trích xuất văn bản từ ảnh bằng OCR
+        </button>
+        <p style="font-size:12px; color:var(--text-muted); margin-top:8px; text-align:center;">
+          🤖 Sử dụng <strong style="color:var(--primary-light);">EasyOCR Engine</strong> — Trích xuất cục bộ, không cần API Key
+        </p>
+      </div>
+
+      <!-- Extract Result notice -->
+      <div class="img-extract-result" id="img-extract-result" style="display:none;">
+        <span class="img-extract-ok">✅ Đã trích xuất xong! Nội dung đã được điền vào form bên dưới.</span>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-reextract" style="margin-left:12px; font-size:12px;">🔄 Trích xuất lại</button>
+      </div>
+    </div>
+
     <!-- Form -->
-    <form id="analyze-form" novalidate>
+    <form id="analyze-form" method="POST" action="/check" novalidate>
+      <input type="hidden" name="model" id="model-hidden-input" value="svm">
+
+      <div class="form-label" style="margin-bottom:12px;">🔗 Điền nội dung tự động từ đường dẫn (Báo thật)</div>
+      <div style="display:flex;gap:10px;margin-bottom:28px;">
+        <input type="text" id="url-input" name="url" class="form-input" style="flex:1;" placeholder="Dán link bài báo (VNExpress, Thanh Niên...) vào đây">
+        <button type="button" class="btn btn-ghost" id="btn-fetch-url" style="white-space:nowrap;">📥 Tải Báo</button>
+      </div>
+
+
       <div class="form-group">
         <label class="form-label" for="title">📰 Tiêu đề tin tức</label>
         <input
@@ -92,7 +123,7 @@
       <h3 class="card-title" style="font-size:15px;margin-bottom:6px;">Mẹo sử dụng</h3>
       <p class="card-desc" style="font-size:13px;">
         Nhập cả tiêu đề lẫn nội dung để có kết quả chính xác hơn. 
-        Chọn "So sánh tất cả" để xem ý kiến của 3 mô hình.
+        Hệ thống sử dụng mô hình Linear SVM để phân tích.
       </p>
     </div>
     <div class="card" style="padding:20px 22px;">
@@ -117,5 +148,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/analyzer.js') }}?v=1"></script>
+<script src="{{ url_for('static', filename='js/analyzer.js') }}?v=3"></script>
 {% endblock %}

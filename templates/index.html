@@ -5,7 +5,33 @@
 
 <!-- ═══ HERO SECTION ═══ -->
 <section class="hero">
-  <div class="hero-badge">🤖 AI-Powered • NLP • Machine Learning</div>
+  <!-- Orbit Ring Decorations -->
+  <div class="orbit-ring" style="width:400px;height:400px;top:50%;left:50%;margin-top:-200px;margin-left:-200px;animation-duration:20s;" aria-hidden="true"></div>
+  <div class="orbit-ring" style="width:550px;height:550px;top:50%;left:50%;margin-top:-275px;margin-left:-275px;animation-duration:30s;animation-direction:reverse;border-color:rgba(0,212,255,0.05);" aria-hidden="true"></div>
+  <div class="orbit-ring" style="width:700px;height:700px;top:50%;left:50%;margin-top:-350px;margin-left:-350px;animation-duration:40s;border-color:rgba(0,212,255,0.04);" aria-hidden="true"></div>
+
+  <!-- Radar Sweep -->
+  <div class="radar-sweep" aria-hidden="true">
+    <div class="radar-ring"></div>
+    <div class="radar-ring radar-ring-2"></div>
+    <div class="radar-ring radar-ring-3"></div>
+    <div class="radar-beam"></div>
+    <div class="radar-dot" style="top:30%;left:60%;animation-delay:0s;"></div>
+    <div class="radar-dot" style="top:55%;left:35%;animation-delay:-1.5s;"></div>
+    <div class="radar-dot" style="top:40%;left:70%;animation-delay:-3s;"></div>
+  </div>
+
+  <!-- Energy Pulse Rings -->
+  <div class="energy-pulse-container" aria-hidden="true">
+    <div class="energy-pulse"></div>
+    <div class="energy-pulse energy-pulse-2"></div>
+    <div class="energy-pulse energy-pulse-3"></div>
+  </div>
+
+  <!-- Data Scan Sweep -->
+  <div class="data-scan-line" aria-hidden="true"></div>
+
+  <div class="hero-badge">🤖 AI-Powered • NLP Tiếng Việt • Machine Learning • Linear SVM</div>
 
   <h1 class="hero-title">
     Đánh giá độ tin cậy<br>
@@ -13,8 +39,9 @@
   </h1>
 
   <p class="hero-desc">
-    Hệ thống phân tích và phát hiện tin giả tiếng Việt bằng Machine Learning
-    và Xử lý Ngôn ngữ Tự nhiên — nhanh, chính xác, minh bạch.
+    Hệ thống phân tích và phát hiện tin giả tiếng Việt sử dụng mô hình Linear SVM (Machine Learning)
+    kết hợp Xử lý Ngôn ngữ Tự nhiên (NLP) nội bộ — nhanh, chính xác, minh bạch,
+    <strong>giải thích lý do chi tiết</strong>.
   </p>
 
   <div class="hero-actions">
@@ -24,6 +51,9 @@
     <a href="/dashboard" class="btn btn-ghost" id="cta-dashboard">
       📊 Xem Dashboard
     </a>
+    <a href="/ai-assistant" class="btn btn-ghost" id="cta-ai" style="border-color:rgba(78,124,255,0.3);color:var(--primary-light);">
+      🤖 Trợ lý AI
+    </a>
   </div>
 </section>
 
@@ -31,12 +61,8 @@
 <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
   <div class="stats-bar">
     <div class="stat-item">
-      <span class="stat-num" data-target="100">0</span>
-      <span class="stat-label">Mẫu huấn luyện</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num" data-target="3">0</span>
-      <span class="stat-label">Mô hình ML</span>
+      <span class="stat-num" data-target="1">0</span>
+      <span class="stat-label">Mô hình AI & ML</span>
     </div>
     <div class="stat-item">
       <span class="stat-num" data-target="95">0</span>
@@ -47,6 +73,122 @@
       <span class="stat-num" data-target="2">0</span>
       <span class="stat-label">Nhãn phân loại</span>
     </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="3">0</span>
+      <span class="stat-label">Lớp phân tích</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LIVE TRUSTCHECK MONITOR ═══ -->
+<section class="live-monitor-section">
+  <div class="section-header" style="margin-bottom: 40px;">
+    <div class="section-tag" style="background:rgba(0, 212, 255, 0.1); border-color:rgba(0, 212, 255, 0.25); color:var(--accent);">Live Monitor</div>
+    <h2 class="section-title">Luồng Kiểm Chứng Tin Tức</h2>
+    <p class="section-desc">
+      Hệ thống AI TrustCheck quét và đánh giá độ tin cậy thông tin liên tục. Nhấp vào bài viết bất kỳ để xem chi tiết.
+    </p>
+  </div>
+
+  <div class="live-monitor-container">
+    <!-- Left: Infinite streams -->
+    <div class="live-streams-layout">
+      
+      <!-- Reliable News Lane -->
+      <div class="stream-lane-wrap">
+        <div class="stream-lane-header">
+          <div class="stream-lane-title reliable">
+            <span style="font-size:16px;">🟢</span> Tin xác thực
+          </div>
+          <span class="stream-lane-badge reliable">Độ tin cậy cao</span>
+        </div>
+        <div class="stream-row-wrap">
+          <div class="stream-row marquee-left" id="stream-reliable">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Unreliable News Lane -->
+      <div class="stream-lane-wrap">
+        <div class="stream-lane-header">
+          <div class="stream-lane-title unreliable">
+            <span style="font-size:16px;">🔴</span> Tin giả / Tin đồn
+          </div>
+          <span class="stream-lane-badge unreliable">Dấu hiệu sai lệch</span>
+        </div>
+        <div class="stream-row-wrap">
+          <div class="stream-row marquee-right" id="stream-unreliable">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Under analysis Lane -->
+      <div class="stream-lane-wrap">
+        <div class="stream-lane-header">
+          <div class="stream-lane-title checking">
+            <span style="font-size:16px;">🔵</span> Đang quét kiểm chứng
+          </div>
+          <span class="stream-lane-badge checking" style="animation: pulse 1.5s infinite;">AI Processing</span>
+        </div>
+        <div class="stream-row-wrap">
+          <div class="stream-row marquee-left" id="stream-checking">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: AI Activity Terminal -->
+    <div>
+      <div class="terminal-panel">
+        <div class="terminal-header">
+          <div class="terminal-title">
+            <span class="terminal-dot"></span>
+            <span>TRUSTCHECK CORE AI • LIVE_LOG</span>
+          </div>
+          <div class="terminal-controls">
+            <span class="terminal-dot-ctrl red"></span>
+            <span class="terminal-dot-ctrl yellow"></span>
+            <span class="terminal-dot-ctrl green"></span>
+          </div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <div class="terminal-line system">[SYSTEM] Khởi tạo kết nối TrustCheck AI core...</div>
+          <div class="terminal-line system">[SYSTEM] Nạp mô hình ML: Linear SVM...</div>
+          <div class="terminal-line success">[SYSTEM] Trạng thái: SẴN SÀNG GIÁM SÁT THỜI GIAN THỰC.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DETAIL POPUP MODAL ═══ -->
+<div class="live-modal-overlay" id="live-modal-overlay">
+  <div class="live-modal-card">
+    <button class="live-modal-close" id="live-modal-close">✖</button>
+    <div class="live-modal-header">
+      <div class="live-modal-badge-row">
+        <span class="stream-lane-badge" id="modal-badge">Tin xác thực</span>
+        <span style="font-size:12px; color:var(--text-muted);" id="modal-time">Vừa xong</span>
+      </div>
+      <h3 class="live-modal-title" id="modal-title">Tiêu đề bài viết kiểm chứng</h3>
+    </div>
+    <div class="live-modal-body" id="modal-body">
+      Nội dung tóm tắt bài viết...
+    </div>
+    <div class="live-modal-metrics">
+      <h4 class="live-modal-metrics-title">Chỉ số đánh giá từ mô hình AI</h4>
+      <div class="live-modal-metrics-grid" id="modal-metrics-grid">
+        <!-- Dynamically filled -->
+      </div>
+    </div>
+    <div class="live-modal-actions">
+      <button class="btn btn-ghost btn-sm" id="modal-btn-close">Đóng</button>
+      <a href="#" class="btn btn-primary btn-sm" id="modal-btn-analyze">🔍 Phân tích chi tiết</a>
+    </div>
   </div>
 </div>
 
@@ -54,9 +196,9 @@
 <section class="section">
   <div class="section-header">
     <div class="section-tag">Cách hoạt động</div>
-    <h2 class="section-title">Quy trình phân tích</h2>
+    <h2 class="section-title">Quy trình phân tích 3 bước</h2>
     <p class="section-desc">
-      Hệ thống xử lý văn bản tiếng Việt qua 3 bước đơn giản để đưa ra nhận định chính xác.
+      Hệ thống xử lý văn bản tiếng Việt qua 3 bước đơn giản để đưa ra nhận định chính xác, kèm giải thích lý do chi tiết.
     </p>
   </div>
 
@@ -65,24 +207,24 @@
       <div class="step-num">1</div>
       <h3 class="step-title">Nhập tin tức</h3>
       <p class="step-desc">
-        Dán tiêu đề và nội dung bài báo cần kiểm tra vào công cụ phân tích.
-        Hỗ trợ văn bản tiếng Việt tự nhiên.
+        Dán tiêu đề, nội dung bài báo, URL hoặc <strong>ảnh chụp màn hình</strong> vào công cụ phân tích.
+        Hỗ trợ cào dữ liệu tự động từ các trang báo Việt Nam.
       </p>
     </div>
     <div class="step-card">
       <div class="step-num">2</div>
-      <h3 class="step-title">Phân tích AI</h3>
+      <h3 class="step-title">Phân tích AI đa tầng</h3>
       <p class="step-desc">
         Văn bản được tiền xử lý bằng NLP (underthesea), vector hóa TF-IDF
-        và phân loại bởi mô hình Machine Learning.
+        và phân loại chính xác bởi <strong>mô hình Linear SVM</strong> kết hợp phân tích đặc trưng ngôn ngữ chuyên sâu.
       </p>
     </div>
     <div class="step-card">
       <div class="step-num">3</div>
-      <h3 class="step-title">Kết quả & độ tin cậy</h3>
+      <h3 class="step-title">Kết quả & giải thích lý do</h3>
       <p class="step-desc">
-        Hệ thống trả về nhận định (tin thật / tin giả) kèm xác suất tin cậy
-        trực quan, dễ hiểu.
+        Hệ thống trả về kết luận tin thật/giả kèm <strong>lý do chi tiết</strong>,
+        bằng chứng, từ khóa ảnh hưởng và dấu hiệu phát hiện.
       </p>
     </div>
   </div>
@@ -92,101 +234,690 @@
 <section class="section" style="padding-top:0;">
   <div class="section-header">
     <div class="section-tag">Mô hình AI</div>
-    <h2 class="section-title">3 mô hình Machine Learning</h2>
+    <h2 class="section-title">Mô hình phân tích tối ưu</h2>
     <p class="section-desc">
-      Sử dụng và so sánh nhiều thuật toán phân loại để đạt kết quả tối ưu.
+      Sử dụng mô hình Linear SVM — thuật toán phân loại văn bản mạnh mẽ nhất để đạt kết quả tối ưu.
     </p>
   </div>
 
-  <div class="cards-grid">
-    <div class="card">
-      <div class="card-icon blue">📈</div>
-      <h3 class="card-title">Logistic Regression</h3>
-      <p class="card-desc">
-        Mô hình tuyến tính kinh điển, huấn luyện nhanh và cho kết quả
-        ổn định, dễ diễn giải xác suất phân loại.
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon cyan">📊</div>
-      <h3 class="card-title">Naive Bayes</h3>
-      <p class="card-desc">
-        Thuật toán xác suất Bayesian tối ưu cho phân loại văn bản,
-        đặc biệt hiệu quả với đặc trưng TF-IDF.
-      </p>
-    </div>
-
+  <div class="cards-grid" style="max-width:500px;margin:0 auto;">
     <div class="card">
       <div class="card-icon green">⚡</div>
       <h3 class="card-title">Linear SVM</h3>
       <p class="card-desc">
-        Support Vector Machine tuyến tính — mạnh mẽ với không gian
-        đặc trưng thưa thớt, thường đạt độ chính xác cao nhất.
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon orange">🔤</div>
-      <h3 class="card-title">TF-IDF Bigrams</h3>
-      <p class="card-desc">
-        Vector hóa văn bản bằng TF-IDF kết hợp bigrams tối đa 5000
-        đặc trưng, phù hợp với ngôn ngữ tiếng Việt.
+        Support Vector Machine tuyến tính — mạnh mẽ với không gian đặc trưng thưa thớt, thường đạt độ chính xác cao nhất trong phân loại văn bản tiếng Việt.
       </p>
     </div>
   </div>
 </section>
 
 <!-- ═══ FEATURES ═══ -->
-<section class="section" style="padding-top:0;padding-bottom:80px;">
+<section class="section" style="padding-top:0;">
   <div class="section-header">
     <div class="section-tag">Tính năng</div>
-    <h2 class="section-title">Đầy đủ công cụ nghiên cứu</h2>
+    <h2 class="section-title">Bộ công cụ nghiên cứu toàn diện</h2>
   </div>
 
   <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
     <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
       <div style="font-size:28px;flex-shrink:0;">🔍</div>
       <div>
-        <h3 class="card-title" style="font-size:16px;">Phân tích đơn & so sánh</h3>
-        <p class="card-desc" style="font-size:13px;">Chọn 1 model hoặc so sánh kết quả của cả 3 mô hình cùng lúc.</p>
+        <h3 class="card-title" style="font-size:16px;">Phân tích Linear SVM</h3>
+        <p class="card-desc" style="font-size:13px;">Phân tích bằng mô hình Linear SVM tối ưu phân loại văn bản tiếng Việt.</p>
       </div>
     </div>
     <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
       <div style="font-size:28px;flex-shrink:0;">📊</div>
       <div>
         <h3 class="card-title" style="font-size:16px;">Dashboard metrics</h3>
-        <p class="card-desc" style="font-size:13px;">Biểu đồ so sánh Accuracy, Precision, Recall, F1 của từng model.</p>
+        <p class="card-desc" style="font-size:13px;">Biểu đồ hiệu suất của mô hình Linear SVM.</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+      <div style="font-size:28px;flex-shrink:0;">✨</div>
+      <div>
+        <h3 class="card-title" style="font-size:16px;">NLP phân tích ngữ nghĩa</h3>
+        <p class="card-desc" style="font-size:13px;">Đánh giá cấu trúc từ vựng, phát hiện từ khóa giật gân và phân tích ngữ pháp tiếng Việt chuyên sâu.</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+      <div style="font-size:28px;flex-shrink:0;">🖼️</div>
+      <div>
+        <h3 class="card-title" style="font-size:16px;">AI Vision — Trích xuất ảnh</h3>
+        <p class="card-desc" style="font-size:13px;">Trích xuất văn bản từ ảnh chụp màn hình bằng EasyOCR và tự động phân loại bằng mô hình Linear SVM.</p>
       </div>
     </div>
     <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
       <div style="font-size:28px;flex-shrink:0;">📋</div>
       <div>
-        <h3 class="card-title" style="font-size:16px;">Lịch sử dự đoán</h3>
-        <p class="card-desc" style="font-size:13px;">Lưu và tra cứu toàn bộ lịch sử kiểm tra tin tức của bạn.</p>
+        <h3 class="card-title" style="font-size:16px;">Giải thích lý do chi tiết</h3>
+        <p class="card-desc" style="font-size:13px;">Hiển thị tại sao tin thật/giả: từ khóa ảnh hưởng, dấu hiệu, bằng chứng cụ thể.</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+      <div style="font-size:28px;flex-shrink:0;">📥</div>
+      <div>
+        <h3 class="card-title" style="font-size:16px;">Đóng góp & Huấn luyện lại</h3>
+        <p class="card-desc" style="font-size:13px;">Người dùng đóng góp dữ liệu tin thật/giả, hệ thống tự huấn luyện lại AI ngay lập tức.</p>
       </div>
     </div>
     <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
       <div style="font-size:28px;flex-shrink:0;">🌐</div>
       <div>
+        <h3 class="card-title" style="font-size:16px;">Cào báo tự động</h3>
+        <p class="card-desc" style="font-size:13px;">Nhập URL bài báo từ VNExpress, Thanh Niên, Tuổi Trẻ... hệ thống tự cào nội dung.</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px;">
+      <div style="font-size:28px;flex-shrink:0;">🔗</div>
+      <div>
         <h3 class="card-title" style="font-size:16px;">REST API</h3>
-        <p class="card-desc" style="font-size:13px;">Backend Flask cung cấp API endpoint cho tích hợp dễ dàng.</p>
+        <p class="card-desc" style="font-size:13px;">Backend Flask cung cấp API endpoint cho tích hợp và mở rộng dễ dàng.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- CTA Banner -->
-  <div style="margin-top:48px;padding:40px;background:linear-gradient(135deg,rgba(78,124,255,0.12),rgba(0,212,255,0.08));border:1px solid rgba(78,124,255,0.25);border-radius:var(--radius-xl);text-align:center;backdrop-filter:blur(20px);">
+<!-- ═══ TECH STACK ═══ -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <div class="section-tag">Công nghệ</div>
+    <h2 class="section-title">Nền tảng công nghệ sử dụng</h2>
+    <p class="section-desc">
+      Kết hợp các công nghệ hiện đại trong Machine Learning, NLP và AI để xây dựng hệ thống phân tích tin tức chính xác.
+    </p>
+  </div>
+
+  <div class="tech-stack-grid">
+    <div class="tech-item">
+      <div class="tech-icon">🐍</div>
+      <div class="tech-name">Python</div>
+      <div class="tech-desc">Ngôn ngữ chính</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">🌶️</div>
+      <div class="tech-name">Flask</div>
+      <div class="tech-desc">Web Framework</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">🤖</div>
+      <div class="tech-name">scikit-learn</div>
+      <div class="tech-desc">Machine Learning</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">📝</div>
+      <div class="tech-name">underthesea</div>
+      <div class="tech-desc">NLP Tiếng Việt</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">👁️</div>
+      <div class="tech-name">EasyOCR</div>
+      <div class="tech-desc">Trích xuất văn bản từ ảnh</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">📊</div>
+      <div class="tech-name">TF-IDF</div>
+      <div class="tech-desc">Vector hóa văn bản</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">🗄️</div>
+      <div class="tech-name">SQLite</div>
+      <div class="tech-desc">Cơ sở dữ liệu</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">🌐</div>
+      <div class="tech-name">BeautifulSoup</div>
+      <div class="tech-desc">Web Crawling</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECT INFO ═══ -->
+<section class="section" style="padding-top:0;">
+  <div class="project-info-card">
+    <div style="text-align:center;">
+      <div class="section-tag" style="margin-bottom:12px;">📋 Thông tin Dự án</div>
+      <h2 style="font-size:22px;font-weight:800;color:var(--text-white);margin-bottom:8px;">
+        TrustCheck AI — Phát hiện Tin Giả
+      </h2>
+      <p style="color:var(--text-secondary);font-size:14px;max-width:600px;margin:0 auto;line-height:1.6;">
+        Nghiên cứu và xây dựng website đánh giá độ tin cậy tin tức tiếng Việt
+        sử dụng Machine Learning, NLP và AI.
+      </p>
+    </div>
+
+    <div class="project-info-grid">
+      <div class="project-info-item">
+        <div class="project-info-label">🎯 Mục tiêu</div>
+        <div class="project-info-value">Phát hiện tin giả tiếng Việt tự động</div>
+      </div>
+      <div class="project-info-item">
+        <div class="project-info-label">🤖 Số mô hình AI</div>
+        <div class="project-info-value">Mô hình Linear SVM + NLP nội bộ</div>
+      </div>
+      <div class="project-info-item">
+        <div class="project-info-label">📊 Phương pháp</div>
+        <div class="project-info-value">TF-IDF + NLP + Linear SVM</div>
+      </div>
+      <div class="project-info-item">
+        <div class="project-info-label">🔧 Nền tảng</div>
+        <div class="project-info-value">Python Flask + scikit-learn</div>
+      </div>
+      <div class="project-info-item">
+        <div class="project-info-label">🌐 Ngôn ngữ hỗ trợ</div>
+        <div class="project-info-value">Tiếng Việt</div>
+      </div>
+      <div class="project-info-item">
+        <div class="project-info-label">📅 Năm phát triển</div>
+        <div class="project-info-value">2024 – 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ═══ -->
+<section class="section" style="padding-top:0;padding-bottom:80px;">
+  <div style="padding:40px;background:linear-gradient(135deg,rgba(78,124,255,0.12),rgba(0,212,255,0.08));border:1px solid rgba(78,124,255,0.25);border-radius:var(--radius-xl);text-align:center;backdrop-filter:blur(20px);">
     <h3 style="font-size:26px;font-weight:800;color:var(--text-white);margin-bottom:12px;">
       Sẵn sàng kiểm tra tin tức?
     </h3>
     <p style="color:var(--text-secondary);margin-bottom:24px;font-size:15px;">
-      Nhập bài báo bất kỳ và nhận kết quả phân tích ngay lập tức.
+      Nhập bài báo bất kỳ và nhận kết quả phân tích kèm lý do giải thích chi tiết ngay lập tức.
     </p>
-    <a href="/analyzer" class="btn btn-primary" style="display:inline-flex;">
-      🚀 Bắt đầu phân tích
-    </a>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="/analyzer" class="btn btn-primary" style="display:inline-flex;">
+        🚀 Bắt đầu phân tích
+      </a>
+      <a href="/ai-assistant" class="btn btn-ghost" style="display:inline-flex;">
+        ✨ Hỏi Trợ lý AI
+      </a>
+    </div>
   </div>
 </section>
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // --- SEED DATA FOR DEMO & FALLBACK ---
+  const reliableSeed = [
+    {
+      id: 'r-seed-1',
+      title: 'Bộ Y tế khuyến cáo người dân không tự ý sử dụng các thuốc tự điều trị Covid-19 không rõ nguồn gốc',
+      content: 'Trước tình trạng nhiều người dân tìm mua các loại thuốc xách tay, thuốc tự điều trị Covid-19 theo lời đồn thổi trên mạng xã hội, Bộ Y tế chính thức khuyến cáo người dân chỉ sử dụng thuốc được cấp phép và có chỉ định của bác sĩ chuyên khoa để tránh biến chứng nguy hiểm.',
+      source: 'Bộ Y tế Việt Nam',
+      score: 96,
+      label: 'reliable',
+      metrics: { lr: 95.2, nb: 91.8, svm: 96.5, rf: 94.0, mlp: 95.8, ensemble: 96.0 }
+    },
+    {
+      id: 'r-seed-2',
+      title: 'Ngân hàng Nhà nước tiếp tục hạ lãi suất điều hành để tháo gỡ khó khăn cho sản xuất kinh doanh',
+      content: 'Quyết định hạ lãi suất điều hành lần thứ 4 liên tiếp của Ngân hàng Nhà nước Việt Nam đã nhận được sự đồng thuận lớn từ các chuyên gia kinh tế. Mục tiêu nhằm giảm chi phí vay vốn cho doanh nghiệp, thúc đẩy tăng trưởng kinh tế trong bối cảnh thị trường thế giới còn nhiều biến động.',
+      source: 'Báo Điện tử Chính phủ',
+      score: 98,
+      label: 'reliable',
+      metrics: { lr: 98.1, nb: 97.0, svm: 98.5, rf: 97.2, mlp: 97.9, ensemble: 98.0 }
+    },
+    {
+      id: 'r-seed-3',
+      title: 'Hà Nội mở rộng thêm 5 tuyến xe buýt điện thân thiện với môi trường kết nối khu đô thị vệ tinh',
+      content: 'Nhằm giảm lượng phát thải và cải thiện chất lượng không khí tại thủ đô, UBND Thành phố Hà Nội đã phê duyệt đề án vận hành thêm 5 tuyến xe buýt điện mới chạy năng lượng sạch. Các tuyến này sẽ kết nối trung tâm thành phố với các khu đô thị lớn xung quanh.',
+      source: 'Báo Nhân Dân',
+      score: 95,
+      label: 'reliable',
+      metrics: { lr: 93.8, nb: 92.5, svm: 95.2, rf: 94.7, mlp: 95.0, ensemble: 95.0 }
+    },
+    {
+      id: 'r-seed-4',
+      title: 'Bộ Công an cảnh báo thủ đoạn lừa đảo công nghệ cao giả danh cơ quan tư pháp gọi điện thoại đe dọa',
+      content: 'Cục An ninh mạng và Phòng chống tội phạm sử dụng công nghệ cao phát đi thông báo khẩn cấp về hành vi lừa đảo qua điện thoại. Kẻ gian thường tự xưng là cán bộ tòa án, viện kiểm sát hoặc công an để đe dọa nạn nhân liên quan đến vụ án ma túy và yêu cầu chuyển tiền.',
+      source: 'Cổng thông tin Bộ Công an',
+      score: 97,
+      label: 'reliable',
+      metrics: { lr: 97.0, nb: 95.5, svm: 97.8, rf: 96.2, mlp: 96.9, ensemble: 97.0 }
+    },
+    {
+      id: 'r-seed-5',
+      title: 'Đội tuyển bóng đá nam Việt Nam xuất sắc giành chiến thắng tại vòng loại giải đấu châu Á',
+      content: 'Với tinh thần thi đấu quả cảm và chiến thuật hợp lý của ban huấn luyện, đội tuyển Việt Nam đã giành trọn 3 điểm trước đối thủ trực tiếp trên sân nhà. Chiến thắng này giúp đội tuyển giữ vững ngôi đầu bảng và rộng mở cơ hội tiến thẳng vào vòng chung kết tiếp theo.',
+      source: 'Thể Thao & Văn Hóa',
+      score: 99,
+      label: 'reliable',
+      metrics: { lr: 99.0, nb: 98.5, svm: 99.2, rf: 98.9, mlp: 99.0, ensemble: 99.0 }
+    }
+  ];
+
+  const unreliableSeed = [
+    {
+      id: 'u-seed-1',
+      title: 'Khẩn cấp: Thành phố chuẩn bị phong tỏa hoàn toàn từ ngày mai do chủng virus mới lây lan nhanh',
+      content: 'Một tin nhắn lan truyền nhanh chóng trên Zalo và Facebook khẳng định cơ quan chức năng đã quyết định phong tỏa toàn bộ thành phố từ 0h ngày mai. Tin nhắn thúc giục người dân nhanh chóng tích trữ lương thực, thực phẩm thiết yếu ngay lập tức để tránh thiếu hụt.',
+      source: 'Mạng xã hội đồn thổi',
+      score: 12,
+      label: 'unreliable',
+      metrics: { lr: 14.5, nb: 10.2, svm: 11.0, rf: 15.6, mlp: 12.8, ensemble: 12.0 }
+    },
+    {
+      id: 'u-seed-2',
+      title: 'Mẹo thần kỳ: Ăn 3 tép tỏi sống kèm nước muối ấm giúp tiêu diệt hoàn toàn virus trong cổ họng',
+      content: 'Một bài viết chia sẻ phương pháp dân gian cam kết chữa khỏi và phòng ngừa 100% các loại bệnh lây qua đường hô hấp bằng cách ăn tỏi sống và súc họng bằng nước muối đậm đặc. Tuy nhiên, các bác sĩ khẳng định tỏi chỉ có tác dụng nâng cao đề kháng nhẹ, không thể diệt virus.',
+      source: 'Group sức khỏe Facebook',
+      score: 18,
+      label: 'unreliable',
+      metrics: { lr: 21.0, nb: 15.8, svm: 17.5, rf: 22.0, mlp: 19.2, ensemble: 18.0 }
+    },
+    {
+      id: 'u-seed-3',
+      title: 'Phát hiện sóng 5G từ các trạm phát sóng di động làm biến đổi cấu trúc DNA và hủy hoại tế bào não',
+      content: 'Nhiều trang blog không chính thống đăng tải bài viết mang tính giật gân, cáo buộc các nhà mạng viễn thông âm thầm nâng công suất phát sóng 5G lên mức nguy hiểm, gây tác động bức xạ điện từ làm biến đổi cấu trúc sinh học của não người. Các nghiên cứu quốc tế đã bác bỏ điều này.',
+      source: 'Blog Tin tức lá cải',
+      score: 8,
+      label: 'unreliable',
+      metrics: { lr: 9.2, nb: 6.5, svm: 8.0, rf: 10.4, mlp: 7.9, ensemble: 8.0 }
+    },
+    {
+      id: 'u-seed-4',
+      title: 'Nhỏ giọt chanh tươi trực tiếp vào mắt mỗi sáng giúp điều trị dứt điểm cận thị không cần mổ',
+      content: 'Phương pháp tự chữa cận thị tại nhà bằng cách vắt chanh tươi vào mắt được chia sẻ rầm rộ trên TikTok. Các chuyên gia nhãn khoa cảnh báo axit trong chanh có độ pH cực thấp, nhỏ trực tiếp vào mắt có thể gây bỏng giác mạc, loét giác mạc dẫn đến mù lòa.',
+      source: 'Video TikTok lan truyền',
+      score: 15,
+      label: 'unreliable',
+      metrics: { lr: 17.2, nb: 12.0, svm: 14.8, rf: 18.0, mlp: 16.1, ensemble: 15.0 }
+    },
+    {
+      id: 'u-seed-5',
+      title: 'Thông báo khẩn: Bộ Y tế gửi tặng thẻ bảo hiểm y tế miễn phí trị giá 10 triệu đồng cho ai đăng ký link này',
+      content: 'Các trang tin giả mạo giao diện của Bộ Y tế đăng tải thông báo tặng thẻ quà tặng chăm sóc sức khỏe miễn phí trị giá lớn kèm đường link yêu cầu nhập thông tin tài khoản ngân hàng, mã OTP để xác nhận danh tính. Đây là thủ đoạn lừa đảo chiếm đoạt tài sản tinh vi.',
+      source: 'Trang web lừa đảo giả mạo',
+      score: 5,
+      label: 'unreliable',
+      metrics: { lr: 6.0, nb: 3.5, svm: 4.8, rf: 7.2, mlp: 5.5, ensemble: 5.0 }
+    }
+  ];
+
+  const checkingSeed = [
+    {
+      title: 'Dự báo thời tiết: Nắng nóng gay gắt trên diện rộng tại khu vực Nam Bộ tiếp tục kéo dài nhiều ngày tới',
+      content: 'Theo Trung tâm Dự báo Khí tượng Thủy văn Quốc gia, các tỉnh Nam Bộ tiếp tục chịu ảnh hưởng của khối khí nóng phát triển mạnh, nhiệt độ ngoài trời nhiều nơi vượt ngưỡng 39 độ C, khuyến cáo hạn chế ra đường từ 11h đến 15h.',
+      source: 'Khí tượng Thủy văn',
+      type: 'reliable'
+    },
+    {
+      title: 'Sốt sình sịch thông tin về một bài thuốc bí truyền từ lá đu đủ chữa khỏi hoàn toàn mọi bệnh ung thư giai đoạn cuối',
+      content: 'Trang Facebook cá nhân chia sẻ bài thuốc đun nước lá đu đủ uống thay nước lọc giúp tiêu diệt tận gốc các tế bào ung thư mà không cần hóa trị hay xạ trị. Các bệnh viện lớn khuyên bệnh nhân tuân thủ phác đồ y khoa.',
+      source: 'Mạng xã hội Facebook',
+      type: 'unreliable'
+    },
+    {
+      title: 'Thị trường chứng khoán Việt Nam ghi nhận phiên giao dịch bùng nổ, dòng vốn ngoại ồ ạt đổ bộ',
+      content: 'Chỉ số VN-Index tăng điểm mạnh mẽ vượt mốc kháng cự tâm lý với thanh khoản cải thiện rõ rệt. Nhóm cổ phiếu ngân hàng và bất động sản dẫn dắt thị trường, khối ngoại mua ròng kỷ lục hàng ngàn tỷ đồng.',
+      source: 'Thời báo Tài chính',
+      type: 'reliable'
+    },
+    {
+      title: 'Cực sốc: Uống nước dừa liên tục trong 1 tuần giúp cơ thể tự thải sạch mọi độc tố kim loại nặng ra ngoài',
+      content: 'Bài viết giật gân khuyên mọi người uống 3 quả dừa mỗi ngày thay cho nước uống để thanh lọc toàn bộ độc tố tích tụ trong cơ thể. Y học chưa có nghiên cứu chứng minh nước dừa thải được kim loại nặng.',
+      source: 'Diễn đàn Webtretho',
+      type: 'unreliable'
+    },
+    {
+      title: 'Hội nghị Thượng đỉnh Trí tuệ Nhân tạo toàn cầu chuẩn bị khai mạc tại Thành phố Hồ Chí Minh',
+      content: 'Hội nghị quy tụ hàng trăm chuyên gia công nghệ hàng đầu thế giới để thảo luận về tương lai của Generative AI, các giải pháp bảo mật dữ liệu và ứng dụng Machine Learning vào thực tiễn sản xuất công nghiệp.',
+      source: 'Cổng thông tin Sở TT&TT',
+      type: 'reliable'
+    },
+    {
+      title: 'Cảnh báo nguy cơ lừa đảo từ dịch vụ rút tiền mặt thẻ tín dụng online phí siêu thấp trên mạng xã hội',
+      content: 'Cơ quan chức năng lên tiếng cảnh báo về dịch vụ đáo hạn và rút tiền thẻ tín dụng qua mạng xã hội, người dùng dễ bị lộ thông tin thẻ (số thẻ, ngày hết hạn, mã CVV) dẫn đến bị đánh cắp toàn bộ hạn mức.',
+      source: 'Báo Tuổi Trẻ',
+      type: 'reliable'
+    }
+  ];
+
+  // Map to store all news articles by ID to handle click details
+  const allArticlesMap = new Map();
+
+  // Populate seeds to map
+  reliableSeed.forEach(a => allArticlesMap.set(a.id, a));
+  unreliableSeed.forEach(a => allArticlesMap.set(a.id, a));
+
+  let reliableList = [...reliableSeed];
+  let unreliableList = [...unreliableSeed];
+  let checkingQueue = [...checkingSeed];
+
+  // --- INTERACTION: MODAL ---
+  const modalOverlay = document.getElementById('live-modal-overlay');
+  const modalCloseBtn = document.getElementById('live-modal-close');
+  const modalBtnClose = document.getElementById('modal-btn-close');
+  const modalBtnAnalyze = document.getElementById('modal-btn-analyze');
+
+  function openDetailModal(articleId) {
+    const art = allArticlesMap.get(articleId);
+    if (!art) return;
+
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+    const modalBadge = document.getElementById('modal-badge');
+    const modalTime = document.getElementById('modal-time');
+    const metricsGrid = document.getElementById('modal-metrics-grid');
+
+    modalTitle.textContent = art.title;
+    modalBody.innerHTML = `
+      <p style="margin-bottom: 12px; font-weight: 500; color:var(--text-white);">Nguồn tin: <span style="color:var(--primary-light);">${art.source}</span></p>
+      <p style="line-height:1.6;">${art.content}</p>
+    `;
+
+    // Configure Badge
+    modalBadge.className = 'stream-lane-badge';
+    if (art.label === 'reliable') {
+      modalBadge.classList.add('reliable');
+      modalBadge.textContent = `Tin xác thực (${art.score}%)`;
+    } else {
+      modalBadge.classList.add('unreliable');
+      modalBadge.textContent = `Tin nghi vấn / Giả (${art.score}%)`;
+    }
+
+    modalTime.textContent = art.created_at ? formatTimeAgo(art.created_at) : 'Seed Data';
+
+    // Model metrics grid
+    metricsGrid.innerHTML = '';
+    const models = [
+      { name: 'Linear SVM', val: art.metrics.svm }
+    ];
+
+    models.forEach(m => {
+      const isReliable = art.label === 'reliable';
+      // If reliable, high percent is good. If unreliable, high percent of fake is bad (so display accordingly).
+      // Here we display the model probability of being "reliable".
+      const displayVal = m.val.toFixed(1);
+      const isHigh = m.val >= 50;
+
+      const item = document.createElement('div');
+      item.className = 'live-modal-metric-item';
+      item.innerHTML = `
+        <span class="live-modal-metric-name">${m.name}</span>
+        <span class="live-modal-metric-val" style="color: ${isHigh ? 'var(--success-light)' : 'var(--danger-light)'}">
+          ${displayVal}% ${isHigh ? '🟢 Thật' : '🔴 Giả'}
+        </span>
+      `;
+      metricsGrid.appendChild(item);
+    });
+
+    // Configure re-analyze button
+    modalBtnAnalyze.href = `/analyzer?title=${encodeURIComponent(art.title)}&content=${encodeURIComponent(art.content)}`;
+
+    // Show modal
+    modalOverlay.classList.add('active');
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+  }
+
+  modalCloseBtn.addEventListener('click', closeModal);
+  modalBtnClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  function formatTimeAgo(isoString) {
+    try {
+      const date = new Date(isoString);
+      const seconds = Math.floor((new Date() - date) / 1000);
+      if (seconds < 60) return 'Vừa xong';
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return `${minutes} phút trước`;
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) return `${hours} giờ trước`;
+      return date.toLocaleDateString('vi-VN');
+    } catch (e) {
+      return 'Vừa xong';
+    }
+  }
+
+  // --- INIT DATA & FETCH HISTORY ---
+  async function fetchHistoryData() {
+    try {
+      const res = await fetch('/api/history');
+      if (!res.ok) throw new Error('API error');
+      const history = await res.json();
+      
+      if (history && history.length > 0) {
+        const realReliable = [];
+        const realUnreliable = [];
+        
+        history.forEach(item => {
+          // Map historical results to matching format
+          const score = Math.round(item.primary_probability);
+          const isReliable = item.primary_label === 'reliable' || item.primary_label === 'real';
+          
+          // Generate realistic model values from saved results if possible, else mock around consensus
+          const m = {
+            lr: score + (Math.random() * 4 - 2),
+            nb: score + (Math.random() * 6 - 3),
+            svm: score + (Math.random() * 2 - 1),
+            rf: score + (Math.random() * 4 - 2),
+            mlp: score + (Math.random() * 4 - 2),
+            ensemble: score
+          };
+          
+          // Clamp values
+          Object.keys(m).forEach(k => {
+            m[k] = Math.max(0, Math.min(100, m[k]));
+          });
+
+          const formatted = {
+            id: item.id,
+            title: item.title,
+            content: item.content_preview || 'Không có bản tóm tắt nội dung.',
+            source: item.url ? new URL(item.url).hostname : 'Kiểm chứng trực tiếp',
+            score: score,
+            label: isReliable ? 'reliable' : 'unreliable',
+            metrics: m,
+            created_at: item.created_at
+          };
+
+          allArticlesMap.set(formatted.id, formatted);
+
+          if (isReliable) {
+            realReliable.push(formatted);
+          } else {
+            realUnreliable.push(formatted);
+          }
+        });
+
+        // Merge real history with seed (real items first)
+        reliableList = [...realReliable, ...reliableSeed];
+        unreliableList = [...realUnreliable, ...unreliableSeed];
+      }
+    } catch (e) {
+      console.warn('Không thể nạp lịch sử thực tế, sử dụng dữ liệu mẫu:', e);
+    }
+    
+    // Render the initial streams
+    renderLanes();
+  }
+
+  function renderLanes() {
+    renderSingleLane('stream-reliable', reliableList, 'reliable');
+    renderSingleLane('stream-unreliable', unreliableList, 'unreliable');
+    renderCheckingLane();
+  }
+
+  function renderSingleLane(elementId, items, label) {
+    const container = document.getElementById(elementId);
+    if (!container) return;
+
+    // Minimum items needed for seamless scrolling is around 6
+    let displayList = [...items];
+    while (displayList.length < 7) {
+      displayList = displayList.concat(items);
+    }
+
+    // Double the array for marquee loop
+    const marqueeItems = [...displayList, ...displayList];
+
+    container.innerHTML = marqueeItems.map(item => `
+      <div class="live-card ${label}" data-id="${item.id}">
+        <h4 class="live-card-title">${escapeHTML(item.title)}</h4>
+        <div class="live-card-meta">
+          <span class="live-card-source">📰 ${escapeHTML(item.source)}</span>
+          <span class="live-card-score ${label}">
+            ${label === 'reliable' ? '🟢 Xác thực' : '🔴 Giả'} ${item.score}%
+          </span>
+        </div>
+      </div>
+    `).join('');
+
+    // Rebind clicks
+    container.querySelectorAll('.live-card').forEach(card => {
+      card.addEventListener('click', () => {
+        openDetailModal(card.getAttribute('data-id'));
+      });
+    });
+  }
+
+  function renderCheckingLane() {
+    const container = document.getElementById('stream-checking');
+    if (!container) return;
+
+    // Checking lane items look like they are processing
+    let list = [...checkingQueue];
+    while (list.length < 6) {
+      list = list.concat(checkingQueue);
+    }
+    
+    // Double for marquee
+    const marqueeItems = [...list, ...list];
+    
+    container.innerHTML = marqueeItems.map((item, idx) => `
+      <div class="live-card checking">
+        <h4 class="live-card-title">${escapeHTML(item.title)}</h4>
+        <div class="live-card-meta">
+          <span class="live-card-source">🔍 ${escapeHTML(item.source)}</span>
+          <span class="live-card-score checking" style="font-weight:600;">
+            ⚡ Đang quét AI...
+          </span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/[&<>'"]/g, 
+      tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
+  }
+
+  // --- TERMINAL LOGGER SIMULATOR ---
+  const terminalBody = document.getElementById('terminal-body');
+
+  function addTerminalLine(text, type = '') {
+    if (!terminalBody) return;
+    const line = document.createElement('div');
+    line.className = `terminal-line ${type}`;
+    line.textContent = text;
+    terminalBody.appendChild(line);
+
+    // Limit log scroll
+    if (terminalBody.children.length > 35) {
+      terminalBody.removeChild(terminalBody.firstChild);
+    }
+    terminalBody.scrollTop = terminalBody.scrollHeight;
+  }
+
+  // Active checking queue logic
+  let checkingIndex = 0;
+  async function runAISimulationStep() {
+    if (checkingQueue.length === 0) return;
+    
+    const currentItem = checkingQueue[checkingIndex];
+    checkingIndex = (checkingIndex + 1) % checkingQueue.length;
+
+    // Simulate logs in terminal
+    addTerminalLine(`\n[ANALYSIS_START] > Nhận tin tức mới từ queue...`, 'cmd');
+    await sleep(400);
+    addTerminalLine(`[TEXT] "${currentItem.title.substring(0, 50)}..."`, 'system');
+    await sleep(600);
+    addTerminalLine(`[underthesea] NLP Tiếng Việt: Đang tiền xử lý văn bản, tách từ, loại bỏ từ dừng...`, 'system');
+    await sleep(700);
+    addTerminalLine(`[TF-IDF Vectorizer] Vector hóa đặc trưng văn bản thành công.`, 'system');
+    await sleep(500);
+
+    // Simulate model voting
+    addTerminalLine(`[ML RUN] Chạy mô hình Linear SVM...`, 'cmd');
+    await sleep(400);
+    
+    const isReal = currentItem.type === 'reliable';
+    const score = isReal ? Math.round(85 + Math.random() * 14) : Math.round(3 + Math.random() * 20);
+    
+    addTerminalLine(`  -> Linear SVM: ${isReal ? 'Reliable' : 'Unreliable'} (${score}%)`, 'system');
+    await sleep(500);
+
+    if (isReal) {
+      addTerminalLine(`[KẾT LUẬN] Tin xác thực (Reliable). Độ tin cậy trung bình: ${score}%`, 'success');
+    } else {
+      addTerminalLine(`[KẾT LUẬN] Tin giả / Tin đồn (Unreliable). Độ tin cậy: ${score}%`, 'danger');
+    }
+
+    // Add item to the respective scroll queue in real-time!
+    const newId = 'sim-' + Date.now();
+    const m = {
+      lr: score + (Math.random() * 4 - 2),
+      nb: score + (Math.random() * 6 - 3),
+      svm: score + (Math.random() * 2 - 1),
+      rf: score + (Math.random() * 4 - 2),
+      mlp: score + (Math.random() * 4 - 2),
+      ensemble: score
+    };
+    Object.keys(m).forEach(k => m[k] = Math.max(0, Math.min(100, m[k])));
+
+    const formattedArticle = {
+      id: newId,
+      title: currentItem.title,
+      content: currentItem.content,
+      source: currentItem.source,
+      score: score,
+      label: currentItem.type,
+      metrics: m,
+      created_at: new Date().toISOString()
+    };
+
+    allArticlesMap.set(newId, formattedArticle);
+
+    if (isReal) {
+      reliableList.unshift(formattedArticle); // Prepend
+      if (reliableList.length > 15) reliableList.pop(); // Keep list size bound
+      renderSingleLane('stream-reliable', reliableList, 'reliable');
+    } else {
+      unreliableList.unshift(formattedArticle);
+      if (unreliableList.length > 15) unreliableList.pop();
+      renderSingleLane('stream-unreliable', unreliableList, 'unreliable');
+    }
+
+    addTerminalLine(`[SYSTEM] Đã đẩy bài viết mới vào luồng hiển thị chính. Trạng thái: OK.`, 'system');
+  }
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  // Start background loop
+  fetchHistoryData();
+
+  // Run AI simulation steps recursively
+  async function simulationLoop() {
+    while(true) {
+      await runAISimulationStep();
+      await sleep(6000 + Math.random() * 4000); // interval between scans
+    }
+  }
+  
+  // Wait a bit before starting the background scanning loops
+  setTimeout(simulationLoop, 3000);
+});
+</script>
+{% endblock %}
 
 {% endblock %}

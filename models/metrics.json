@@ -1,72 +1,147 @@
 {
   "lr": {
     "model_name": "Logistic Regression",
-    "accuracy": 100.0,
-    "precision": 100.0,
-    "recall": 100.0,
-    "f1": 100.0,
+    "accuracy": 98.11,
+    "precision": 98.18,
+    "recall": 98.11,
+    "f1": 98.11,
+    "cv_f1_mean": 97.63,
+    "cv_f1_std": 1.51,
     "confusion_matrix": [
       [
-        10,
-        0
+        25,
+        1
       ],
       [
         0,
-        9
+        27
       ]
     ],
     "classes": [
-      "reliable",
-      "unreliable"
+      0,
+      1
     ]
   },
   "nb": {
     "model_name": "Naive Bayes",
-    "accuracy": 94.74,
-    "precision": 95.26,
-    "recall": 94.74,
-    "f1": 94.74,
+    "accuracy": 94.34,
+    "precision": 94.4,
+    "recall": 94.34,
+    "f1": 94.34,
+    "cv_f1_mean": 98.58,
+    "cv_f1_std": 1.16,
     "confusion_matrix": [
       [
-        9,
-        1
+        24,
+        2
       ],
       [
-        0,
-        9
+        1,
+        26
       ]
     ],
     "classes": [
-      "reliable",
-      "unreliable"
+      0,
+      1
     ]
   },
   "svm": {
     "model_name": "Linear SVM",
-    "accuracy": 94.74,
-    "precision": 95.26,
-    "recall": 94.74,
-    "f1": 94.74,
+    "accuracy": 98.11,
+    "precision": 98.18,
+    "recall": 98.11,
+    "f1": 98.11,
+    "cv_f1_mean": 97.63,
+    "cv_f1_std": 1.51,
     "confusion_matrix": [
       [
-        9,
+        25,
         1
       ],
       [
         0,
-        9
+        27
       ]
     ],
     "classes": [
-      "reliable",
-      "unreliable"
+      0,
+      1
+    ]
+  },
+  "rf": {
+    "model_name": "Random Forest",
+    "accuracy": 100.0,
+    "precision": 100.0,
+    "recall": 100.0,
+    "f1": 100.0,
+    "cv_f1_mean": 98.1,
+    "cv_f1_std": 1.78,
+    "confusion_matrix": [
+      [
+        26,
+        0
+      ],
+      [
+        0,
+        27
+      ]
+    ],
+    "classes": [
+      0,
+      1
+    ]
+  },
+  "mlp": {
+    "model_name": "Multi-layer Perceptron (MLP)",
+    "accuracy": 94.34,
+    "precision": 94.4,
+    "recall": 94.34,
+    "f1": 94.34,
+    "cv_f1_mean": 96.16,
+    "cv_f1_std": 4.48,
+    "confusion_matrix": [
+      [
+        24,
+        2
+      ],
+      [
+        1,
+        26
+      ]
+    ],
+    "classes": [
+      0,
+      1
+    ]
+  },
+  "ensemble": {
+    "model_name": "Mô hình Đồng thuận (Ensemble)",
+    "accuracy": 98.11,
+    "precision": 98.18,
+    "recall": 98.11,
+    "f1": 98.11,
+    "cv_f1_mean": 98.1,
+    "cv_f1_std": 1.78,
+    "confusion_matrix": [
+      [
+        25,
+        1
+      ],
+      [
+        0,
+        27
+      ]
+    ],
+    "classes": [
+      0,
+      1
     ]
   },
   "dataset": {
-    "total": 93,
-    "reliable": 50,
-    "unreliable": 43,
-    "train_size": 74,
-    "test_size": 19
+    "total": 264,
+    "reliable": 133,
+    "unreliable": 131,
+    "train_size": 211,
+    "test_size": 53
   }
 }

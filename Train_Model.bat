@@ -10,6 +10,10 @@ echo [*] Tim thay: data/news.csv
 echo [*] Dang tien hanh tien xu ly va hoc may (Gom Logistic Regression, Naive Bayes, SVM)...
 echo.
 
+:: Cấu hình UTF-8 cho Windows console
+set PYTHONIOENCODING=utf-8
+set PYTHONUTF8=1
+
 :: Huấn luyện mô hình
 .\.venv\Scripts\python.exe -m src.train
 

@@ -13,6 +13,10 @@ echo.
 :: Mở sẵn trình duyệt (Đợi 3s cho server kịp bật)
 start "" http://127.0.0.1:5000
 
+:: Cấu hình UTF-8 cho Windows console
+set PYTHONIOENCODING=utf-8
+set PYTHONUTF8=1
+
 :: Chạy server (sử dụng môi trường ảo)
 .\.venv\Scripts\python.exe app.py
 
