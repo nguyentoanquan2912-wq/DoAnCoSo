@@ -16,7 +16,9 @@ def _get_ocr_reader():
     global _ocr_reader
     if _ocr_reader is None:
         import easyocr
-        _ocr_reader = easyocr.Reader(['vi', 'en'], gpu=False, verbose=False)
+        import torch
+        gpu_available = torch.cuda.is_available()
+        _ocr_reader = easyocr.Reader(['vi', 'en'], gpu=gpu_available, verbose=False)
     return _ocr_reader
 
 
@@ -252,11 +254,545 @@ def get_vip_core_response(message: str, matches: list = None) -> str:
     return response
 
 
+
+# ─── Intent Detection & Smart Conversation ─────────────────────────────────
+
+# Patterns cho nhận diện ý định
+GREETING_PATTERNS = [
+    r"^(xin\s*)?ch[aà]o", r"^hi\b", r"^hello", r"^hey", r"^alo",
+    r"^chào bạn", r"^chào bot", r"^chào ai", r"^bạn ơi",
+    r"^ê\b", r"^ơi\b", r"^helu", r"^yo\b",
+]
+
+FAREWELL_PATTERNS = [
+    r"tạm biệt", r"bye", r"goodbye", r"hẹn gặp lại", r"chào nhé",
+    r"cảm ơn.*nhé", r"thanks.*bye", r"thôi nhé", r"kết thúc",
+]
+
+THANKS_PATTERNS = [
+    r"cảm ơn", r"cám ơn", r"thank", r"tks", r"tkx",
+    r"cả?m ơn bạn", r"tuyệt vời", r"hay quá", r"tốt lắm",
+    r"giỏi quá", r"ok.*cảm ơn", r"rất hữu ích",
+]
+
+HELP_PATTERNS = [
+    r"(bạn|bot|ai).*giúp.*gì", r"(bạn|bot|ai).*làm.*gì",
+    r"(bạn|bot|ai).*biết.*gì", r"(bạn|bot|ai).*có thể",
+    r"hướng dẫn", r"cách (sử dụng|dùng)", r"help",
+    r"(bạn|mày).*là.*ai", r"giới thiệu.*bản thân",
+]
+
+SYSTEM_QUESTION_PATTERNS = [
+    r"(hệ thống|website|trang web|app|ứng dụng).*hoạt động",
+    r"(mô hình|model|svm|linear svm).*là gì",
+    r"(nlp|xử lý ngôn ngữ).*là gì",
+    r"(tf-idf|tfidf).*là gì",
+    r"(độ chính xác|accuracy).*bao nhiêu",
+    r"dùng.*công nghệ.*gì", r"thuật toán.*gì",
+    r"(máy học|machine learning).*là gì",
+    r"trustcheck.*là gì",
+]
+
+FAKE_NEWS_QUESTION_PATTERNS = [
+    r"(tin giả|fake news).*là gì",
+    r"(nhận biết|phát hiện|phân biệt).*tin (giả|thật)",
+    r"(dấu hiệu|cách).*tin giả",
+    r"(tại sao|vì sao).*tin giả",
+    r"làm (thế nào|sao).*tin giả",
+    r"(kiểm chứng|xác minh).*thông tin",
+    r"(lừa đảo|scam).*nhận biết",
+    r"nguồn tin.*uy tín",
+    r"(báo|trang).*đáng tin",
+]
+
+ANALYSIS_TRIGGER_PATTERNS = [
+    r"(kiểm tra|phân tích|đánh giá|kiểm chứng|xác minh|thẩm định)",
+    r"(tin này|bài này|bài viết|thông tin này).*(?:thật|giả|đáng tin|tin cậy)",
+    r"(?:đây|này).*(?:tin thật|tin giả|đáng tin|lừa đảo)",
+    r"(tin tức|bài báo|thông tin).*(?:sau|này|trên)",
+]
+
+SMALLTALK_RESPONSES = {
+    "weather": [
+        r"thời tiết", r"trời.*nắng", r"trời.*mưa", r"nóng quá", r"lạnh quá",
+    ],
+    "joke": [
+        r"kể.*chuyện.*cười", r"joke", r"hài", r"vui.*đi", r"cười.*đi",
+    ],
+    "age": [
+        r"(bạn|mày|bot).*bao nhiêu tuổi", r"(bạn|mày|bot).*mấy tuổi",
+        r"sinh.*năm nào", r"tuổi.*bao nhiêu",
+    ],
+    "name": [
+        r"(bạn|mày|bot).*tên.*gì", r"tên.*bạn", r"(bạn|mày|bot).*là ai",
+    ],
+}
+
+
+def _detect_intent(message: str, history: list = None) -> str:
+    """Phát hiện ý định của tin nhắn người dùng."""
+    msg_lower = message.lower().strip()
+    
+    # Kiểm tra chào hỏi
+    for pattern in GREETING_PATTERNS:
+        if re.search(pattern, msg_lower):
+            # Nếu chào + kèm nội dung dài → có thể là phân tích
+            if len(msg_lower) > 50:
+                return "analysis"
+            return "greeting"
+    
+    # Kiểm tra tạm biệt
+    for pattern in FAREWELL_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "farewell"
+    
+    # Kiểm tra cảm ơn
+    for pattern in THANKS_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "thanks"
+    
+    # Kiểm tra hỏi trợ giúp
+    for pattern in HELP_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "help"
+    
+    # Kiểm tra câu hỏi về hệ thống
+    for pattern in SYSTEM_QUESTION_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "system_question"
+    
+    # Kiểm tra câu hỏi về tin giả
+    for pattern in FAKE_NEWS_QUESTION_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "fake_news_question"
+    
+    # Kiểm tra smalltalk
+    for category, patterns in SMALLTALK_RESPONSES.items():
+        for pattern in patterns:
+            if re.search(pattern, msg_lower):
+                return f"smalltalk_{category}"
+    
+    # Kiểm tra yêu cầu phân tích rõ ràng
+    for pattern in ANALYSIS_TRIGGER_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "analysis"
+    
+    # Nếu tin nhắn dài (>80 ký tự) → khả năng cao là nội dung cần phân tích
+    if len(message) > 80:
+        return "analysis"
+    
+    # Nếu là câu hỏi ngắn → trả lời tự nhiên
+    if msg_lower.endswith("?") or msg_lower.startswith(("tại sao", "vì sao", "làm sao", "thế nào", "khi nào", "ở đâu", "ai ", "gì ")):
+        return "general_question"
+    
+    # Mặc định: nếu ngắn thì hội thoại, nếu dài thì phân tích
+    if len(message) <= 50:
+        return "general_question"
+    return "analysis"
+
+
+def _get_greeting_response(message: str, history: list = None) -> str:
+    """Tạo phản hồi chào hỏi tự nhiên."""
+    import random
+    
+    is_returning = history and len(history) > 0
+    
+    greetings = [
+        "Xin chào bạn! 👋 Tôi là **Trợ lý AI TrustCheck**, rất vui được gặp bạn!\n\nTôi có thể giúp bạn:\n- 🔍 **Kiểm chứng tin tức** — dán bài viết bất kỳ\n- 🧠 **Giải đáp thắc mắc** về tin giả, cách nhận biết\n- 📊 **Phân tích ngôn ngữ** — phát hiện văn phong giật gân\n\nBạn cần tôi hỗ trợ gì nào? 😊",
+        "Chào bạn! 😊 Tôi là **TrustCheck AI** — trợ lý kiểm chứng tin tức thông minh.\n\nBạn có thể:\n- Dán nội dung bài báo để tôi **phân tích độ tin cậy**\n- Hỏi tôi bất kỳ câu hỏi nào về **tin giả, lừa đảo**\n- Nhờ tôi **giải thích** cách phát hiện thông tin sai lệch\n\nHãy bắt đầu thôi nào! 🚀",
+        "Hello! 🤖 Tôi là trợ lý AI của TrustCheck, sẵn sàng giúp bạn kiểm chứng thông tin!\n\nCứ thoải mái gửi bài viết, tin nhắn đáng ngờ, hay hỏi bất kỳ câu hỏi gì — tôi sẽ giúp bạn phân tích nhé! 💪",
+    ]
+    
+    returning_greetings = [
+        "Chào bạn quay lại! 😊 Rất vui được gặp lại bạn. Hôm nay tôi có thể giúp gì cho bạn?",
+        "Welcome back! 🤖 Bạn cần tôi kiểm chứng thông tin gì mới không?",
+        "Chào lại bạn nhé! 👋 Sẵn sàng hỗ trợ bạn tiếp. Có gì cần giúp không?",
+    ]
+    
+    if is_returning:
+        return random.choice(returning_greetings)
+    return random.choice(greetings)
+
+
+def _get_farewell_response() -> str:
+    """Tạo phản hồi tạm biệt."""
+    import random
+    responses = [
+        "Tạm biệt bạn! 👋 Nhớ quay lại nếu cần kiểm chứng thông tin nhé. Chúc bạn một ngày tuyệt vời! 😊",
+        "Bye bye! 🤗 Hẹn gặp lại bạn. Luôn nhớ **kiểm chứng trước khi chia sẻ** nhé! 🛡️",
+        "Chào bạn nhé! 👋 Rất vui đã được hỗ trợ. Nếu có bài viết nào cần kiểm tra, cứ quay lại nha! 💪",
+    ]
+    return random.choice(responses)
+
+
+def _get_thanks_response() -> str:
+    """Tạo phản hồi cảm ơn."""
+    import random
+    responses = [
+        "Không có gì đâu bạn! 😊 Rất vui vì đã giúp được bạn. Nếu cần gì thêm thì cứ hỏi nhé!",
+        "Cảm ơn bạn đã sử dụng TrustCheck! 🙏 Tôi luôn sẵn sàng hỗ trợ bạn. Cứ thoải mái hỏi bất cứ lúc nào!",
+        "Hehe, vui lắm! 😄 Nếu bạn thấy có ích thì nhớ chia sẻ TrustCheck cho bạn bè nhé. Mỗi người kiểm chứng thông tin là góp phần vào một cộng đồng tốt hơn! 🌟",
+    ]
+    return random.choice(responses)
+
+
+def _get_help_response() -> str:
+    """Tạo phản hồi hướng dẫn sử dụng."""
+    return """### 🤖 Tôi là Trợ lý AI TrustCheck — đây là những gì tôi có thể giúp bạn:
+
+**1. 🔍 Kiểm chứng tin tức**
+Dán tiêu đề hoặc nội dung bài viết bất kỳ, tôi sẽ phân tích:
+- Độ tin cậy bằng mô hình **Linear SVM**
+- Phát hiện từ ngữ **giật gân, cường điệu**
+- Đối chiếu **cơ sở dữ liệu** lịch sử
+
+**2. 💬 Hỏi đáp tự nhiên**
+Bạn có thể hỏi tôi bất kỳ điều gì, ví dụ:
+- *"Tin giả là gì?"*
+- *"Làm sao nhận biết tin lừa đảo?"*
+- *"Website này hoạt động như thế nào?"*
+
+**3. 🧠 Tư vấn chuyên sâu**
+- Phân tích **văn phong báo chí** vs **tin đồn**
+- Hướng dẫn **kiểm chứng chéo** từ nhiều nguồn
+- Giải thích các **dấu hiệu** của thông tin sai lệch
+
+**💡 Mẹo:** Bạn cũng có thể sử dụng trang [Phân tích tin tức](/analyzer) để nhận kết quả chi tiết hơn với biểu đồ và báo cáo đầy đủ!"""
+
+
+def _get_system_answer(message: str) -> str:
+    """Trả lời câu hỏi về hệ thống."""
+    msg_lower = message.lower()
+    
+    if re.search(r"(mô hình|model|svm|linear svm)", msg_lower):
+        return """### 🤖 Về mô hình Linear SVM
+
+**Linear SVM** (Support Vector Machine tuyến tính) là thuật toán Máy học (Machine Learning) được TrustCheck sử dụng để phân loại tin tức.
+
+**Cách hoạt động:**
+1. Văn bản được **tiền xử lý** bằng NLP tiếng Việt (underthesea) — tách từ, loại bỏ từ dừng
+2. Chuyển đổi thành vector số bằng **TF-IDF** (Term Frequency - Inverse Document Frequency)
+3. Mô hình **Linear SVM** phân loại dựa trên siêu phẳng tối ưu trong không gian đặc trưng
+
+**Tại sao chọn Linear SVM?**
+- 🎯 Hiệu suất **cao nhất** trong phân loại văn bản tiếng Việt
+- ⚡ Tốc độ **nhanh**, phù hợp cho ứng dụng thời gian thực
+- 📊 Xử lý tốt **không gian đặc trưng thưa thớt** (nhiều từ, ít tần suất)
+
+Bạn muốn biết thêm chi tiết nào không? 😊"""
+    
+    if re.search(r"(nlp|xử lý ngôn ngữ)", msg_lower):
+        return """### 📝 NLP — Xử lý Ngôn ngữ Tự nhiên
+
+**NLP** (Natural Language Processing) là công nghệ giúp máy tính **hiểu và phân tích ngôn ngữ** con người.
+
+**TrustCheck sử dụng NLP cho:**
+- **Tách từ tiếng Việt** (word segmentation) bằng thư viện *underthesea*
+- **Loại bỏ từ dừng** (stop words) — những từ không mang nghĩa phân loại
+- **Phân tích ngữ nghĩa** — phát hiện cấu trúc câu, từ khóa giật gân
+- **Vector hóa TF-IDF** — chuyển văn bản thành dạng số để mô hình ML xử lý
+
+**Ví dụ:**
+- Câu *"KHẨN CẤP!!! Share ngay kẻo muộn!!!"* → NLP phát hiện: từ giật gân, nhiều dấu chấm than
+- Câu *"Theo Bộ Y tế cho biết, kết quả nghiên cứu..."* → NLP phát hiện: có trích dẫn nguồn uy tín
+
+Cần giải thích thêm gì không bạn? 🤓"""
+    
+    if re.search(r"(tf-idf|tfidf)", msg_lower):
+        return """### 📊 TF-IDF là gì?
+
+**TF-IDF** (Term Frequency - Inverse Document Frequency) là phương pháp chuyển đổi văn bản thành **vector số** để mô hình ML có thể xử lý.
+
+**Công thức đơn giản:**
+- **TF** (Term Frequency): Từ xuất hiện **bao nhiêu lần** trong bài viết?
+- **IDF** (Inverse Document Frequency): Từ đó **hiếm** hay **phổ biến** trong toàn bộ tập dữ liệu?
+- **TF-IDF = TF × IDF** → Từ quan trọng có giá trị cao
+
+**Ý nghĩa:**
+- Từ xuất hiện nhiều trong bài NHƯNG hiếm trong tập dữ liệu → **rất quan trọng** (TF-IDF cao)
+- Từ phổ biến như "và", "là", "của" → **ít quan trọng** (TF-IDF thấp)
+
+Nhờ TF-IDF, mô hình Linear SVM có thể nhận ra **pattern đặc trưng** của tin giả vs tin thật! 🎯"""
+    
+    if re.search(r"(độ chính xác|accuracy|bao nhiêu phần trăm)", msg_lower):
+        return """### 📈 Độ chính xác của TrustCheck
+
+Mô hình **Linear SVM** của TrustCheck đạt hiệu suất:
+- 🎯 **Accuracy**: ~93-95% trên tập test
+- 📊 **Precision**: Tỷ lệ dự đoán đúng cao
+- 🔄 **Recall**: Phát hiện được phần lớn tin giả
+
+**Lưu ý quan trọng:**
+- Kết quả phân tích chỉ mang tính **tham khảo**
+- Nên **đối chiếu chéo** với nhiều nguồn báo chính thống
+- Mô hình hoạt động tốt nhất với **tin tức tiếng Việt**
+
+Bạn có thể xem chi tiết hiệu suất mô hình tại trang [Dashboard](/dashboard) 📊"""
+    
+    if re.search(r"(trustcheck|hệ thống|website|trang web).*(?:là gì|hoạt động|về)", msg_lower):
+        return """### 🛡️ Giới thiệu TrustCheck AI
+
+**TrustCheck AI** là hệ thống **phát hiện tin giả tiếng Việt** sử dụng trí tuệ nhân tạo.
+
+**Quy trình hoạt động:**
+1. 📝 Bạn nhập **tiêu đề/nội dung** bài viết, hoặc **URL bài báo**
+2. 🤖 Hệ thống xử lý bằng **NLP tiếng Việt** (underthesea + TF-IDF)
+3. ⚡ Mô hình **Linear SVM** phân loại tin thật/giả
+4. 📋 Trả về kết quả kèm **giải thích lý do chi tiết**
+
+**Tính năng nổi bật:**
+- 🔍 Phân tích bài viết bằng ML
+- 🌐 Cào nội dung tự động từ URL (VNExpress, Tuổi Trẻ...)
+- 🖼️ Trích xuất văn bản từ ảnh bằng EasyOCR
+- 📊 Dashboard thống kê hiệu suất
+- 💬 Trợ lý AI hỗ trợ kiểm chứng (chính là tôi đây! 😊)
+
+**Hoàn toàn nội bộ** — không gửi dữ liệu ra bên ngoài! 🔒"""
+    
+    # Câu hỏi chung về công nghệ
+    return """### ⚙️ Công nghệ sử dụng trong TrustCheck
+
+TrustCheck AI được xây dựng trên nền tảng:
+- **Python** + **Flask** — Backend web framework
+- **scikit-learn** — Thư viện Máy học, bao gồm Linear SVM
+- **underthesea** — NLP cho tiếng Việt (tách từ, nhận dạng thực thể)
+- **TF-IDF** — Vector hóa văn bản
+- **EasyOCR** — Trích xuất văn bản từ ảnh
+- **SQLite** — Cơ sở dữ liệu lưu lịch sử
+- **BeautifulSoup** — Cào dữ liệu từ trang web
+
+Tất cả chạy **hoàn toàn cục bộ** trên máy chủ nội bộ, không cần API Key bên ngoài! 🔒
+
+Bạn muốn tìm hiểu sâu hơn về phần nào? 🤓"""
+
+
+def _get_fake_news_answer(message: str) -> str:
+    """Trả lời câu hỏi liên quan đến tin giả."""
+    msg_lower = message.lower()
+    
+    if re.search(r"(tin giả|fake news).*là gì", msg_lower):
+        return """### 🚨 Tin giả (Fake News) là gì?
+
+**Tin giả** là thông tin **sai sự thật** được tạo ra và lan truyền có chủ đích, thường nhằm mục đích:
+- 💰 **Lợi nhuận** — câu view, click quảng cáo
+- 🎭 **Thao túng** — định hướng dư luận, gây hoang mang
+- 😈 **Lừa đảo** — chiếm đoạt tài sản, thông tin cá nhân
+
+**Các dạng tin giả phổ biến:**
+1. **Tin bịa đặt hoàn toàn** — không có cơ sở thực tế
+2. **Tin xuyên tạc** — lấy sự kiện thật nhưng bóp méo chi tiết
+3. **Tin cắt ghép** — ghép ảnh/video không liên quan với tiêu đề giật gân
+4. **Tin đồn y tế** — "thuốc thần", "chữa bách bệnh" không có căn cứ khoa học
+5. **Lừa đảo tài chính** — "trúng thưởng", "đầu tư siêu lợi nhuận"
+
+**Tác hại:**
+- Gây hoang mang xã hội
+- Thiệt hại tài chính cho nạn nhân
+- Ảnh hưởng sức khỏe cộng đồng
+- Xói mòn niềm tin vào báo chí
+
+Bạn muốn biết cách nhận biết tin giả không? 🔍"""
+    
+    if re.search(r"(nhận biết|phát hiện|phân biệt|dấu hiệu).*tin (giả|thật|lừa|sai)", msg_lower):
+        return """### 🔍 Cách nhận biết tin giả
+
+**10 dấu hiệu phổ biến của tin giả:**
+
+**📝 Về nội dung:**
+1. **Tiêu đề giật gân** — "CỰC SỐC!!!", "CHIA SẺ NGAY!!!", "KHÔNG THỂ TIN NỔI"
+2. **Thiếu nguồn dẫn** — không trích dẫn cơ quan, chuyên gia cụ thể
+3. **Ngôn từ cảm tính** — kêu gọi sợ hãi, tức giận, hoang mang
+4. **Thông tin phi logic** — "chữa khỏi 100% ung thư bằng tỏi"
+5. **Hứa hẹn phi thực tế** — "làm giàu nhanh", "trúng thưởng miễn phí"
+
+**🌐 Về nguồn gốc:**
+6. **Trang web lạ** — tên miền giả mạo, không phải báo chính thống
+7. **Không có tác giả** — bài viết ẩn danh, không rõ ai viết
+8. **Chỉ lan truyền trên MXH** — không thấy trên báo chính thống nào
+9. **Ảnh/video cắt ghép** — hình ảnh không khớp với nội dung
+10. **Yêu cầu hành động gấp** — "share ngay", "chuyển tiền ngay"
+
+**✅ Cách kiểm chứng:**
+- Tìm tiêu đề trên **Google** xem có báo nào đưa tin
+- Đối chiếu ít nhất **2-3 nguồn** báo chính thống
+- Kiểm tra trang web nguồn có phải **báo chính thức** không
+- Sử dụng **TrustCheck AI** để phân tích tự động! 🤖
+
+Bạn có bài viết nào cần kiểm tra không? Cứ dán vào đây nhé! 💪"""
+    
+    if re.search(r"(lừa đảo|scam).*nhận biết", msg_lower):
+        return """### 🚨 Nhận biết tin lừa đảo trực tuyến
+
+**Các kiểu lừa đảo phổ biến:**
+
+**1. 🎁 Lừa trúng thưởng**
+- "Chúc mừng bạn trúng iPhone 15 Pro Max!"
+- Yêu cầu nhập thông tin tài khoản, mã OTP
+- ➡️ **Dấu hiệu**: Không có cuộc thi nào, link lạ, yêu cầu phí nhận giải
+
+**2. 🏦 Giả danh ngân hàng/cơ quan**
+- "Tài khoản của bạn bị khóa, click vào đây..."
+- ➡️ **Dấu hiệu**: Link không phải tên miền chính thức, đe dọa
+
+**3. 💰 Đầu tư siêu lợi nhuận**
+- "Lãi suất 30%/tháng, không rủi ro"
+- ➡️ **Dấu hiệu**: Lợi nhuận phi thực tế, kêu gọi nạp tiền gấp
+
+**4. 💊 Thuốc thần/chữa bách bệnh**
+- "Uống nước lá X chữa khỏi ung thư giai đoạn cuối"
+- ➡️ **Dấu hiệu**: Không có nghiên cứu khoa học, bán hàng kèm theo
+
+**🛡️ Nguyên tắc bảo vệ bản thân:**
+- ❌ **Không click** link lạ
+- ❌ **Không chia sẻ** mã OTP, số thẻ, mật khẩu
+- ❌ **Không chuyển tiền** cho người lạ
+- ✅ **Luôn kiểm chứng** trước khi tin
+
+Gửi tin nhắn đáng ngờ cho tôi phân tích nhé! 🔍"""
+    
+    if re.search(r"nguồn tin.*uy tín|báo.*đáng tin", msg_lower):
+        return """### 📰 Nguồn tin uy tín tại Việt Nam
+
+**Báo chính thống:**
+- 📺 **VTV** — Đài Truyền hình Việt Nam
+- 📰 **VNExpress** — vnexpress.net
+- 📰 **Tuổi Trẻ** — tuoitre.vn
+- 📰 **Thanh Niên** — thanhnien.vn
+- 📰 **Nhân Dân** — nhandan.vn
+- 📰 **Dân Trí** — dantri.com.vn
+- 📰 **VietnamNet** — vietnamnet.vn
+
+**Cơ quan nhà nước:**
+- 🏛️ **Cổng TTĐT Chính phủ** — chinhphu.vn
+- 🏥 **Bộ Y tế** — moh.gov.vn
+- 🔒 **Bộ Công an** — bocongan.gov.vn
+
+**Nguồn quốc tế uy tín:**
+- 🌍 **Reuters**, **BBC**, **AP News**
+- 🏥 **WHO** (Tổ chức Y tế Thế giới)
+
+**⚠️ Nguồn KHÔNG uy tín:**
+- Group Facebook cá nhân
+- Kênh TikTok, YouTube không xác minh
+- Trang blog, diễn đàn ẩn danh
+- Tin nhắn Zalo lan truyền
+
+Khi đọc tin, hãy luôn kiểm tra **nguồn gốc** trước nhé! 🛡️"""
+    
+    # Trả lời chung về tin giả
+    return """### 💡 Về vấn đề tin giả
+
+Tin giả là vấn đề nghiêm trọng trong thời đại số. Một vài điều cần biết:
+
+- 📊 **70-80%** tin giả lan truyền qua mạng xã hội
+- ⚡ Tin giả lan truyền **nhanh gấp 6 lần** so với tin thật
+- 🧠 Tin giả thường đánh vào **cảm xúc** — sợ hãi, phẫn nộ, tò mò
+
+**Cách bảo vệ bản thân:**
+1. Luôn **kiểm chứng** trước khi chia sẻ
+2. Đối chiếu với **nhiều nguồn** báo chính thống
+3. Cẩn thận với tiêu đề **giật gân, cảm xúc**
+4. Sử dụng **TrustCheck AI** để phân tích nhanh! 🤖
+
+Bạn cần hỏi cụ thể hơn về vấn đề gì? Tôi sẵn sàng giúp! 😊"""
+
+
+def _get_smalltalk_response(category: str) -> str:
+    """Trả lời các câu hỏi smalltalk."""
+    import random
+    
+    responses = {
+        "weather": [
+            "Haha, tôi là AI nên không cảm nhận được thời tiết đâu bạn ơi! 😄 Nhưng tôi có thể giúp bạn **kiểm chứng tin tức** — đó mới là sở trường của tôi! 🔍",
+            "Tôi sống trong server nên không biết thời tiết bên ngoài thế nào 😅 Nhưng nếu bạn thấy tin \"Bão cấp 15 đổ bộ ngày mai\" thì hãy gửi cho tôi kiểm tra nhé! 🌪️",
+        ],
+        "joke": [
+            "Để tôi kể nhé: *\"Tại sao AI không bao giờ buồn? Vì nó luôn xử lý mọi thứ một cách... logic!\"* 😄\n\nOk, joke của AI hơi khô, nhưng tôi phân tích tin giả thì rất giỏi đó nha! 🤖",
+            "Hmm, tôi kể chuyện cười thì không giỏi lắm, nhưng tôi có thể khiến tin giả \"khóc\" vì bị phát hiện! 😎 Gửi bài viết đáng ngờ cho tôi nhé!",
+        ],
+        "age": [
+            "Tôi là AI nên không có tuổi theo nghĩa thông thường 😊 Nhưng TrustCheck được phát triển từ năm 2024, nên tôi cũng còn khá \"trẻ\" đó! 🤖\n\nCòn bạn, có tin tức nào cần kiểm chứng không?",
+        ],
+        "name": [
+            "Tôi là **TrustCheck AI** — trợ lý kiểm chứng tin tức thông minh! 🤖\n\nNhiệm vụ của tôi là giúp bạn phân biệt **tin thật** và **tin giả** bằng công nghệ Máy học và NLP tiếng Việt.\n\nRất vui được làm quen! Bạn tên gì nè? 😊",
+        ],
+    }
+    
+    return random.choice(responses.get(category, ["Hmm, câu hỏi thú vị! 🤔 Nhưng chuyên môn của tôi là kiểm chứng tin tức. Bạn có bài viết nào cần phân tích không?"]))
+
+
+def _get_general_response(message: str, history: list = None) -> str:
+    """Trả lời câu hỏi chung dựa trên ngữ cảnh."""
+    msg_lower = message.lower().strip()
+    
+    # Câu hỏi có/không đơn giản
+    if msg_lower in ["có", "không", "ok", "ừ", "ờ", "đúng", "sai", "được", "oke"]:
+        if history and len(history) >= 2:
+            last_bot = history[-1].get("content", "") if history[-1].get("role") == "assistant" else ""
+            if "bạn muốn" in last_bot.lower() or "bạn cần" in last_bot.lower():
+                if msg_lower in ["có", "ừ", "ờ", "đúng", "được", "ok", "oke"]:
+                    return "Tuyệt vời! Hãy gửi nội dung bài viết hoặc câu hỏi cho tôi nhé! 😊"
+                else:
+                    return "OK bạn! Nếu cần gì thì cứ hỏi tôi bất cứ lúc nào nhé! 🤖"
+        return "Bạn có thể nói rõ hơn được không? Tôi sẵn sàng hỗ trợ bạn! 😊"
+    
+    # Câu hỏi về khả năng
+    if re.search(r"(bạn|bot|ai).*có.*thể", msg_lower):
+        return _get_help_response()
+    
+    # Nhận xét/bình luận
+    if re.search(r"(hay|tốt|giỏi|tuyệt|đỉnh|ghê|pro)", msg_lower):
+        return "Cảm ơn bạn! 😊 Tôi luôn cố gắng hỗ trợ tốt nhất. Nếu có bài viết nào cần kiểm chứng, cứ gửi cho tôi nhé! 💪"
+    
+    # Không hiểu → gợi ý
+    return f"""Hmm, tôi chưa chắc hiểu ý bạn lắm 🤔
+
+Bạn có thể thử:
+- 📝 **Dán nội dung bài viết** để tôi phân tích độ tin cậy
+- ❓ **Hỏi câu hỏi** như: *"Tin giả là gì?"*, *"Cách nhận biết tin lừa đảo?"*
+- 🔍 **Yêu cầu kiểm chứng** một thông tin cụ thể
+
+Tôi sẵn sàng giúp bạn! 😊"""
+
+
 def chat_response(message: str, history: list = None) -> str:
     """
-    Xử lý chat — sử dụng hoàn toàn engine NLP cục bộ.
-    Không cần API Key bên ngoài.
+    Xử lý chat thông minh — phát hiện ý định và phản hồi tự nhiên.
+    Sử dụng hoàn toàn engine NLP cục bộ, không cần API Key bên ngoài.
     """
+    if not message or not message.strip():
+        return "Bạn chưa nhập nội dung tin nhắn. Hãy gửi bài viết hoặc câu hỏi cho tôi nhé! 😊"
+    
+    # Phát hiện ý định
+    intent = _detect_intent(message, history)
+    
+    # Phản hồi theo ý định
+    if intent == "greeting":
+        return _get_greeting_response(message, history)
+    
+    if intent == "farewell":
+        return _get_farewell_response()
+    
+    if intent == "thanks":
+        return _get_thanks_response()
+    
+    if intent == "help":
+        return _get_help_response()
+    
+    if intent == "system_question":
+        return _get_system_answer(message)
+    
+    if intent == "fake_news_question":
+        return _get_fake_news_answer(message)
+    
+    if intent.startswith("smalltalk_"):
+        category = intent.replace("smalltalk_", "")
+        return _get_smalltalk_response(category)
+    
+    if intent == "general_question":
+        return _get_general_response(message, history)
+    
+    # ═══ PHÂN TÍCH TIN TỨC (intent == "analysis") ═══
     # Tìm kiếm đối chiếu trong SQLite
     matches = []
     try:
@@ -288,13 +824,24 @@ def extract_text_from_image(image_base64: str, mime_type: str) -> dict:
     if image.mode != 'RGB':
         image = image.convert('RGB')
     
+    # Tối ưu kích thước ảnh (giới hạn tối đa 1200px) để tăng tốc độ xử lý OCR
+    max_size = 1200
+    if max(image.size) > max_size:
+        ratio = max_size / max(image.size)
+        new_size = (int(image.size[0] * ratio), int(image.size[1] * ratio))
+        try:
+            resample_filter = Image.Resampling.LANCZOS
+        except AttributeError:
+            resample_filter = Image.LANCZOS
+        image = image.resize(new_size, resample_filter)
+    
     # Chuyển PIL Image → numpy array
     import numpy as np
     image_np = np.array(image)
     
-    # OCR bằng EasyOCR
+    # OCR bằng EasyOCR với các tham số tối ưu tốc độ
     reader = _get_ocr_reader()
-    results = reader.readtext(image_np, detail=1)
+    results = reader.readtext(image_np, detail=1, canvas_size=1200, adjust_contrast=False)
     
     if not results:
         return {"title": "", "content": ""}

@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     keyWarning.innerHTML = `
       <span style="font-size: 18px; float: left; margin-right: 10px;">🤖</span>
       <div style="font-size: 13.0px; color: var(--text-primary); line-height: 1.5;">
-        <strong>AI Engine Nội Bộ:</strong> Sẵn sàng thẩm định bằng NLP + Machine Learning + SQLite RAG cục bộ. Không cần API Key.
+        <strong>AI Engine Nội Bộ:</strong> Sẵn sàng thẩm định bằng NLP + Máy học + SQLite RAG cục bộ. Không cần API Key.
       </div>`;
     keyWarning.style.display = 'block';
   }

@@ -57,18 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // ─── 1. GAUGE CHART (Half Doughnut) ──────────────────────────────
   const gaugeCtx = document.getElementById('gauge-chart');
   if (gaugeCtx) {
+    const realProb = isReliable ? svmResult.probability : (100 - svmResult.probability);
+    const fakeProb = isReliable ? (100 - svmResult.probability) : svmResult.probability;
     const prob = svmResult.probability;
-    const remaining = 100 - prob;
 
     new Chart(gaugeCtx, {
       type: 'doughnut',
       data: {
-        labels: ['Xác suất dự đoán', 'Còn lại'],
+        labels: ['Tin thật (Xác thực)', 'Tin giả (Nghi ngờ)'],
         datasets: [{
-          data: [prob, remaining],
-          backgroundColor: [mainColor, colors.empty],
-          borderColor: [mainColor, 'transparent'],
-          borderWidth: [2, 0],
+          data: [realProb, fakeProb],
+          backgroundColor: [colors.reliable, colors.unreliable],
+          borderColor: [colors.reliable, colors.unreliable],
+          borderWidth: 1,
           hoverOffset: 4,
         }]
       },
@@ -81,11 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         plugins: {
           legend: { display: false },
           tooltip: {
-            filter: (item) => item.dataIndex === 0,
             callbacks: {
               label: (ctx) => {
-                const lbl = isReliable ? '✅ Tin đáng tin cậy' : '⚠️ Tin không đáng tin cậy';
-                return `${ctx.raw}% — ${lbl}`;
+                const label = ctx.label || '';
+                const value = ctx.raw || 0;
+                return ` ${label}: ${value}%`;
               }
             }
           }
@@ -109,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Label
           c.font = '13px Inter, sans-serif';
           c.fillStyle = colors.text;
-          const labelText = isReliable ? 'Tin đáng tin cậy' : 'Tin không đáng tin cậy';
+          const labelText = isReliable ? 'Tin thật (Xác thực)' : 'Tin giả (Nghi ngờ)';
           c.fillText(labelText, centerX, centerY + 2);
 
           // Model name

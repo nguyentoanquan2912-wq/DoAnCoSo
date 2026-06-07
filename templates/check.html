@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Kết quả phân tích{% endblock %}
-{% block meta_desc %}Kết quả phân tích độ tin cậy tin tức bằng Machine Learning — TrustCheck AI.{% endblock %}
+{% block meta_desc %}Kết quả phân tích độ tin cậy tin tức bằng Máy học — TrustCheck AI.{% endblock %}
 
 {% block content %}
 <div class="check-layout">
@@ -107,31 +107,114 @@
   </div>
   {% endif %}
 
-  <!-- ═══ TOP FEATURES ═══ -->
-  {% if analysis.top_features and analysis.top_features | length > 0 %}
+  <!-- ═══ BẰNG CHỨNG PHÂN LOẠI TIN THẬT & TIN GIẢ ═══ -->
   <div class="check-section-title">
-    <span class="check-section-icon">🔑</span> Từ khóa & Đặc trưng ảnh hưởng kết quả
+    <span class="check-section-icon">⚖️</span> Cơ sở phân loại Tin Thật vs Tin Giả
   </div>
 
-  <div class="reasoning-section glass-panel-vip" style="padding:20px 24px;">
-    <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px;line-height:1.5;">
-      Các từ khóa/đặc trưng TF-IDF có ảnh hưởng lớn nhất đến kết quả dự đoán của mô hình Linear SVM:
+  <div class="glass-panel-vip" style="padding:24px; margin-bottom:24px;">
+    <p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; line-height:1.5; text-align:center;">
+      Dưới đây là các đặc trưng ngôn ngữ, từ khóa và dấu hiệu cụ thể được mô hình AI dùng để đối chiếu:
     </p>
-    <div class="features-list">
-      {% for feat in analysis.top_features %}
-      <div class="feature-tag {{ feat.influence }}">
-        {{ '📗' if feat.influence == 'positive' else '📕' }}
-        {{ feat.word }}
-        <span style="opacity:0.7;font-size:11px;margin-left:4px;">({{ "%.2f"|format(feat.weight) }})</span>
+    
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
+      <!-- Cột Tin Thật -->
+      <div style="border-right:1px solid rgba(255,255,255,0.08); padding-right:12px;">
+        <h4 style="font-size:15px; font-weight:700; color:var(--success-light); margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+          🟢 Cơ sở xác minh Tin Thật
+        </h4>
+        
+        <!-- Từ khóa tin thật -->
+        <div style="margin-bottom:16px;">
+          <div style="font-size:12.5px; color:var(--text-muted); margin-bottom:8px; font-weight:600;">🔑 Từ khóa tích cực (Hỗ trợ tin thật):</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            {% set pos_list = [] %}
+            {% for feat in analysis.top_features %}
+              {% if feat.influence == 'positive' %}
+                {% set _ = pos_list.append(feat) %}
+                <span class="feature-tag positive" style="font-size:12px; padding:4px 8px; margin:0;">
+                  📗 {{ feat.word }} <span style="opacity:0.7;font-size:10px;">({{ "%.2f"|format(feat.weight) }})</span>
+                </span>
+              {% endif %}
+            {% endfor %}
+            {% if pos_list | length == 0 %}
+              <span style="font-size:12px; color:var(--text-muted); font-style:italic;">Không phát hiện từ khóa đặc trưng tin thật.</span>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Dấu hiệu tin thật -->
+        <div>
+          <div style="font-size:12.5px; color:var(--text-muted); margin-bottom:8px; font-weight:600;">✅ Các tiêu chí đạt chuẩn an toàn:</div>
+          <div style="display:grid; gap:6px;">
+            {% set clear_list = [] %}
+            {% if analysis.scoring and analysis.scoring.reasoning and analysis.scoring.reasoning.signs %}
+              {% for sign in analysis.scoring.reasoning.signs %}
+                {% if not sign.detected %}
+                  {% set _ = clear_list.append(sign) %}
+                  <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:var(--success-light); background:rgba(16,185,129,0.04); border:1px solid rgba(16,185,129,0.15); padding:6px 10px; border-radius:6px;">
+                    <span>✅</span> <span>{{ sign.text }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if clear_list | length == 0 %}
+              <span style="font-size:12px; color:var(--text-muted); font-style:italic;">Không có tiêu chí an toàn được ghi nhận.</span>
+            {% endif %}
+          </div>
+        </div>
       </div>
-      {% endfor %}
+
+      <!-- Cột Tin Giả -->
+      <div>
+        <h4 style="font-size:15px; font-weight:700; color:var(--danger-light); margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+          🔴 Cơ sở nghi ngờ Tin Giả
+        </h4>
+
+        <!-- Từ khóa tin giả -->
+        <div style="margin-bottom:16px;">
+          <div style="font-size:12.5px; color:var(--text-muted); margin-bottom:8px; font-weight:600;">🔑 Từ khóa tiêu cực (Cảnh báo tin giả):</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            {% set neg_list = [] %}
+            {% for feat in analysis.top_features %}
+              {% if feat.influence == 'negative' %}
+                {% set _ = neg_list.append(feat) %}
+                <span class="feature-tag negative" style="font-size:12px; padding:4px 8px; margin:0;">
+                  📕 {{ feat.word }} <span style="opacity:0.7;font-size:10px;">({{ "%.2f"|format(feat.weight) }})</span>
+                </span>
+              {% endif %}
+            {% endfor %}
+            {% if neg_list | length == 0 %}
+              <span style="font-size:12px; color:var(--text-muted); font-style:italic;">Không phát hiện từ khóa cảnh báo tin giả.</span>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Dấu hiệu tin giả -->
+        <div>
+          <div style="font-size:12.5px; color:var(--text-muted); margin-bottom:8px; font-weight:600;">⚠️ Các dấu hiệu nghi vấn phát hiện:</div>
+          <div style="display:grid; gap:6px;">
+            {% set det_list = [] %}
+            {% if analysis.scoring and analysis.scoring.reasoning and analysis.scoring.reasoning.signs %}
+              {% for sign in analysis.scoring.reasoning.signs %}
+                {% if sign.detected %}
+                  {% set _ = det_list.append(sign) %}
+                  <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:var(--danger-light); background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.15); padding:6px 10px; border-radius:6px;">
+                    <span>⚠️</span> <span>{{ sign.text }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if det_list | length == 0 %}
+              <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:var(--success-light); background:rgba(16,185,129,0.04); border:1px solid rgba(16,185,129,0.15); padding:6px 10px; border-radius:6px;">
+                <span>🎉</span> <span>Chúc mừng! Không phát hiện dấu hiệu tin giả nào.</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
     </div>
-    <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">
-      📗 <span style="color:var(--success);">Xanh</span> = đóng góp vào tin đáng tin cậy &nbsp;&nbsp;
-      📕 <span style="color:var(--danger);">Đỏ</span> = đóng góp vào tin không đáng tin cậy
-    </p>
   </div>
-  {% endif %}
 
   <!-- ═══ MODEL DETAIL ═══ -->
   {% if analysis.results.get('svm') %}
@@ -169,11 +252,17 @@
     <div class="chart-card glass-panel-vip" style="padding:20px;">
       <div style="font-size:15px; font-weight:700; color:var(--text-white); margin-bottom:14px;">🎯 Đồng hồ đo Xác suất dự đoán</div>
       <canvas id="gauge-chart" style="max-height:300px;"></canvas>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:12px; line-height:1.4; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px;">
+        💡 <strong>Ý nghĩa:</strong> Chỉ số phần trăm độ tin cậy được đưa ra bởi mô hình chính <strong>Linear SVM</strong>. Cột <strong>Màu xanh</strong> thể hiện tin cậy cao, cột <strong>Màu đỏ</strong> cảnh báo tin thiếu tin cậy.
+      </div>
     </div>
     <!-- Top Features Bar Chart -->
     <div class="chart-card glass-panel-vip" style="padding:20px;">
       <div style="font-size:15px; font-weight:700; color:var(--text-white); margin-bottom:14px;">🔑 Top đặc trưng ảnh hưởng kết quả (SVM)</div>
       <canvas id="features-bar-chart" style="max-height:300px;"></canvas>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:12px; line-height:1.4; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px;">
+        💡 <strong>Ý nghĩa:</strong> Trọng số ảnh hưởng của các từ khóa. Từ khóa <strong>Màu xanh</strong> hướng quyết định tới tin thật, từ khóa <strong>Màu đỏ</strong> hướng quyết định tới tin giả.
+      </div>
     </div>
   </div>
 
@@ -184,12 +273,18 @@
       <div style="font-size:15px; font-weight:700; color:var(--text-white); margin-bottom:14px;">🕸️ Phân tích đa chiều</div>
       <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Đánh giá tổng hợp các yếu tố tin cậy trên thang điểm 100</div>
       <canvas id="radar-chart" style="max-height:320px;"></canvas>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:12px; line-height:1.4; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px;">
+        💡 <strong>Ý nghĩa:</strong> Đánh giá toàn diện trên 6 khía cạnh. Vòng đứt nét màu xanh là <strong>ngưỡng an toàn (70/100)</strong>, các khía cạnh vượt ra ngoài vòng này đạt mức độ an toàn cao.
+      </div>
     </div>
     <!-- Pie Chart: Signs detection -->
     <div class="chart-card glass-panel-vip" style="padding:20px;">
       <div style="font-size:15px; font-weight:700; color:var(--text-white); margin-bottom:14px;">🔍 Dấu hiệu tin giả phát hiện</div>
       <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Tỷ lệ dấu hiệu phát hiện / không phát hiện trong bài viết</div>
       <canvas id="signs-pie-chart" style="max-height:320px;"></canvas>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:12px; line-height:1.4; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px;">
+        💡 <strong>Ý nghĩa:</strong> Tỷ lệ lỗi tin giả kinh điển mắc phải. Điểm số ở giữa thể hiện phần trăm <strong>Độ an toàn dấu hiệu</strong> (càng gần 100% càng ít lỗi).
+      </div>
     </div>
   </div>
 
@@ -349,7 +444,7 @@
   <div class="check-note">
     <span style="font-size:18px;">💡</span>
     <div>
-      <strong>Lưu ý:</strong> Kết quả chỉ mang tính tham khảo dựa trên mô hình Machine Learning đã huấn luyện.
+      <strong>Lưu ý:</strong> Kết quả chỉ mang tính tham khảo dựa trên mô hình Máy học đã huấn luyện.
       Luôn kiểm chứng thông tin từ các nguồn báo chí chính thống và cơ quan có thẩm quyền.
       Phần <strong>Phân tích Lý do</strong> giúp bạn hiểu rõ hơn cơ sở của kết luận.
     </div>
