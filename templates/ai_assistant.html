@@ -86,43 +86,67 @@
       <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">Click chọn một chủ đề bên dưới để gửi yêu cầu nhanh đến Trợ lý AI:</p>
       
       <div class="template-list">
-        <button class="template-btn" onclick="sendTemplateQuery('fact_check')">
-          <span class="template-icon">📰</span>
+        <button class="template-btn" onclick="sendTemplateQuery('guide_analyze')">
+          <span class="template-icon">📝</span>
           <div class="template-text">
-            <strong>Kiểm chứng bài viết này</strong>
-            <span>Phân tích độ tin cậy từ nội dung dán sẵn</span>
+            <strong>Cách phân tích tin tức</strong>
+            <span>Quy trình các bước kiểm chứng một bài viết</span>
           </div>
         </button>
 
-        <button class="template-btn" onclick="sendTemplateQuery('health_rumor')">
-          <span class="template-icon">🩺</span>
+        <button class="template-btn" onclick="sendTemplateQuery('explain_score')">
+          <span class="template-icon">📊</span>
           <div class="template-text">
-            <strong>Tin đồn y khoa phổ biến</strong>
-            <span>Kiểm chứng tin đồn lá đu đủ, tỏi sống chữa bệnh</span>
+            <strong>Ý nghĩa Điểm Tin Cậy</strong>
+            <span>Cách hệ thống tính toán điểm số 0-100%</span>
           </div>
         </button>
 
-        <button class="template-btn" onclick="sendTemplateQuery('scam_detection')">
-          <span class="template-icon">🚨</span>
+        <button class="template-btn" onclick="sendTemplateQuery('explain_result')">
+          <span class="template-icon">✅</span>
           <div class="template-text">
-            <strong>Nhận diện tin giả tài chính</strong>
-            <span>Cách phát hiện tin đồn đổi tiền, lừa đảo trúng thưởng</span>
+            <strong>Reliable vs Unreliable</strong>
+            <span>Thế nào là đáng tin cậy hoặc không đáng tin?</span>
           </div>
         </button>
 
-        <button class="template-btn" onclick="sendTemplateQuery('nlp_logic')">
-          <span class="template-icon">🧠</span>
-          <div class="template-text">
-            <strong>Phân tích văn phong bài viết</strong>
-            <span>Nhận dạng văn phong giật gân, dẫn dụ người đọc</span>
-          </div>
-        </button>
-
-        <button class="template-btn" onclick="sendTemplateQuery('url_check')">
+        <button class="template-btn" onclick="sendTemplateQuery('url_help')">
           <span class="template-icon">🔗</span>
           <div class="template-text">
-            <strong>Kiểm chứng URL bài báo</strong>
-            <span>Phân tích nguồn gốc, uy tín của đường dẫn bài báo</span>
+            <strong>Phân tích bằng URL link</strong>
+            <span>Cách dán link bài báo để tự động cào tin</span>
+          </div>
+        </button>
+
+        <button class="template-btn" onclick="sendTemplateQuery('ocr_help')">
+          <span class="template-icon">🖼️</span>
+          <div class="template-text">
+            <strong>Trích xuất chữ từ ảnh (OCR)</strong>
+            <span>Cách tải ảnh chụp bài viết để trích chữ</span>
+          </div>
+        </button>
+
+        <button class="template-btn" onclick="sendTemplateQuery('dashboard_help')">
+          <span class="template-icon">📈</span>
+          <div class="template-text">
+            <strong>Báo cáo Dashboard</strong>
+            <span>Các số liệu thống kê hiệu suất mô hình SVM</span>
+          </div>
+        </button>
+
+        <button class="template-btn" onclick="sendTemplateQuery('history_help')">
+          <span class="template-icon">📂</span>
+          <div class="template-text">
+            <strong>Xem lịch sử phân tích</strong>
+            <span>Cách quản lý và tìm kiếm bài viết cũ</span>
+          </div>
+        </button>
+
+        <button class="template-btn" onclick="sendTemplateQuery('fact_check_tips')">
+          <span class="template-icon">💡</span>
+          <div class="template-text">
+            <strong>Mẹo tự kiểm chứng nhanh</strong>
+            <span>Các bước đối chiếu nguồn tin chuẩn xác</span>
           </div>
         </button>
       </div>

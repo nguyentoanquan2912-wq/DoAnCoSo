@@ -312,6 +312,110 @@ ANALYSIS_TRIGGER_PATTERNS = [
     r"(tin tức|bài báo|thông tin).*(?:sau|này|trên)",
 ]
 
+GUIDE_ANALYZE_PATTERNS = [
+    r"(cách|hướng dẫn|làm sao|thế nào).*phân tích",
+    r"(cách|hướng dẫn|làm sao|thế nào).*kiểm (tra|chứng)",
+    r"phân tích.*tin",
+    r"làm sao.*kiểm tra",
+    r"hướng dẫn.*sử dụng",
+    r"cách dùng.*hệ thống",
+]
+
+EXPLAIN_SCORE_PATTERNS = [
+    r"điểm.*tin cậy",
+    r"giải thích.*điểm",
+    r"trust.*score",
+    r"chỉ số.*tin cậy",
+    r"score.*tin cậy",
+    r"điểm số.*đánh giá",
+    r"tính.*điểm",
+]
+
+EXPLAIN_RESULT_PATTERNS = [
+    r"(reliable|unreliable)",
+    r"(tin thật|tin giả|đáng tin|không đáng tin).*(là gì|nghĩa|ý nghĩa|là sao|phân biệt)",
+    r"kết quả.*(có nghĩa|là sao|hiểu|giải thích)",
+    r"(tại sao|vì sao).*(tin thật|tin giả|reliable|unreliable)",
+]
+
+OCR_HELP_PATTERNS = [
+    r"ocr",
+    r"quét.*ảnh",
+    r"nhận dạng.*chữ",
+    r"trích.*(chữ|văn bản).*ảnh",
+    r"đọc.*chữ.*ảnh",
+    r"tải.*ảnh",
+    r"gửi.*ảnh",
+    r"chụp.*ảnh",
+]
+
+URL_HELP_PATTERNS = [
+    r"url",
+    r"đường (link|dẫn)",
+    r"dán.*link",
+    r"dán.*url",
+    r"cào.*tin",
+]
+
+DASHBOARD_HELP_PATTERNS = [
+    r"dashboard",
+    r"bảng điều khiển",
+    r"thống kê",
+    r"biểu đồ",
+    r"hiệu suất.*mô hình",
+]
+
+HISTORY_HELP_PATTERNS = [
+    r"lịch sử",
+    r"history",
+    r"bài.*đã phân tích",
+    r"tin.*đã phân tích",
+    r"kết quả.*trước",
+]
+
+FACT_CHECK_TIPS_PATTERNS = [
+    r"mẹo",
+    r"tip",
+    r"gợi ý.*kiểm chứng",
+    r"lời khuyên.*kiểm chứng",
+    r"cách.*xác minh",
+    r"phân biệt.*tin thật.*tin giả",
+    r"kiểm chứng.*nhanh",
+]
+
+FACT_CHECK_CLAIM_PATTERNS = [
+    # Tin đồn y tế / chữa bệnh thần kỳ
+    r"(chữa|trị|khỏi|hết).*(bệnh|ung thư|covid|tiểu đường|huyết áp|ung bướu)",
+    r"(uống|ăn|dùng).*(chữa|trị|khỏi|hết|ngừa|phòng).*(bệnh|ung thư)",
+    r"(thần dược|bí truyền|chữa bách bệnh|chữa khỏi 100%|không cần (hóa trị|xạ trị|đi viện))",
+    r"(vaccine|vắc xin|vắc-xin).*(gây|nguy hiểm|tự kỷ|chết|tác dụng phụ|chip)",
+    r"(thuốc|thảo dược|lá|nước).*(chữa|trị|khỏi|tiêu diệt).*(100%|hoàn toàn|tuyệt đối)",
+    r"(bệnh|ung thư|covid).*(chữa|trị).*(bằng|nhờ|với).*(chanh|tỏi|gừng|lá|thảo|rau)",
+    
+    # Tin đồn tài chính / đầu tư
+    r"(bitcoin|crypto|tiền ảo|coin).*(lên|tăng|giảm|sập|triệu|tỷ)",
+    r"(đầu tư|kiếm tiền|làm giàu).*(nhanh|dễ|100%|chắc chắn|không rủi ro|triệu|tỷ)",
+    r"(trúng thưởng|trúng số|nhận thưởng|nhận tiền).*(miễn phí|ngay|click|link)",
+    
+    # Tin đồn xã hội giật gân
+    r"(sốc|kinh hoàng|rúng động|cực sốc|tuyệt mật|bí mật|vạch trần)",
+    r"(share gấp|chia sẻ ngay|lan truyền|đừng im lặng|cứu người|cảnh báo khẩn)",
+    
+    # Câu hỏi xác minh (có thật không / đúng không)
+    r"(có thật|có đúng|có phải|thực sự|thực hư|đúng không|thật không|có thật không)",
+    r"(tin này|thông tin này|bài này).*(thật|giả|đúng|sai|tin được|đáng tin)",
+]
+
+OUT_OF_SCOPE_PATTERNS = [
+    r"(tình yêu|crush|người yêu|bồ|hẹn hò)",         # Bỏ "yêu" đơn lẻ để tránh false positive
+    r"(code|lập trình|python|javascript|java|bug|debug)",
+    r"(nấu ăn|công thức|recipe|món ăn)",
+    r"(thể thao|bóng đá|world cup|ngoại hạng)",
+    r"(phim|nhạc|game|anime|manga)",
+    r"(toán|lý|hóa|văn|sử|địa|sinh).*lớp",
+    r"(viết|soạn|tạo).*(thơ|văn|email|cv|đơn)",
+]
+
 SMALLTALK_RESPONSES = {
     "weather": [
         r"thời tiết", r"trời.*nắng", r"trời.*mưa", r"nóng quá", r"lạnh quá",
@@ -333,46 +437,94 @@ def _detect_intent(message: str, history: list = None) -> str:
     """Phát hiện ý định của tin nhắn người dùng."""
     msg_lower = message.lower().strip()
     
-    # Kiểm tra chào hỏi
-    for pattern in GREETING_PATTERNS:
+    # 1. Kiểm tra các ý định kiểm chứng tin đồn / y khoa / tài chính ưu tiên hàng đầu
+    for pattern in FACT_CHECK_CLAIM_PATTERNS:
         if re.search(pattern, msg_lower):
-            # Nếu chào + kèm nội dung dài → có thể là phân tích
-            if len(msg_lower) > 50:
-                return "analysis"
-            return "greeting"
-    
-    # Kiểm tra tạm biệt
-    for pattern in FAREWELL_PATTERNS:
+            return "analysis"
+            
+    # 2. Kiểm tra các ý định chuyên sâu khác
+    # Hướng dẫn phân tích
+    for pattern in GUIDE_ANALYZE_PATTERNS:
         if re.search(pattern, msg_lower):
-            return "farewell"
+            return "guide_analyze"
     
-    # Kiểm tra cảm ơn
-    for pattern in THANKS_PATTERNS:
+    # Giải thích điểm tin cậy
+    for pattern in EXPLAIN_SCORE_PATTERNS:
         if re.search(pattern, msg_lower):
-            return "thanks"
+            return "explain_score"
     
-    # Kiểm tra hỏi trợ giúp
-    for pattern in HELP_PATTERNS:
+    # Giải thích reliable/unreliable
+    for pattern in EXPLAIN_RESULT_PATTERNS:
         if re.search(pattern, msg_lower):
-            return "help"
+            return "explain_result"
     
-    # Kiểm tra câu hỏi về hệ thống
+    # Hướng dẫn OCR
+    for pattern in OCR_HELP_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "ocr_help"
+    
+    # Hướng dẫn URL
+    for pattern in URL_HELP_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "url_help"
+    
+    # Dashboard
+    for pattern in DASHBOARD_HELP_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "dashboard_help"
+    
+    # Lịch sử
+    for pattern in HISTORY_HELP_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "history_help"
+    
+    # Gợi ý kiểm chứng
+    for pattern in FACT_CHECK_TIPS_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "fact_check_tips"
+            
+    # Câu hỏi về hệ thống
     for pattern in SYSTEM_QUESTION_PATTERNS:
         if re.search(pattern, msg_lower):
             return "system_question"
     
-    # Kiểm tra câu hỏi về tin giả
+    # Câu hỏi về tin giả
     for pattern in FAKE_NEWS_QUESTION_PATTERNS:
         if re.search(pattern, msg_lower):
             return "fake_news_question"
-    
-    # Kiểm tra smalltalk
+
+    # 3. Kiểm tra ngoài phạm vi (chỉ khi không phải các ý định cụ thể trên)
+    for pattern in OUT_OF_SCOPE_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "out_of_scope"
+
+    # 4. Kiểm tra chào hỏi / tạm biệt / cảm ơn / giúp đỡ (general conversation)
+    for pattern in GREETING_PATTERNS:
+        if re.search(pattern, msg_lower):
+            # Nếu chào + kèm nội dung dài và không khớp các ý định trên → có thể là tin phân tích
+            if len(msg_lower) > 50:
+                return "analysis"
+            return "greeting"
+            
+    for pattern in FAREWELL_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "farewell"
+            
+    for pattern in THANKS_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "thanks"
+            
+    for pattern in HELP_PATTERNS:
+        if re.search(pattern, msg_lower):
+            return "help"
+            
+    # 5. Smalltalk
     for category, patterns in SMALLTALK_RESPONSES.items():
         for pattern in patterns:
             if re.search(pattern, msg_lower):
                 return f"smalltalk_{category}"
     
-    # Kiểm tra yêu cầu phân tích rõ ràng
+    # 6. Yêu cầu phân tích rõ ràng
     for pattern in ANALYSIS_TRIGGER_PATTERNS:
         if re.search(pattern, msg_lower):
             return "analysis"
@@ -721,6 +873,107 @@ def _get_smalltalk_response(category: str) -> str:
     return random.choice(responses.get(category, ["Hmm, câu hỏi thú vị! 🤔 Nhưng chuyên môn của tôi là kiểm chứng tin tức. Bạn có bài viết nào cần phân tích không?"]))
 
 
+def _get_guide_analyze_response() -> str:
+    """Hướng dẫn cách phân tích tin tức."""
+    import random
+    responses = [
+        "Để phân tích một bài viết, bạn có thể làm theo các bước sau:\n\n1. 📝 Truy cập trang [Phân tích tin tức](/analyzer)\n2. 📋 Dán **tiêu đề** và **nội dung** bài viết vào form\n3. 🔗 Hoặc dán **URL bài báo** để hệ thống tự động cào nội dung\n4. ⚡ Nhấn **Phân tích** — hệ thống sẽ trả về kết quả chi tiết\n\nBạn cũng có thể dán trực tiếp nội dung vào đây, mình sẽ phân tích ngay cho bạn! 😊",
+        "Mình hướng dẫn bạn nhé! Có 3 cách để kiểm chứng tin tức:\n\n1. 📋 **Dán nội dung** bài viết trực tiếp vào đây hoặc trang [Phân tích](/analyzer)\n2. 🔗 **Dán đường link** bài báo — hệ thống sẽ tự cào nội dung\n3. 🖼️ **Gửi ảnh** chứa văn bản — hệ thống dùng OCR để đọc\n\nSau khi phân tích, bạn sẽ nhận được điểm tin cậy và giải thích chi tiết. Thử ngay nhé! 💪",
+    ]
+    return random.choice(responses)
+
+
+def _get_explain_score_response() -> str:
+    """Giải thích điểm tin cậy."""
+    return """**Điểm tin cậy** là chỉ số đánh giá mức độ đáng tin của một bài viết, tính trên thang **0–100%**.
+
+- 🟢 **70–100%**: Đáng tin cậy — bài viết có nguồn rõ ràng, văn phong khách quan
+- 🟡 **45–69%**: Chưa xác minh — cần kiểm chứng thêm từ nguồn khác
+- 🔴 **Dưới 45%**: Có dấu hiệu tin giả — phát hiện từ ngữ giật gân, thiếu nguồn dẫn
+
+Điểm được tính dựa trên: từ khóa giật gân, nguồn trích dẫn, độ dài bài viết, và mô hình ML. Bạn muốn thử phân tích một bài viết không? 😊"""
+
+
+def _get_explain_result_response() -> str:
+    """Giải thích kết quả reliable/unreliable."""
+    return """Kết quả phân tích của TrustCheck gồm 2 nhãn chính:
+
+- ✅ **Reliable (Đáng tin cậy)**: Bài viết có cấu trúc rõ ràng, trích dẫn nguồn uy tín, văn phong khách quan và không có dấu hiệu giật gân.
+- 🚨 **Unreliable (Không đáng tin)**: Bài viết chứa từ ngữ cảm tính, thiếu nguồn dẫn, hoặc có dấu hiệu thao túng thông tin.
+
+Kết quả chỉ mang tính **tham khảo** — bạn nên đối chiếu thêm với 2–3 nguồn báo chính thống để chắc chắn hơn nhé! 🔍"""
+
+
+def _get_ocr_help_response() -> str:
+    """Hướng dẫn sử dụng OCR."""
+    return """Tính năng **OCR (Nhận dạng ký tự quang học)** giúp bạn trích xuất văn bản từ ảnh để phân tích.
+
+Cách sử dụng:
+1. 📸 Chụp ảnh hoặc screenshot bài viết cần kiểm chứng
+2. 🖼️ Vào trang [Phân tích tin tức](/analyzer), chọn tab **OCR ảnh**
+3. 📤 Tải ảnh lên — hệ thống sẽ tự động đọc văn bản bằng **EasyOCR**
+4. ⚡ Sau khi trích xuất, nội dung sẽ được phân tích độ tin cậy ngay
+
+Hệ thống hỗ trợ tiếng Việt và tiếng Anh, xử lý hoàn toàn cục bộ trên máy chủ. Thử gửi ảnh nhé! 📷"""
+
+
+def _get_url_help_response() -> str:
+    """Hướng dẫn phân tích URL."""
+    return """Để phân tích một bài báo từ đường link, bạn làm như sau:
+
+1. 🔗 Sao chép **URL** bài báo (ví dụ: `https://vnexpress.net/...`)
+2. 📋 Dán vào ô **URL bài báo** trên trang [Phân tích tin tức](/analyzer)
+3. ⚡ Nhấn **Phân tích** — hệ thống sẽ tự động cào tiêu đề và nội dung
+4. 📊 Kết quả phân tích sẽ hiển thị ngay sau vài giây
+
+Hệ thống hỗ trợ các trang báo phổ biến như VNExpress, Tuổi Trẻ, Thanh Niên, Dân Trí và nhiều trang khác. Bạn thử dán link bài báo vào đây cũng được nhé! 🔍"""
+
+
+def _get_dashboard_help_response() -> str:
+    """Giải thích Dashboard."""
+    return """Trang [Dashboard](/dashboard) hiển thị thống kê tổng quan về hệ thống TrustCheck:
+
+- 📊 **Hiệu suất mô hình**: Accuracy, Precision, Recall, F1-score của Linear SVM
+- 📈 **Biểu đồ phân bố**: Tỷ lệ tin thật vs tin giả trong dữ liệu huấn luyện
+- 🔄 **Ma trận nhầm lẫn**: Chi tiết phân loại đúng/sai của mô hình
+
+Bạn có thể truy cập Dashboard bất cứ lúc nào để theo dõi hiệu suất phân tích. Cần mình giải thích thêm chỉ số nào không? 😊"""
+
+
+def _get_history_help_response() -> str:
+    """Hướng dẫn xem lịch sử."""
+    return """Trang [Lịch sử](/history) lưu lại tất cả các bài viết bạn đã phân tích trước đó.
+
+Tại đây bạn có thể:
+- 📋 **Xem lại** kết quả phân tích cũ
+- 🔍 **Tìm kiếm** theo tiêu đề hoặc nội dung
+- 🗑️ **Xoá** từng mục hoặc toàn bộ lịch sử
+
+Dữ liệu lịch sử được lưu trong cơ sở dữ liệu SQLite nội bộ, hoàn toàn riêng tư. Truy cập ngay tại [đây](/history) nhé! 📂"""
+
+
+def _get_fact_check_tips_response() -> str:
+    """Gợi ý cách kiểm chứng nguồn tin."""
+    import random
+    responses = [
+        "Đây là **5 bước kiểm chứng nhanh** mà mình khuyên bạn:\n\n1. 🔍 **Google tiêu đề** — xem có báo chính thống nào đưa tin không\n2. 📰 **Đối chiếu 2–3 nguồn** — VTV, VNExpress, Tuổi Trẻ, Thanh Niên\n3. 👤 **Kiểm tra tác giả** — bài viết có ghi rõ người viết không?\n4. 📅 **Xem ngày đăng** — tin cũ đôi khi bị chia sẻ lại gây hiểu lầm\n5. 🤖 **Dùng TrustCheck** — dán nội dung vào [Phân tích](/analyzer) để AI đánh giá\n\nNhớ: *Kiểm chứng trước, chia sẻ sau* nhé! 🛡️",
+        "Mình chia sẻ vài mẹo kiểm chứng tin tức nhé:\n\n- ⚠️ **Cẩn thận tiêu đề giật gân** — nếu quá sốc, có thể là bẫy click\n- 🔗 **Kiểm tra nguồn gốc** — tin đến từ đâu? Facebook, Zalo hay báo chính thống?\n- 🖼️ **Tra ảnh ngược** — dùng Google Images để kiểm tra ảnh có bị cắt ghép\n- 📊 **Dùng TrustCheck** — dán bài viết vào đây, mình phân tích ngay cho bạn\n\nBạn có bài viết nào đang nghi ngờ không? Gửi cho mình nhé! 💪",
+    ]
+    return random.choice(responses)
+
+
+def _get_out_of_scope_response() -> str:
+    """Trả lời câu hỏi ngoài phạm vi."""
+    import random
+    responses = [
+        "Cảm ơn bạn đã hỏi, nhưng mình chuyên về **kiểm chứng tin tức** thôi nè! 😊 Nếu bạn đang đọc được một tin tức nào đó đáng ngờ, hãy gửi cho mình để phân tích nhé.",
+        "Hmm, câu hỏi này nằm ngoài chuyên môn của mình rồi 😅 Mình là trợ lý kiểm chứng tin tức — nếu bạn muốn kiểm tra độ tin cậy của một bài viết, cứ dán nội dung hoặc link vào đây nhé!",
+        "Mình không rành lĩnh vực này lắm, nhưng mình rất giỏi **phân tích tin tức** đó! 🤖 Bạn có bài viết nào cần kiểm chứng không? Gửi cho mình nha.",
+        "Câu hỏi thú vị, nhưng mình tập trung vào việc **đánh giá độ tin cậy tin tức** thôi bạn nhé. Thử gửi một bài báo hoặc tin đồn để mình phân tích xem sao! 🔍",
+    ]
+    return random.choice(responses)
+
+
 def _get_general_response(message: str, history: list = None) -> str:
     """Trả lời câu hỏi chung dựa trên ngữ cảnh."""
     msg_lower = message.lower().strip()
@@ -744,15 +997,16 @@ def _get_general_response(message: str, history: list = None) -> str:
     if re.search(r"(hay|tốt|giỏi|tuyệt|đỉnh|ghê|pro)", msg_lower):
         return "Cảm ơn bạn! 😊 Tôi luôn cố gắng hỗ trợ tốt nhất. Nếu có bài viết nào cần kiểm chứng, cứ gửi cho tôi nhé! 💪"
     
-    # Không hiểu → gợi ý
-    return f"""Hmm, tôi chưa chắc hiểu ý bạn lắm 🤔
-
-Bạn có thể thử:
-- 📝 **Dán nội dung bài viết** để tôi phân tích độ tin cậy
-- ❓ **Hỏi câu hỏi** như: *"Tin giả là gì?"*, *"Cách nhận biết tin lừa đảo?"*
-- 🔍 **Yêu cầu kiểm chứng** một thông tin cụ thể
-
-Tôi sẵn sàng giúp bạn! 😊"""
+    # Không hiểu → fallback tự nhiên
+    import random
+    fallback_responses = [
+        "Mình có thể hỗ trợ bạn kiểm tra độ tin cậy của tin tức. Bạn có thể gửi nội dung bài viết, URL hoặc ảnh chứa văn bản để mình phân tích nhé! 🔍",
+        "Nếu bạn đang muốn kiểm chứng một tin tức, hãy dán nội dung hoặc đường link bài báo để hệ thống phân tích. Mình sẵn sàng hỗ trợ! 😊",
+        "Mình chưa rõ ý bạn lắm, nhưng nếu bạn cần kiểm chứng thông tin, cứ gửi tiêu đề, nội dung hoặc nguồn bài viết cho mình nhé! 📝",
+        "Bạn ơi, mình chuyên về kiểm chứng tin tức nè! Thử dán một bài viết, link bài báo, hoặc hỏi mình về cách phân biệt tin thật — tin giả xem sao? 🤖",
+        "Mình có thể giúp bạn phân tích độ tin cậy của bất kỳ bài viết nào. Bạn muốn bắt đầu với nội dung nào không? 💪",
+    ]
+    return random.choice(fallback_responses)
 
 
 def chat_response(message: str, history: list = None) -> str:
@@ -778,6 +1032,33 @@ def chat_response(message: str, history: list = None) -> str:
     
     if intent == "help":
         return _get_help_response()
+    
+    if intent == "guide_analyze":
+        return _get_guide_analyze_response()
+    
+    if intent == "explain_score":
+        return _get_explain_score_response()
+    
+    if intent == "explain_result":
+        return _get_explain_result_response()
+    
+    if intent == "ocr_help":
+        return _get_ocr_help_response()
+    
+    if intent == "url_help":
+        return _get_url_help_response()
+    
+    if intent == "dashboard_help":
+        return _get_dashboard_help_response()
+    
+    if intent == "history_help":
+        return _get_history_help_response()
+    
+    if intent == "fact_check_tips":
+        return _get_fact_check_tips_response()
+    
+    if intent == "out_of_scope":
+        return _get_out_of_scope_response()
     
     if intent == "system_question":
         return _get_system_answer(message)

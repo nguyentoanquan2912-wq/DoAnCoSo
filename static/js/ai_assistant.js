@@ -240,23 +240,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // Quick templates sender
   window.sendTemplateQuery = function(type) {
     const templates = {
-      fact_check: "Hãy giúp tôi kiểm chứng độ tin cậy bài viết sau:\n\n[Dán Tiêu đề ở đây]\n[Dán Nội dung ở đây]",
-      health_rumor: "Có phải uống nước sắc từ lá đu đủ đực phơi khô và ăn tỏi sống mỗi ngày có thể tiêu diệt hoàn toàn tế bào ung thư như lời đồn không? Hãy phân tích tính khoa học giúp tôi.",
-      scam_detection: "Làm thế nào để nhận biết một tin nhắn trúng thưởng qua mạng xã hội (Zalo, Facebook) là giả mạo, lừa đảo chiếm đoạt tài sản?",
-      nlp_logic: "Những dấu hiệu nhận biết tin giả qua văn phong, ngôn từ (như tính giật gân, thiếu nguồn trích dẫn, cường điệu hóa) là gì? Giải thích chi tiết kèm ví dụ.",
-      url_check: "Hãy giúp tôi phân tích nguồn gốc và uy tín của đường dẫn bài báo sau:\n\n[Dán URL bài báo ở đây]\n\nCho biết tên miền có đáng tin cậy không? Có phải trang báo chính thống? Có dấu hiệu giả mạo URL không?"
+      guide_analyze: "Hướng dẫn tôi cách kiểm chứng, phân tích một bài viết bằng TrustCheck?",
+      explain_score: "Điểm tin cậy được tính như thế nào và có ý nghĩa gì?",
+      explain_result: "Giải thích kết quả phân loại Reliable và Unreliable?",
+      url_help: "Cách phân tích một bài viết qua đường dẫn URL như thế nào?",
+      ocr_help: "Hướng dẫn cách trích xuất văn bản từ hình ảnh (OCR) để phân tích?",
+      dashboard_help: "Trang Dashboard thống kê những số liệu gì?",
+      history_help: "Làm thế nào để xem lại lịch sử các bài viết đã phân tích?",
+      fact_check_tips: "Cho tôi một số mẹo và lời khuyên tự kiểm chứng nhanh nguồn tin?"
     };
     
     const query = templates[type];
     if (query) {
-      if (type === 'fact_check' || type === 'url_check') {
-        textarea.value = query;
-        textarea.style.height = '120px';
-        textarea.focus();
-        updateSendButton();
-      } else {
-        sendMessage(query);
-      }
+      sendMessage(query);
     }
   };
 });
